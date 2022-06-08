@@ -7,7 +7,7 @@
     "build": "ng build --configuration production",
     "build:stats": "ng build --configuration production --stats-json",
     "analyze": "webpack-bundle-analyzer dist/app-base/stats.json",
-    "test": "ng test --code-coverage --watch",
+    "test": "ng test --code-coverage",
     "test:mutation": "stryker run",
     "lint": "ng lint",
     "e2e": "ng e2e"
