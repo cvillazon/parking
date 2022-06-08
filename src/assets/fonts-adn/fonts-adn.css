@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'adn-ceiba';
+  src:  url('fonts/adn-ceiba.eot?dbya9o');
+  src:  url('fonts/adn-ceiba.eot?dbya9o#iefix') format('embedded-opentype'),
+    url('fonts/adn-ceiba.ttf?dbya9o') format('truetype'),
+    url('fonts/adn-ceiba.woff?dbya9o') format('woff'),
+    url('fonts/adn-ceiba.svg?dbya9o#adn-ceiba') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="adn-"], [class*=" adn-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'adn-ceiba' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.adn-power-off:before {
+  content: "\e900";
+  color: #004a51;
+}
+.adn-parking-meter .path1:before {
+  content: "\e902";
+  color: rgb(56, 56, 56);
+}
+.adn-parking-meter .path2:before {
+  content: "\e903";
+  margin-left: -1em;
+  color: rgb(56, 56, 56);
+}
+.adn-parking-meter .path3:before {
+  content: "\e904";
+  margin-left: -1em;
+  color: rgb(0, 74, 81);
+}
+.adn-parking-meter .path4:before {
+  content: "\e905";
+  margin-left: -1em;
+  color: rgb(0, 74, 81);
+}
+.adn-parking-meter .path5:before {
+  content: "\e906";
+  margin-left: -1em;
+  color: rgb(200, 200, 200);
+}
+.adn-parking-meter .path6:before {
+  content: "\e907";
+  margin-left: -1em;
+  color: rgb(200, 200, 200);
+}
+.adn-parking-meter .path7:before {
+  content: "\e908";
+  margin-left: -1em;
+  color: rgb(104, 104, 104);
+}
+.adn-parking-meter .path8:before {
+  content: "\e909";
+  margin-left: -1em;
+  color: rgb(80, 80, 80);
+}
+.adn-parking-meter .path9:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: rgb(176, 176, 176);
+}
+.adn-parking-meter .path10:before {
+  content: "\e90b";
+  margin-left: -1em;
+  color: rgb(176, 176, 176);
+}
+.adn-menu:before {
+  content: "\e901";
+}
+.adn-close:before {
+  content: "\e90c";
+}

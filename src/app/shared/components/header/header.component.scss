@@ -1,0 +1,28 @@
+@use "./../../../../styles.scss" as *;
+$padding_adn:40px;
+.container__login{
+    display: flex;
+    align-items: center;
+    height: 48px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    
+    background-color: $color-primary;
+    padding: 0px $padding_adn;
+
+    .adn-power-off{
+        font-size: 1.5em;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+
+    .adn-menu{
+        font-size: 1.8em;
+        cursor: pointer;
+        &::before{
+            color: $color-secondary;
+        }
+    }
+}

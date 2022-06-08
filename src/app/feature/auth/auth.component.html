@@ -1,0 +1,22 @@
+<div class="container__auth">
+    <div class="card_container_login">
+        <h2>Inicio de Sesión</h2>
+
+        <div class="container__input">
+            <mat-form-field appearance="outline">
+                <mat-label>Correo electronico</mat-label>
+                <input [(ngModel)]="loginCredentials.email" matInput type="email" placeholder="Ingrese su Correo Electronico">
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input [(ngModel)]="loginCredentials.password" type="password" matInput placeholder="Digite su Contraseña">
+            </mat-form-field>
+        </div>
+
+        <div class="container__actions">
+            <a (click)="login()">Ingresar</a>
+        </div>
+
+    </div>
+</div>

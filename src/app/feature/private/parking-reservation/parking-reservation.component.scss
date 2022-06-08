@@ -1,0 +1,6 @@
+@use "../../../../styles.scss" as *;
+.container__reservation{
+    height: calc(100% - 48px);
+
+    background-color: $color-secondary;
+}
