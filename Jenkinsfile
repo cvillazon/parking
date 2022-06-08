@@ -34,7 +34,7 @@ stages{
     stage('Test Unit') {
       steps {
         echo "------------>Testing<------------"
-        sh 'npm run test'
+        sh 'npm run test -- --watch=false --browsers ChromeHeadless'
       }
     }
 
