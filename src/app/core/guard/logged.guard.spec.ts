@@ -1,9 +1,9 @@
 import { inject, TestBed } from "@angular/core/testing";
 import { Router } from "@angular/router";
-import { CookieServiceMock } from "mocks/CookieServiceMock.service";
+import { CookieServiceMock } from "@core/mocks/CookieServiceMock.service";
 import { CookieService } from "ngx-cookie-service";
 
-import { LoggedService } from "./logged.service";
+import { LoggedService } from "./logged.guard";
 
 describe("LoggedService", () => {
   beforeEach(() => {

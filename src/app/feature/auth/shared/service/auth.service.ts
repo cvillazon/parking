@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Credentials } from '@core/modelo/Credentials';
-import { User } from '@core/modelo/User';
+import { Credentials } from '@auth/shared/model/Credentials';
+import { User } from '@auth/shared/model/User';
 import { HttpService } from '@core/services/http.service';
 import { CookieService } from 'ngx-cookie-service';
 import { tap, throwError } from 'rxjs';

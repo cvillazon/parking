@@ -1,6 +1,6 @@
 import { TestBed, inject } from "@angular/core/testing";
 import { Router } from "@angular/router";
-import { CookieServiceMock } from "mocks/CookieServiceMock.service";
+import { CookieServiceMock } from "@core/mocks/CookieServiceMock.service";
 import { CookieService } from "ngx-cookie-service";
 
 import { SecurityGuard } from "./security.guard";

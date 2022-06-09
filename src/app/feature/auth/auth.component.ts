@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Credentials } from '@core/modelo/Credentials';
+import { Credentials } from '@auth/shared/model/Credentials';
 import { AuthService } from './shared/service/auth.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class AuthComponent implements OnInit {
   login(){
     if(!this.validateCredentials()){return}
     this.auth.login(this.loginCredentials).subscribe(() =>{
-      this.router.navigate(['/private/']);
+      this.router.navigate(['/private/home']);
     },()=>{
       alert("Credenciales invalidas");
     });

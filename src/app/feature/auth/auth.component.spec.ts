@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { Router } from "@angular/router";
 import { RouterTestingModule } from "@angular/router/testing";
 import { HttpService } from "@core/services/http.service";
-import { loginSuccesfullyResult } from "mocks/AuthDataMock";
+import { loginSuccesfullyResult } from "@core/mocks/AuthDataMock";
 import { of, throwError } from "rxjs";
 import { PrivateComponent } from "../private/private.component";
 
