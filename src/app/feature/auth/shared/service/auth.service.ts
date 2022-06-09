@@ -4,17 +4,17 @@ import { HttpService } from '@core/services/http.service';
 import { CookieService } from 'ngx-cookie-service';
 import { tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Credentials } from '../model/credentials';
-import { User } from '../model/user';
+// import { Credentials } from '../model/credentials';
+// import { User } from '../model/user';
 
 @Injectable()
 export class AuthService {
 
   constructor(protected http:HttpService, private cookie:CookieService, private router:Router) { }
 
-  login(credentials:Credentials){
+  login(credentials:any){
     return this.http.doGet(`${environment.endpoint}/users?email=${credentials.email}&password=${credentials.password}&_limit=1`)
-      .pipe(tap((user:User[]) =>{
+      .pipe(tap((user:any[]) =>{
         if(!user){
           return throwError(() => ({status:404, message:"Usuario no econtrado"}));
         }
