@@ -10,7 +10,7 @@ xdescribe('PrivateComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ PrivateComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

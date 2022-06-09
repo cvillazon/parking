@@ -9,7 +9,7 @@ import { AuthService } from '@auth/shared/service/auth.service';
 export class HeaderComponent implements OnInit {
 
   @Input() drawer;
-  constructor(private auth:AuthService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
   }

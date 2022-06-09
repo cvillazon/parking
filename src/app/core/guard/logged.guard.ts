@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class LoggedService {
 
-  constructor(protected cookieService:CookieService, private router:Router){}
+  constructor(protected cookieService: CookieService, private router: Router){}
 
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const token = this.cookieService.get('token');

@@ -10,7 +10,7 @@ describe('ParkingReservationComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ParkingReservationComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -10,7 +10,7 @@ describe('LicensePlatesComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ LicensePlatesComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

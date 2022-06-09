@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SecurityGuard implements CanActivate {
 
-  constructor(protected cookieService:CookieService, private router:Router){}
+  constructor(protected cookieService: CookieService, private router: Router){}
 
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const token = this.cookieService.get('token');
@@ -16,7 +16,7 @@ export class SecurityGuard implements CanActivate {
       return true;
     }
 
-    return this.router.navigate(['/login']).then(() => false)
+    return this.router.navigate(['/login']).then(() => false);
   }
 
 }

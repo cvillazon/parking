@@ -10,7 +10,7 @@ describe('ParkingHistoryComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ParkingHistoryComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -10,25 +10,25 @@ import { AuthService } from './shared/service/auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  public loginCredentials:Credentials={
-    email:"",
-    password:""
-  }
+  public loginCredentials: Credentials={
+    email:'',
+    password:''
+  };
 
-  constructor(private auth:AuthService, private router:Router) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   validateCredentials(){
-    if(this.loginCredentials.email=="" || this.loginCredentials.password==""){
+    if(this.loginCredentials.email=='' || this.loginCredentials.password==''){
       return false;
     }
     return true;
   }
 
   login(){
-    if(!this.validateCredentials()){return}
+    if(!this.validateCredentials()){return;}
     this.auth.login(this.loginCredentials).subscribe(() =>{
       this.router.navigate(['/private']);
     },()=>{
