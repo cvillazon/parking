@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { Credentials } from './shared/model/credentials';
+import { Credentials } from './shared/model/CredentialAuth';
 import { AuthService } from './shared/service/auth.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AuthService } from './shared/service/auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  public loginCredentials:any={
+  public loginCredentials:Credentials={
     email:"",
     password:""
   }
