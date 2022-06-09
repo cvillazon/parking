@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Credentials } from '@auth/shared/model/credentials';
-import { User } from '@auth/shared/model/user';
 import { HttpService } from '@core/services/http.service';
 import { CookieService } from 'ngx-cookie-service';
 import { tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Credentials } from '../model/credentials';
+import { User } from '../model/user';
 
 @Injectable()
 export class AuthService {
