@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParkingReservationComponent implements OnInit {
 
+  public parkingSpot:number=20;
+  public parkingArray;
   constructor() { }
 
   ngOnInit(): void {
+    this.parkingArray = Array(this.parkingSpot).fill(0).map( (_,idx) => idx+1);
+    console.log(this.parkingArray);
   }
 
 }

@@ -1,0 +1,32 @@
+@use "../../../../../../styles.scss" as *;
+.spot-place-stop{
+    position: relative;
+    height: 5px;
+    width: 80%;
+    background: white;
+    color: white;
+    display: block;
+    text-align: center;
+    align-self: center;
+    margin: auto;
+    margin-top: 8px;
+    display: flex;
+    background-color: $black;
+
+    span{
+        display: block;
+        flex: 1;
+    }
+
+    span:nth-child(even){
+        background-color: yellow;
+    }
+
+}
+
+.car-zone{
+    flex: 1;
+    border: 1px dashed grey;
+    margin: 10px;
+    cursor: pointer;
+}

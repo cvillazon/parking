@@ -1,6 +1,26 @@
 @use "../../../../styles.scss" as *;
 .container__reservation{
+    // padding: 30px $padding_adn;
+    box-sizing: border-box;
+    // border: 5px solid red;
+    // border-radius: 5px;
     height: calc(100% - 48px);
+    .parking-zone{
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));;
+        grid-template-rows: repeat(auto-fill, minmax(200px, 250px));
+        background-color: $color-secondary;
+    }
 
-    background-color: $color-secondary;
+    .parking-sone__spot-parking{
+        border: 1px solid black;
+        min-height: 200px;
+        
+        .car-zone-container{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+    }
 }

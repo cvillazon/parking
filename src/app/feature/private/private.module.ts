@@ -12,7 +12,9 @@ import { SharedModule } from '@shared/shared.module';
 import { LicensePlatesComponent } from './license-plates/license-plates.component';
 import { ParkingReservationComponent } from './parking-reservation/parking-reservation.component';
 import { ParkingHistoryComponent } from './parking-history/parking-history.component';
-
+import { CarZoneComponent } from './parking-reservation/components/car-zone/car-zone.component';
+import { CreateParkingModalComponent } from './parking-reservation/components/create-parking-modal/create-parking-modal.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ParkingHistoryComponent } from './parking-history/parking-history.compo
     HomeComponent,
     LicensePlatesComponent,
     ParkingReservationComponent,
-    ParkingHistoryComponent
+    ParkingHistoryComponent,
+    CarZoneComponent,
+    CreateParkingModalComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +32,7 @@ import { ParkingHistoryComponent } from './parking-history/parking-history.compo
     MatSidenavModule,
     RouterModule,
     SharedModule,
+    MatDialogModule,
     HttpClientModule
   ]
 })
