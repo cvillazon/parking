@@ -24,7 +24,7 @@ stages{
       }
     }
 
-     stage('NPM install') {
+     stage('Build npm install') {
       steps {
         echo "------------>Installing<------------"
         sh 'npm install'
@@ -34,7 +34,7 @@ stages{
     stage('Test Unit') {
       steps {
         echo "------------>Testing<------------"
-        sh 'npm run test -- --watch=false --browsers ChromeHeadless'
+        sh 'npm run test --watch=false --browsers ChromeHeadless'
       }
     }
 
