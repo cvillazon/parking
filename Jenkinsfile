@@ -34,7 +34,7 @@ stages{
     stage('Test Unit') {
       steps {
         echo "------------>Testing<------------"
-        sh 'npm run test --watch=false --browsers ChromeHeadless'
+        sh 'ng test --no-watch --code-coverage --browsers ChromeHeadless'
       }
     }
 
