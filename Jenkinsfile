@@ -49,7 +49,7 @@ stages{
       steps{
             echo '------------>Sonar scan and quality<------------'
 		    sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:parking.vehiculos.andres.villazon',
-            sonarName:'CeibaADN-ParkingVehiculos(andres.villazon)',
+            sonarName:'"CeibaADN-ParkingVehiculos(andres.villazon)"',
 		    sonarPathProperties:'./sonar-project.properties')
 		}
     }
