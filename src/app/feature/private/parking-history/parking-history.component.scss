@@ -1,0 +1,50 @@
+@use "../../../../styles.scss" as *;
+.container__historical{
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 $padding_adn;
+    .title_historical{
+        margin-bottom: 0px;
+        margin-top: 0px;
+        padding-top: 25px;
+        padding-bottom: 10px;
+        
+        text-align: center;
+        font-size: 2em;
+        font-weight: 500;
+        color: #004a51;
+    }
+
+    .description_historical{
+        margin-bottom: 50px;
+
+        text-align: center;
+        font-size: 1em;
+        font-weight: 400;
+        color: #004a51;
+    }
+
+    .c-table, table {
+        border: #B1B1B1 solid 1px;
+        thead {
+            background-color: #e7e7e7;
+            font-family: $font-general;
+            font-size: $size-medium;
+        }
+        thead, tr {
+            border-bottom: #B1B1B1 solid 1px;
+            &:nth-child(even){
+                background-color: #e7e7e7;
+            }
+        }
+        th, td {
+            padding: 15px;
+        }
+        
+        td {
+            font-size: $size-medium;
+            font-family: $font-secondary;
+        }
+    }
+}
