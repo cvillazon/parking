@@ -16,7 +16,7 @@ export class SecurityGuard implements CanActivate {
       return true;
     }
 
-    return this.router.navigate(["/login"]).then(() => false)
+    return this.router.navigate(['/login']).then(() => false)
   }
 
 }

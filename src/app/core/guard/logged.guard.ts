@@ -17,6 +17,6 @@ export class LoggedService {
       return true;
     }
 
-    return this.router.navigate(["/private/home"]).then(() => false)
+    return this.router.navigate(['/private/home']).then(() => false);
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Credentials } from '@auth/shared/model/Credentials';
-import { User } from '@auth/shared/model/User';
+import { Credentials } from '@auth/shared/model/credentials';
+import { User } from '@auth/shared/model/user';
 import { HttpService } from '@core/services/http.service';
 import { CookieService } from 'ngx-cookie-service';
 import { tap, throwError } from 'rxjs';
@@ -16,15 +16,15 @@ export class AuthService {
     return this.http.doGet(`${environment.endpoint}/users?email=${credentials.email}&password=${credentials.password}&_limit=1`)
       .pipe(tap((user:User[]) =>{
         if(!user){
-          return throwError(() => ({status:404, message:"Usuario no econtrado"}))
+          return throwError(() => ({status:404, message:"Usuario no econtrado"}));
         }
         this.cookie.set("token",user[0].token);
       }));
   }
 
   logout(){
-    this.cookie.delete("token")
-    this.redirectTo()
+    this.cookie.delete("token");
+    this.redirectTo();
   }
 
   redirectTo(path="/login"){
