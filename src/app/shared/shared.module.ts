@@ -8,6 +8,7 @@ import { ErrorCamposPlantillaComponent } from './directivas/error-campos/compone
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TrackByPipe } from './pipe/track-by.pipe';
 import { HeaderComponent } from './components/header/header.component';
+import { LicenseInputComponent } from './components/license-input/license-input.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HeaderComponent } from './components/header/header.component';
     MensajeErrorCamposContenedorDirective,
     MensajeErrorCamposSubmitDirective,
     TrackByPipe,
-    HeaderComponent
+    HeaderComponent,
+    LicenseInputComponent
   ],
   imports: [ReactiveFormsModule, FormsModule],
   exports: [
@@ -28,7 +30,8 @@ import { HeaderComponent } from './components/header/header.component';
     ReactiveFormsModule,
     FormsModule,
     TrackByPipe,
-    HeaderComponent
+    HeaderComponent,
+    LicenseInputComponent
   ]
 })
 export class SharedModule { }

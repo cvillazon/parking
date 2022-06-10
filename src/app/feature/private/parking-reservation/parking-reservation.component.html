@@ -1,19 +1,9 @@
 <div class="container__reservation">
     <div class="parking-zone">
-        
         <div [attr.data-idx]="'spot-place-'+idx" class="parking-sone__spot-parking" *ngFor="let idx of parkingArray">
-            <!-- <div class="spot-place-stop">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-            <div class="car-zone">
-
-            </div> -->
             <app-car-zone class="car-zone-container" [car]="idx" ></app-car-zone>
         </div>
     </div>
 </div>
+
+<app-license-input></app-license-input>

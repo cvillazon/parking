@@ -1,0 +1,58 @@
+.input-license-plate-container{
+    display: flex;
+
+    margin: 100px;
+    width: fit-content;
+    height: 5em;
+    
+    background-color: #f7dc4d;
+    // border: 2px solid black;
+    border-radius: 20px;
+    
+    .border-license-plates{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        
+        margin: 0.6em;
+        padding: 0 
+        15px;
+        
+        border-radius: 15px;
+        // border: 2px solid black;
+        background-color: #ea911e;
+    }
+
+    .border-license-plates__dot{
+        border-radius: 50%;
+        background-color: black;
+        height: 0.5em;
+        width: 0.5em;
+    }
+    
+    .border-license-plates__input{
+        flex: 1;
+        border: none;
+        height: fit-content;
+        width: 3em;
+
+        font-size: 1.5em;
+        letter-spacing: 0.1em;
+        font-weight: 800;
+        text-transform: uppercase;
+
+        background-color: transparent;
+        box-sizing: border-box;
+        border-bottom: 1px solid white;
+        &:nth-of-type(odd){
+            text-align: right;
+            // font-size: 2.5em;
+        }
+
+        &:focus-visible{
+            outline: 0px;
+            border-bottom: 1px solid green;
+        }
+    }
+}

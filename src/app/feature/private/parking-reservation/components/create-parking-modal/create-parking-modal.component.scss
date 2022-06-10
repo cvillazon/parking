@@ -1,0 +1,13 @@
+@use "../../../../../../styles.scss" as *;
+.container__create-parking{
+    .title__create-reservation{
+        margin-bottom: 0px;
+        margin-top: 0px;
+        padding-top: 25px;
+        padding-bottom: 10px;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 500;
+        color: #004a51;
+    }
+}

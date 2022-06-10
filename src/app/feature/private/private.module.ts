@@ -33,7 +33,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     RouterModule,
     SharedModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class PrivateModule { }
