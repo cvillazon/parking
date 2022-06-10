@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-license-input',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LicenseInputComponent implements OnInit {
 
+  public letters:string;
+  public numbers:number;
+  @Output() licenseEvent = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
+    this.letters
   }
 
+  onChange(){
+    if(this.letters?.length==3 && String(this.numbers)?.length==3){
+      this.licenseEvent.emit(this.letters+""+this.numbers);
+    }
+  }
 }

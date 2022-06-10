@@ -1,13 +1,88 @@
 @use "../../../../../../styles.scss" as *;
-.container__create-parking{
+.container__create-reservation{
+    padding: 20px;
     .title__create-reservation{
         margin-bottom: 0px;
         margin-top: 0px;
-        padding-top: 25px;
         padding-bottom: 10px;
         text-align: center;
         font-size: 1.5em;
         font-weight: 500;
         color: #004a51;
+    }
+
+    app-license-input{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .title__form{
+        margin: 0;
+        margin-bottom: 10px;
+
+        text-align: center;
+        font-size: 1.2em;
+        font-weight: 400;
+        color: #004a51;
+    }
+
+    .row-form{
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 10px;
+
+        box-sizing: border-box;
+    }
+    
+    .row-form__container-input{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        mat-form-field{
+            flex: 1;
+            
+            input[name='owner']{
+                text-transform: uppercase;
+            }
+    
+            .mat-form-field-wrapper{
+                padding: 0px;
+            }
+        }
+
+        ng-component{
+            font-size: 0.8em;
+            padding-left: 10px;
+        }
+    }
+
+    .btn-container__form{
+        display: flex;
+        justify-content: center;
+
+        .btn-save{
+            background-color: $color-primary;
+            border: 0px;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.4s;
+
+            &:disabled{
+                background-color: $color-gray-100;
+            }
+
+            &:hover:not(:disabled){
+                background-color: $color-secondary;
+            }
+        }
+        
     }
 }

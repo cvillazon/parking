@@ -119,6 +119,7 @@ export class MensajeErrorCamposDirective implements OnInit, OnDestroy, AfterView
       this.control.control.setValidators(this.validaciones);
     }
   }
+  
 
   private pintarErrorEnPantalla(texto: string = null): void {
     try {

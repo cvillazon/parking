@@ -1,9 +1,33 @@
-<div class="container__create-parking">
+<div class="container__create-reservation">
     <h1 class="title__create-reservation">Crear reservación</h1>
 
-    <div class="container-form">
-        <div class="input-license-plate">
-            <input>
+    <div [formGroup]="formReservation" class="container-form">
+        <h2 class="title__form">Ingrese la matricula del vehiculo</h2>
+        <app-license-input (licenseEvent)="setLicenseNumber($event)"></app-license-input>
+        <div class="row-form">
+            <div class="row-form__container-input">
+                <mat-form-field validar appearance="outline">
+                    <mat-label>Nombre del propietario del vehiculo</mat-label>
+                    <input formControlName="ownerName" name="owner" type="text" matInput placeholder="Placeholder">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row-form">
+            <div class="row-form__container-input">
+                <mat-form-field validar appearance="outline">
+                    <mat-label>Fecha de Ingreso</mat-label>
+                    <input readonly formControlName="date" name="date1" type="text" matInput placeholder="Placeholder">
+                </mat-form-field>
+            </div>
+            <div class="row-form__container-input">
+                <mat-form-field validar appearance="outline">
+                    <mat-label>Horas de reserva</mat-label>
+                    <input formControlName="hour" name="hour2" type="number" value="1" matInput placeholder="1">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="btn-container__form">
+            <button (click)="generateReservation()" [disabled]="isTheFormInvalid" class="btn-save" type="submit">Generar reserva</button>
         </div>
     </div>
 </div>

@@ -15,6 +15,9 @@ import { ParkingHistoryComponent } from './parking-history/parking-history.compo
 import { CarZoneComponent } from './parking-reservation/components/car-zone/car-zone.component';
 import { CreateParkingModalComponent } from './parking-reservation/components/create-parking-modal/create-parking-modal.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     SharedModule,
     MatDialogModule,
     HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PrivateModule { }

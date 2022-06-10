@@ -9,6 +9,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TrackByPipe } from './pipe/track-by.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { LicenseInputComponent } from './components/license-input/license-input.component';
+import { OnlyTypeDirective } from './components/license-input/directive/only-type.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LicenseInputComponent } from './components/license-input/license-input.
     MensajeErrorCamposSubmitDirective,
     TrackByPipe,
     HeaderComponent,
-    LicenseInputComponent
+    LicenseInputComponent,
+    OnlyTypeDirective,
   ],
   imports: [ReactiveFormsModule, FormsModule],
   exports: [
@@ -31,7 +33,7 @@ import { LicenseInputComponent } from './components/license-input/license-input.
     FormsModule,
     TrackByPipe,
     HeaderComponent,
-    LicenseInputComponent
+    LicenseInputComponent,
   ]
 })
 export class SharedModule { }

@@ -18,7 +18,7 @@ export class CarZoneComponent implements OnInit {
   openCreateReservation(): void {
     this.dialog.open(CreateParkingModalComponent, {
       width: '500px',
-      height:'300px',
+      // height:'300px',
       panelClass:'popUp-generic'
     });
 
