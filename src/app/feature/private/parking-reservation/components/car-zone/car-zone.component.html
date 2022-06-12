@@ -7,5 +7,5 @@
 </div>
 
 <div (click)="openCreateReservation()" class="car-zone">
-    
+    <img *ngIf="isReserved" [src]="car.carType">
 </div>

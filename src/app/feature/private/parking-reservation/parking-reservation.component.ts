@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ParkingService } from '../shared/services/parking.service';
 
 @Component({
   selector: 'app-parking-reservation',
@@ -8,12 +9,24 @@ import { Component, OnInit } from '@angular/core';
 export class ParkingReservationComponent implements OnInit {
 
   public parkingSpot:number=20;
+  public carsInParking:any;
   public parkingArray;
-  constructor() { }
+  constructor(private parking:ParkingService) { }
 
   ngOnInit(): void {
+    this.loadActiveReservation();
     this.parkingArray = Array(this.parkingSpot).fill(0).map( (_,idx) => idx+1);
-    console.log(this.parkingArray);
+  }
+
+  loadActiveReservation(){
+    const time:number=new Date().getTime();
+    this.parking.loadReservation(time).subscribe(data=>{
+      this.carsInParking=data;
+    });
+  }
+
+  getInfoParking(idx:number){
+    return this.carsInParking?.find((cars:any)=>cars.spot===idx) ?? idx;
   }
 
 }

@@ -27,7 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ParkingReservationComponent,
     ParkingHistoryComponent,
     CarZoneComponent,
-    CreateParkingModalComponent
+    CreateParkingModalComponent,
   ],
   imports: [
     CommonModule,

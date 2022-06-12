@@ -1,6 +1,78 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" },{ "id": 2, "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" },
-  "users":[{"id":1, "name":"Andres Villazon", "email":"andres.villazon@ceiba.com", "password":"ceibaSoftware*123", "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s"}]
+  "parking": [
+    {
+      "spot": 1,
+      "carType": "./assets/svg/bus-icon.svg",
+      "owner": "andres villazon",
+      "hour": 1,
+      "license": "hgy654",
+      "date": "6/12/22, 11:29:15 AM",
+      "dateEnd": "6/12/22, 12:29:23 PM",
+      "timeStart": 1655051363155,
+      "timeEnd": 1655054963155,
+      "id": 1
+    },
+    {
+      "spot": 7,
+      "carType": "./assets/svg/taxi-icon.svg",
+      "owner": "hector villazon",
+      "hour": 2,
+      "license": "gfd716",
+      "date": "6/12/22, 11:29:36 AM",
+      "dateEnd": "6/12/22, 1:29:50 PM",
+      "timeStart": 1655051390756,
+      "timeEnd": 1655058590756,
+      "id": 2
+    },
+    {
+      "spot": 3,
+      "carType": "./assets/svg/car1-icon.svg",
+      "owner": "valerir  villazon",
+      "hour": 3,
+      "license": "lnh876",
+      "date": "6/12/22, 11:29:52 AM",
+      "dateEnd": "6/12/22, 2:30:07 PM",
+      "timeStart": 1655051407360,
+      "timeEnd": 1655062207360,
+      "id": 3
+    },
+    {
+      "spot": 6,
+      "carType": "./assets/svg/police-icon.svg",
+      "owner": "patricia villarreal",
+      "hour": 2,
+      "license": "oiq816",
+      "date": "6/12/22, 11:43:55 AM",
+      "dateEnd": "6/12/22, 1:44:05 PM",
+      "timeStart": 1655052245388,
+      "timeEnd": 1655059445388,
+      "id": 4
+    },
+    {
+      "spot": 5,
+      "carType": "./assets/svg/car1-icon.svg",
+      "owner": "hector villazon",
+      "hour": 5,
+      "license": "ytr764",
+      "date": "6/12/22, 11:45:34 AM",
+      "dateEnd": "6/12/22, 4:45:44 PM",
+      "timeStart": 1655052344516,
+      "timeEnd": 1655070344516,
+      "id": 5
+    }
+  ],
+  "posts": [],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "id": 1,
+      "name": "Andres Villazon",
+      "email": "andres.villazon@ceiba.com",
+      "password": "ceibaSoftware*123",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s"
+    }
+  ]
 }

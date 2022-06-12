@@ -15,16 +15,26 @@ export class CarZoneComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openCreateReservation(): void {
-    this.dialog.open(CreateParkingModalComponent, {
-      width: '500px',
-      // height:'300px',
-      panelClass:'popUp-generic'
-    });
+  get isReserved(){
+    return typeof this.car == 'object';
+  }
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.animal = result;
-    // });
+  getReservation(){
+
+  }
+
+  openCreateReservation(): void {
+    if(!this.isReserved){
+      let dialogRef = this.dialog.open(CreateParkingModalComponent, {
+        width: '500px',
+        data:{spot:this.car},
+        // height:'300px',
+        panelClass:'popUp-generic'
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        this.car = result;
+      });
+    }
   }
 }
