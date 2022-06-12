@@ -36,6 +36,7 @@ export class CreateParkingModalComponent implements OnInit {
 
   initForm() {
     this.formReservation = this.fb.group({
+      serviceOut: [false],
       spot:[''],
       carType:[''],
       owner: ['', Validators.required],

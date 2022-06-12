@@ -27,6 +27,12 @@ export class HttpService {
 
     return this.http.post<R>(serviceUrl, body, ropts);
   }
+ 
+  public doPatch<T, R>(serviceUrl: string, body: T, opts?: Options): Observable<R> {
+    const ropts = this.createOptions(opts);
+
+    return this.http.patch<R>(serviceUrl, body, ropts);
+  }
 
   public doDelete<R>(serviceUrl: string, opts?: Options): Observable<R> {
     const ropts = this.createOptions(opts);

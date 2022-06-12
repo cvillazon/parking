@@ -14,10 +14,10 @@ export class ParkingService {
   }
 
   deleteReservation(reservationId:number){
-    return this.http.doDelete(`${environment.endpoint}/parking/${reservationId}`);
+    return this.http.doPatch(`${environment.endpoint}/parking/${reservationId}`,{serviceOut:true});
   }
 
   loadReservation(time:number){
-    return this.http.doGet(`${environment.endpoint}/parking/?timeEnd_gte=${time}`);
+    return this.http.doGet(`${environment.endpoint}/parking/?timeEnd_gte=${time}&serviceOut_ne=true`);
   }
 }
