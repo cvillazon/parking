@@ -8,9 +8,8 @@ xdescribe('LicenseInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LicenseInputComponent ]
-    })
-    .compileComponents();
+      declarations: [LicenseInputComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

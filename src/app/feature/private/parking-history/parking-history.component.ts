@@ -9,15 +9,15 @@ import { ParkingService } from '../shared/services/parking.service';
 })
 export class ParkingHistoryComponent implements OnInit {
 
-  public parkingHistory:Parking[];
-  constructor(private parking:ParkingService) { }
+  public parkingHistory: Parking[];
+  constructor(private parking: ParkingService) { }
 
   ngOnInit(): void {
     this.loadAllParking();
   }
 
   loadAllParking(){
-    this.parking.loadAllReservation().subscribe((parking:Parking[])=>{
+    this.parking.loadAllReservation().subscribe((parking: Parking[])=>{
       this.parkingHistory=parking;
     });
   }

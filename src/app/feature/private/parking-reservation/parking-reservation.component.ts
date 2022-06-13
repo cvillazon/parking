@@ -9,10 +9,10 @@ import { ParkingService } from '../shared/services/parking.service';
 })
 export class ParkingReservationComponent implements OnInit {
 
-  public parkingSpot:number=20;
-  public carsInParking:Parking[];
+  public parkingSpot=20;
+  public carsInParking: Parking[];
   public parkingArray;
-  constructor(private parking:ParkingService) { }
+  constructor(private parking: ParkingService) { }
 
   ngOnInit(): void {
     this.loadActiveReservation();
@@ -20,14 +20,14 @@ export class ParkingReservationComponent implements OnInit {
   }
 
   loadActiveReservation(){
-    const time:number=new Date().getTime();
-    this.parking.loadReservation(time).subscribe((parking:Parking[])=>{
+    const time: number=new Date().getTime();
+    this.parking.loadReservation(time).subscribe((parking: Parking[])=>{
       this.carsInParking=parking;
     });
   }
 
-  getInfoParking(idx:number){
-    return this.carsInParking?.find((cars:any)=>cars.spot===idx) ?? idx;
+  getInfoParking(idx: number){
+    return this.carsInParking?.find((cars: any)=>cars.spot===idx) ?? idx;
   }
 
 }

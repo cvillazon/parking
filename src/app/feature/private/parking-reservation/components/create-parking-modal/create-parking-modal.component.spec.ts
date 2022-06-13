@@ -10,7 +10,7 @@ xdescribe('CreateParkingModalComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CreateParkingModalComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

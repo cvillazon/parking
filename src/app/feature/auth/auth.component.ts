@@ -32,7 +32,6 @@ export class AuthComponent implements OnInit {
     this.auth.login(this.loginCredentials).subscribe(() =>{
       this.router.navigate(['/private/']);
     },()=>{
-      console.log("IPOIOIOI")
       alert('Credenciales invalidas');
     });
   }

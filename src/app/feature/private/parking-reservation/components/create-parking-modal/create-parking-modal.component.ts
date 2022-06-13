@@ -1,31 +1,31 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { Parking } from "../../../shared/model/parking";
-import { ParkingService } from "../../../shared/services/parking.service";
-import { getRandomCar } from "../../../shared/utils/list-car";
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Parking } from '../../../shared/model/parking';
+import { ParkingService } from '../../../shared/services/parking.service';
+import { getRandomCar } from '../../../shared/utils/list-car';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
-  selector: "app-create-parking-modal",
-  templateUrl: "./create-parking-modal.component.html",
-  styleUrls: ["./create-parking-modal.component.scss"],
+  selector: 'app-create-parking-modal',
+  templateUrl: './create-parking-modal.component.html',
+  styleUrls: ['./create-parking-modal.component.scss'],
 })
 export class CreateParkingModalComponent implements OnInit {
   public dateOpt: any = {
-    timeStyle: "medium",
-    dateStyle: "short",
+    timeStyle: 'medium',
+    dateStyle: 'short',
   };
-  public formatDateTime = new Intl.DateTimeFormat("en", this.dateOpt);
+  public formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
   public formReservation: FormGroup;
-  public extraPayment:boolean=true;
-  public base_price:5000;
+  public extraPayment=true;
+  public base_price: 5000;
 
   constructor(
     private parking: ParkingService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<CreateParkingModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public car: {total:number, spot:number, cars:Parking[], basePrice:number, dominical:any, onDemand:any}
+    @Inject(MAT_DIALOG_DATA) public car: {total: number; spot: number; cars: Parking[]; basePrice: number; dominical: any; onDemand: any}
   ) {}
 
   ngOnInit(): void {
@@ -38,15 +38,15 @@ export class CreateParkingModalComponent implements OnInit {
   }
 
   get basePrice(){
-    return this.car.basePrice*this.formReservation.get("hour").value ?? 0;
+    return this.car.basePrice*this.formReservation.get('hour').value ?? 0;
   }
 
   get extraOnDemand(){
-    return this.car.onDemand*this.formReservation.get("hour").value ?? 0;
+    return this.car.onDemand*this.formReservation.get('hour').value ?? 0;
   }
 
   get extraWeekend(){
-    return this.car.dominical*this.formReservation.get("hour").value ?? 0;
+    return this.car.dominical*this.formReservation.get('hour').value ?? 0;
   }
   
   get totalPrice(){
@@ -56,15 +56,15 @@ export class CreateParkingModalComponent implements OnInit {
   initForm() {
     this.formReservation = this.fb.group({
       serviceOut: [false],
-      spot: [""],
-      carType: [""],
-      owner: ["", Validators.required],
-      hour: ["", [Validators.required, Validators.min(1)]],
-      license: ["", [Validators.required]],
+      spot: [''],
+      carType: [''],
+      owner: ['', Validators.required],
+      hour: ['', [Validators.required, Validators.min(1)]],
+      license: ['', [Validators.required]],
       date: [this.formatDateTime.format(new Date()), Validators.required],
-      dateEnd: [""],
-      timeStart: [""],
-      timeEnd: [""],
+      dateEnd: [''],
+      timeStart: [''],
+      timeEnd: [''],
     });
   }
 
@@ -73,26 +73,26 @@ export class CreateParkingModalComponent implements OnInit {
   }
 
   setLicenseNumber(license: string) {
-    this.formReservation.get("license").setValue(license);
+    this.formReservation.get('license').setValue(license);
   }
 
   setSpot() {
-    this.formReservation.get("spot").setValue(this.car.spot);
+    this.formReservation.get('spot').setValue(this.car.spot);
   }
 
   setCar() {
-    let carType = getRandomCar();
-    this.formReservation.get("carType").setValue(carType.src);
+    const carType = getRandomCar();
+    this.formReservation.get('carType').setValue(carType.src);
   }
 
   setDateTimes() {
-    let start = new Date().getTime();
-    let end = start + 1000 * 60 * 60 * this.formReservation.get("hour").value;
-    let formatEnd = this.formatDateTime.format(new Date(end));
+    const start = new Date().getTime();
+    const end = start + 1000 * 60 * 60 * this.formReservation.get('hour').value;
+    const formatEnd = this.formatDateTime.format(new Date(end));
 
-    this.formReservation.get("timeStart").setValue(start);
-    this.formReservation.get("timeEnd").setValue(end);
-    this.formReservation.get("dateEnd").setValue(formatEnd);
+    this.formReservation.get('timeStart').setValue(start);
+    this.formReservation.get('timeEnd').setValue(end);
+    this.formReservation.get('dateEnd').setValue(formatEnd);
   }
 
   IslicensePlateDuplicated(licensePlate: string) {
@@ -107,13 +107,13 @@ export class CreateParkingModalComponent implements OnInit {
     if (!this.isTheFormInvalid) {
       this.setDateTimes();
       this.setCar();
-      let carModel = this.formReservation.value;
-      carModel['totalPrice']=this.totalPrice;
+      const carModel = this.formReservation.value;
+      carModel.totalPrice=this.totalPrice;
       // return;
       if (!this.IslicensePlateDuplicated(carModel.license)) {
-        this.parking.createReservation(carModel).subscribe((data:Parking) => this.close(data));
+        this.parking.createReservation(carModel).subscribe((data: Parking) => this.close(data));
       }else{
-        alert("El vehiculo ya se encuentra en el parqueadero")
+        alert('El vehiculo ya se encuentra en el parqueadero');
       }
     }
   }

@@ -1,30 +1,30 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
-import { Parking } from "../../../shared/model/parking";
-import { ParkingService } from "../../../shared/services/parking.service";
-import { CreateParkingModalComponent } from "../create-parking-modal/create-parking-modal.component";
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Parking } from '../../../shared/model/parking';
+import { ParkingService } from '../../../shared/services/parking.service';
+import { CreateParkingModalComponent } from '../create-parking-modal/create-parking-modal.component';
 
 @Component({
-  selector: "app-car-zone",
-  templateUrl: "./car-zone.component.html",
-  styleUrls: ["./car-zone.component.scss"],
+  selector: 'app-car-zone',
+  templateUrl: './car-zone.component.html',
+  styleUrls: ['./car-zone.component.scss'],
 })
 export class CarZoneComponent implements OnInit {
   @Input() basePrice: number;
-  @Input() spots: number = 0;
+  @Input() spots = 0;
   @Input() car: any | Parking;
   @Input() carsParked: Parking[] = [];
   public dateOpt: any = {
-    timeStyle: "medium",
-    dateStyle: "short",
+    timeStyle: 'medium',
+    dateStyle: 'short',
   };
-  public formatDateTime = new Intl.DateTimeFormat("en", this.dateOpt);
+  public formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
   constructor(public dialog: MatDialog, private parking: ParkingService) {}
 
   ngOnInit(): void {}
 
   get isReserved() {
-    return typeof this.car == "object";
+    return typeof this.car == 'object';
   }
 
   get extraDominical() {
@@ -42,12 +42,12 @@ export class CarZoneComponent implements OnInit {
   }
 
   get endTimeParking() {
-    return this.formatDateTime.format(new Date(this.car.timeEnd)) ?? "";
+    return this.formatDateTime.format(new Date(this.car.timeEnd)) ?? '';
   }
-//hour
+  //hour
   openCreateReservation(): void {
     if (!this.isReserved) {
-      let dialogRef = this.dialog.open(CreateParkingModalComponent, {
+      const dialogRef = this.dialog.open(CreateParkingModalComponent, {
         width: '500px',
         data: {
           spot: this.isReserved ? this.car.spot : this.car,
@@ -63,7 +63,7 @@ export class CarZoneComponent implements OnInit {
       dialogRef.afterClosed().subscribe((result) => {
         if(!result) return;
         this.car = result;
-        this.carsParked.push(result)
+        this.carsParked.push(result);
       });
     }
   }
@@ -76,9 +76,9 @@ export class CarZoneComponent implements OnInit {
     });
   }
 
-  removeFromParking(carDeleted:number) {
-    let idx:number=null;
-    this.carsParked.find((car:Parking, id: number) =>{
+  removeFromParking(carDeleted: number) {
+    let idx: number=null;
+    this.carsParked.find((car: Parking, id: number) =>{
       idx = id;
       return car.id === carDeleted;
     });

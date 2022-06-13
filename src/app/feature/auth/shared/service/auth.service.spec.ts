@@ -10,8 +10,8 @@ import { AuthService } from './auth.service';
 describe('AuthService', () => {
   let httpMock: HttpTestingController;
   let service: AuthService;
-  const apiEndpointLogin = environment.endpoint+"/users?email=andres.villazon@ceiba.com&password=ceibaSoftware*123&_limit=1";
-  const apiEndpointFail = environment.endpoint+"/users?email=andres.villazon@ceiba.com&password=test&_limit=1";
+  const apiEndpointLogin = environment.endpoint+'/users?email=andres.villazon@ceiba.com&password=ceibaSoftware*123&_limit=1';
+  const apiEndpointFail = environment.endpoint+'/users?email=andres.villazon@ceiba.com&password=test&_limit=1';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -30,22 +30,22 @@ describe('AuthService', () => {
   });
   
   xit('should allow the sign in', () => {
-    const Credentials:Credentials={
-      email:"andres.villazon@ceiba.com",
-      password:"ceibaSoftware*123",
-    }
+    const Credentials: Credentials={
+      email:'andres.villazon@ceiba.com',
+      password:'ceibaSoftware*123',
+    };
 
     const dummyResponseLogin = [
       {
-        "id": 1,
-        "name": "Andres Villazon",
-        "email": "andres.villazon@ceiba.com",
-        "password": "ceibaSoftware*123",
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s"
+        'id': 1,
+        'name': 'Andres Villazon',
+        'email': 'andres.villazon@ceiba.com',
+        'password': 'ceibaSoftware*123',
+        'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s'
       }
     ];
 
-    service.login(Credentials).subscribe((responseLogin:any) => {
+    service.login(Credentials).subscribe((responseLogin: any) => {
       expect(responseLogin.length).toBe(1);
       expect(responseLogin).toEqual(dummyResponseLogin);
     });
@@ -56,14 +56,14 @@ describe('AuthService', () => {
   });
 
   it('should NOT allow the sign in with incorrect credentials', () => {
-    const Credentials:Credentials={
-      email:"andres.villazon@ceiba.com",
-      password:"test",
-    }
+    const Credentials: Credentials={
+      email:'andres.villazon@ceiba.com',
+      password:'test',
+    };
 
     const dummyResponseLogin = [];
 
-    service.login(Credentials).subscribe((responseLogin:any) => {
+    service.login(Credentials).subscribe((responseLogin: any) => {
       expect(responseLogin.length).toBe(0);
       expect(responseLogin).toEqual(dummyResponseLogin);
     });

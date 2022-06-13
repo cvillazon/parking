@@ -15,7 +15,6 @@ export class AuthService {
   login(credentials: Credentials){
     return this.http.doGet(`${environment.endpoint}/users?email=${credentials.email}&password=${credentials.password}&_limit=1`)
       .pipe(tap((user: Users[]) =>{
-        console.log(user)
         if(!user || !user.length){
           return throwError(() => ({status:404, message:'Usuario no econtrado'}));
         }

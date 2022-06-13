@@ -10,7 +10,7 @@ xdescribe('CarZoneComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ CarZoneComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

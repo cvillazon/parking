@@ -7,17 +7,17 @@ import { environment } from 'src/environments/environment';
 })
 export class ParkingService {
 
-  constructor(protected http:HttpService) { }
+  constructor(protected http: HttpService) { }
 
-  createReservation(reservation:any){
+  createReservation(reservation: any){
     return this.http.doPost(`${environment.endpoint}/parking`,reservation);
   }
 
-  deleteReservation(reservationId:number){
+  deleteReservation(reservationId: number){
     return this.http.doPatch(`${environment.endpoint}/parking/${reservationId}`,{serviceOut:true});
   }
 
-  loadReservation(time:number){
+  loadReservation(time: number){
     return this.http.doGet(`${environment.endpoint}/parking/?timeEnd_gte=${time}&serviceOut_ne=true`);
   }
   
