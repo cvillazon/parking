@@ -30,7 +30,7 @@ describe('AuthService', () => {
   });
   
   xit('should allow the sign in', () => {
-    const Credentials: Credentials={
+    const cred: Credentials={
       email:'andres.villazon@ceiba.com',
       password:'ceibaSoftware*123',
     };
@@ -45,7 +45,7 @@ describe('AuthService', () => {
       }
     ];
 
-    service.login(Credentials).subscribe((responseLogin: any) => {
+    service.login(cred).subscribe((responseLogin: any) => {
       expect(responseLogin.length).toBe(1);
       expect(responseLogin).toEqual(dummyResponseLogin);
     });
@@ -56,14 +56,14 @@ describe('AuthService', () => {
   });
 
   it('should NOT allow the sign in with incorrect credentials', () => {
-    const Credentials: Credentials={
+    const cred: Credentials={
       email:'andres.villazon@ceiba.com',
       password:'test',
     };
 
     const dummyResponseLogin = [];
 
-    service.login(Credentials).subscribe((responseLogin: any) => {
+    service.login(cred).subscribe((responseLogin: any) => {
       expect(responseLogin.length).toBe(0);
       expect(responseLogin).toEqual(dummyResponseLogin);
     });

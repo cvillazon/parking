@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AuthService } from '@auth/shared/service/auth.service';
 
 @Component({
@@ -6,13 +6,10 @@ import { AuthService } from '@auth/shared/service/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent{
 
   @Input() drawer;
   constructor(private auth: AuthService) { }
-
-  ngOnInit(): void {
-  }
 
   openSidenav(){
     if (!this.drawer) return;

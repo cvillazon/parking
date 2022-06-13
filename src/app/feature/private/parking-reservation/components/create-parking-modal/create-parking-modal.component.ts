@@ -12,14 +12,14 @@ import { getRandomCar } from '../../../shared/utils/list-car';
   styleUrls: ['./create-parking-modal.component.scss'],
 })
 export class CreateParkingModalComponent implements OnInit {
-  public dateOpt: any = {
+  dateOpt: any = {
     timeStyle: 'medium',
     dateStyle: 'short',
   };
-  public formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
-  public formReservation: FormGroup;
-  public extraPayment=true;
-  public base_price: 5000;
+  formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
+  formReservation: FormGroup;
+  extraPayment=true;
+  base_price: 5000;
 
   constructor(
     private parking: ParkingService,
@@ -27,11 +27,6 @@ export class CreateParkingModalComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateParkingModalComponent>,
     @Inject(MAT_DIALOG_DATA) public car: {total: number; spot: number; cars: Parking[]; basePrice: number; dominical: any; onDemand: any}
   ) {}
-
-  ngOnInit(): void {
-    this.initForm();
-    this.setSpot();
-  }
 
   get isTheFormInvalid() {
     return this.formReservation.invalid;
@@ -51,6 +46,11 @@ export class CreateParkingModalComponent implements OnInit {
   
   get totalPrice(){
     return this.basePrice+this.extraOnDemand+this.extraWeekend;
+  }
+  
+  ngOnInit(): void {
+    this.initForm();
+    this.setSpot();
   }
 
   initForm() {

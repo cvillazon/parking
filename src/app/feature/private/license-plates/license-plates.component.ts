@@ -34,7 +34,8 @@ export class LicensePlatesComponent implements OnInit {
     const carGrouped={};
     let aux;
     this.historyParked.forEach((car: Parking)=>{
-      if(aux = carGrouped[car.license]){
+      aux =carGrouped[car.license];
+      if(aux){
         const carStored: Parking = Object.assign({},carGroupedArray[aux.position]); 
 
         carStored.frecuency=carStored.frecuency+1;

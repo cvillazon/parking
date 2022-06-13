@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Credentials } from './shared/model/CredentialAuth';
 import { AuthService } from './shared/service/auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from './shared/service/auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
 
   public loginCredentials: Credentials={
     email:'',
@@ -16,9 +16,6 @@ export class AuthComponent implements OnInit {
   };
 
   constructor(private auth: AuthService, private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   validateCredentials(){
     if(this.loginCredentials.email=='' || this.loginCredentials.password==''){

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Parking } from '../../../shared/model/parking';
 import { ParkingService } from '../../../shared/services/parking.service';
@@ -9,19 +9,17 @@ import { CreateParkingModalComponent } from '../create-parking-modal/create-park
   templateUrl: './car-zone.component.html',
   styleUrls: ['./car-zone.component.scss'],
 })
-export class CarZoneComponent implements OnInit {
+export class CarZoneComponent {
   @Input() basePrice: number;
   @Input() spots = 0;
   @Input() car: any | Parking;
   @Input() carsParked: Parking[] = [];
-  public dateOpt: any = {
+  dateOpt: any = {
     timeStyle: 'medium',
     dateStyle: 'short',
   };
-  public formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
+  formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
   constructor(public dialog: MatDialog, private parking: ParkingService) {}
-
-  ngOnInit(): void {}
 
   get isReserved() {
     return typeof this.car == 'object';
@@ -70,7 +68,7 @@ export class CarZoneComponent implements OnInit {
 
   cancelReservation() {
     if (!this.isReserved) return;
-    this.parking.deleteReservation(this.car.id).subscribe((_: any) => {
+    this.parking.deleteReservation(this.car.id).subscribe(() => {
       this.removeFromParking(this.car.id);
       this.car = this.car.spot;
     });
