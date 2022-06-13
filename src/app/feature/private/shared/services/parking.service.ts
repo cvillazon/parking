@@ -20,4 +20,12 @@ export class ParkingService {
   loadReservation(time:number){
     return this.http.doGet(`${environment.endpoint}/parking/?timeEnd_gte=${time}&serviceOut_ne=true`);
   }
+  
+  loadAllReservation(){
+    return this.http.doGet(`${environment.endpoint}/parking/`);
+  }
+
+  loadAllLicensePlates(){
+    return this.http.doGet(`${environment.endpoint}/parking/`);
+  }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Parking } from '../shared/model/parking';
+import { ParkingService } from '../shared/services/parking.service';
 
 @Component({
   selector: 'app-parking-history',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParkingHistoryComponent implements OnInit {
 
-  constructor() { }
+  public parkingHistory:Parking[];
+  constructor(private parking:ParkingService) { }
 
   ngOnInit(): void {
+    this.loadAllParking();
+  }
+
+  loadAllParking(){
+    this.parking.loadAllReservation().subscribe((parking:Parking[])=>{
+      console.log(parking);
+      this.parkingHistory=parking;
+    });
   }
 
 }

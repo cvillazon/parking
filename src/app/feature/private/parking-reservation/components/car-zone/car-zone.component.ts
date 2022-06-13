@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Parking } from '../../../shared/model/parking';
 import { ParkingService } from '../../../shared/services/parking.service';
 import { CreateParkingModalComponent } from '../create-parking-modal/create-parking-modal.component';
 
@@ -10,7 +11,8 @@ import { CreateParkingModalComponent } from '../create-parking-modal/create-park
 })
 export class CarZoneComponent implements OnInit {
 
-  @Input() car:any;
+  @Input() car:any|Parking;
+  @Input() carsParked:Parking[];
   public dateOpt: any = {
     timeStyle: "medium",
     dateStyle: "short",
@@ -33,7 +35,7 @@ export class CarZoneComponent implements OnInit {
     if(!this.isReserved){
       let dialogRef = this.dialog.open(CreateParkingModalComponent, {
         width: '500px',
-        data:{spot:this.isReserved?this.car.spot:this.car},
+        data:{spot:this.isReserved?this.car.spot:this.car,cars:this.carsParked},
         panelClass:'popUp-generic'
       });
   

@@ -7,10 +7,11 @@
 </div>
 
 <div (click)="openCreateReservation()" class="car-zone">
-    <div class="car-parked__container" *ngIf="isReserved">
+    <div class="car-parked" *ngIf="isReserved">
         <div class="card-parked__header">
             <img [src]="car.carType">
-            <div *ngIf="isReserved" class="info-card">
+            <div *ngIf="isReserved" class="car-parked__information">
+                <p class="info__text">Placa: <span>{{car.license | uppercase}}</span></p>
                 <p class="info__text">Dueño: <span>{{car.owner}}</span></p>
                 <p class="info__text">Hora de Salida: <span>{{endTimeParking}}</span></p>
             </div>

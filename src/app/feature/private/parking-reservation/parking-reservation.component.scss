@@ -1,9 +1,6 @@
 @use "../../../../styles.scss" as *;
 .container__reservation{
-    // padding: 30px $padding_adn;
     box-sizing: border-box;
-    // border: 5px solid red;
-    // border-radius: 5px;
     height: calc(100% - 48px);
     .parking-zone{
         min-height: 100%;
@@ -13,7 +10,7 @@
         background-color: $color-secondary;
     }
 
-    .parking-sone__spot-parking{
+    .parking-zone__spot-parking{
         border: 1px solid black;
         min-height: 200px;
         

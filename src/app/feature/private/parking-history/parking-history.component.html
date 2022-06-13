@@ -11,53 +11,13 @@
             <th>Lugar Ocupado</th>
         </thead>
         <tbody>
-            <tr>
-                <td>item 1</td>
-                <td>item 2</td>
-                <td>item 3</td>
-                <td>item 3</td>
-                <td>item 4</td>
-                <td>item 5</td>
-            </tr>
-            <tr>
-                <td>item 1</td>
-                <td>item 2</td>
-                <td>item 3</td>
-                <td>item 3</td>
-                <td>item 4</td>
-                <td>item 5</td>
-            </tr>
-            <tr>
-                <td>item 1</td>
-                <td>item 2</td>
-                <td>item 2</td>
-                <td>item 3</td>
-                <td>item 4</td>
-                <td>item 5</td>
-            </tr>
-            <tr>
-                <td>item 1</td>
-                <td>item 2</td>
-                <td>item 2</td>
-                <td>item 3</td>
-                <td>item 4</td>
-                <td>item 5</td>
-            </tr>
-            <tr>
-                <td>item 1</td>
-                <td>item 2</td>
-                <td>item 3</td>
-                <td>item 3</td>
-                <td>item 4</td>
-                <td>item 5</td>
-            </tr>
-            <tr>
-                <td>item 1</td>
-                <td>item 2</td>
-                <td>item 3</td>
-                <td>item 3</td>
-                <td>item 4</td>
-                <td>item 5</td>
+            <tr *ngFor="let carParked of parkingHistory">
+                <td>{{carParked.license | uppercase}}</td>
+                <td>{{carParked.date}}</td>
+                <td>{{carParked.dateEnd}}</td>
+                <td>{{carParked.license}}</td>
+                <td>{{carParked.license}}</td>
+                <td>{{carParked.spot}}</td>
             </tr>
         </tbody>
     </table>

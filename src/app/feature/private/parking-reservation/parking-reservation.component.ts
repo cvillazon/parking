@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Parking } from '../shared/model/parking';
 import { ParkingService } from '../shared/services/parking.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ParkingService } from '../shared/services/parking.service';
 export class ParkingReservationComponent implements OnInit {
 
   public parkingSpot:number=20;
-  public carsInParking:any;
+  public carsInParking:Parking[];
   public parkingArray;
   constructor(private parking:ParkingService) { }
 
@@ -20,8 +21,8 @@ export class ParkingReservationComponent implements OnInit {
 
   loadActiveReservation(){
     const time:number=new Date().getTime();
-    this.parking.loadReservation(time).subscribe(data=>{
-      this.carsInParking=data;
+    this.parking.loadReservation(time).subscribe((parking:Parking[])=>{
+      this.carsInParking=parking;
     });
   }
 
