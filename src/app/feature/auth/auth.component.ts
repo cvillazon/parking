@@ -30,8 +30,9 @@ export class AuthComponent implements OnInit {
   login(){
     if(!this.validateCredentials()){return;}
     this.auth.login(this.loginCredentials).subscribe(() =>{
-      this.router.navigate(['/private/home']);
+      this.router.navigate(['/private/']);
     },()=>{
+      console.log("IPOIOIOI")
       alert('Credenciales invalidas');
     });
   }

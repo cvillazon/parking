@@ -44,7 +44,7 @@ describe('AuthComponent', () => {
     component = fixture.componentInstance;
     authService = TestBed.inject(AuthService);
     router = TestBed.inject(Router);
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {

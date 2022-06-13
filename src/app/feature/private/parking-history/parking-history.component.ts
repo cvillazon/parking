@@ -18,7 +18,6 @@ export class ParkingHistoryComponent implements OnInit {
 
   loadAllParking(){
     this.parking.loadAllReservation().subscribe((parking:Parking[])=>{
-      console.log(parking);
       this.parkingHistory=parking;
     });
   }

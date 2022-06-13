@@ -14,15 +14,15 @@ export class LicensePlatesComponent implements OnInit {
     dateStyle: "short",
   };
   public formatDateTime = new Intl.DateTimeFormat("en", this.dateOpt);
-  private historyParked:Parking[];
+  public historyParked:Parking[];
   public groupByLicense: any[];
   constructor(private parking:ParkingService) { }
 
   ngOnInit(): void {
-    this.getAllLicensePlatess();
+    this.getAllLicensePlates();
   }
 
-  getAllLicensePlatess(){
+  getAllLicensePlates(){
     this.parking.loadAllLicensePlates().subscribe((data:Parking[]) =>{
       this.historyParked=data;
       this.groupByLicensePlates();

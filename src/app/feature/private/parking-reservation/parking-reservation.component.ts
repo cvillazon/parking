@@ -15,6 +15,7 @@ export class ParkingReservationComponent implements OnInit {
   constructor(private parking:ParkingService) { }
 
   ngOnInit(): void {
+    console.log("a")
     this.loadActiveReservation();
     this.parkingArray = Array(this.parkingSpot).fill(0).map( (_,idx) => idx+1);
   }
