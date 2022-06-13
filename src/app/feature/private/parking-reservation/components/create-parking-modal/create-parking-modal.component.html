@@ -26,8 +26,33 @@
                 </mat-form-field>
             </div>
         </div>
-        <div class="btn-container__form">
-            <button (click)="generateReservation()" [disabled]="isTheFormInvalid" class="btn-save" type="submit">Generar reserva</button>
-        </div>
+    </div>
+    <hr>
+    <div class="summary-payment">
+        <h1 class="title__summary">Resumen de pago</h1>
+        <table class="table-summary">
+            <tbody>
+                <tr>
+                    <td>Cargo Basico</td>
+                    <td>{{basePrice | currency}}</td>
+                </tr>
+                <tr *ngIf="car.onDemand">
+                    <td>Recargo* (alta demanda)</td>
+                    <td>{{extraOnDemand | currency}}</td>
+                </tr>
+                <tr *ngIf="car.dominical">
+                    <td>Recargo* (fin de semana)</td>
+                    <td>{{extraWeekend | currency}}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>{{totalPrice | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="btn-container__form">
+        <button (click)="generateReservation()" [disabled]="isTheFormInvalid" class="btn-save" type="submit">Generar reserva</button>
     </div>
 </div>

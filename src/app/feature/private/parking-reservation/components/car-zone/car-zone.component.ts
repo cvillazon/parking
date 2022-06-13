@@ -1,54 +1,75 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Parking } from '../../../shared/model/parking';
-import { ParkingService } from '../../../shared/services/parking.service';
-import { CreateParkingModalComponent } from '../create-parking-modal/create-parking-modal.component';
+import { Component, Input, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { Parking } from "../../../shared/model/parking";
+import { ParkingService } from "../../../shared/services/parking.service";
+import { CreateParkingModalComponent } from "../create-parking-modal/create-parking-modal.component";
 
 @Component({
-  selector: 'app-car-zone',
-  templateUrl: './car-zone.component.html',
-  styleUrls: ['./car-zone.component.scss']
+  selector: "app-car-zone",
+  templateUrl: "./car-zone.component.html",
+  styleUrls: ["./car-zone.component.scss"],
 })
 export class CarZoneComponent implements OnInit {
-
-  @Input() car:any|Parking;
-  @Input() carsParked:Parking[];
+  @Input() basePrice: number;
+  @Input() spots: number = 0;
+  @Input() car: any | Parking;
+  @Input() carsParked: Parking[] = [];
   public dateOpt: any = {
     timeStyle: "medium",
     dateStyle: "short",
   };
   public formatDateTime = new Intl.DateTimeFormat("en", this.dateOpt);
-  constructor(public dialog: MatDialog, private parking:ParkingService) { }
+  constructor(public dialog: MatDialog, private parking: ParkingService) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  get isReserved() {
+    return typeof this.car == "object";
   }
 
-  get isReserved(){
-    return typeof this.car == 'object';
+  get extraDominical() {
+    return [6, 0].includes(new Date().getDay()) ? this.basePrice * 1.5 : 0;
   }
 
-  get endTimeParking(){
+  get extraOnDemand() {
+    return this.carsParked.length / this.spots < 0.4
+      ? this.basePrice * 1.25
+      : 0;
+  }
+  
+  get totalPriceReservation() {
+    return this.basePrice+this.extraDominical+this.extraOnDemand;
+  }
+
+  get endTimeParking() {
     return this.formatDateTime.format(new Date(this.car.timeEnd)) ?? "";
   }
 
   openCreateReservation(): void {
-    if(!this.isReserved){
+    if (!this.isReserved) {
       let dialogRef = this.dialog.open(CreateParkingModalComponent, {
-        width: '500px',
-        data:{spot:this.isReserved?this.car.spot:this.car,cars:this.carsParked},
-        panelClass:'popUp-generic'
+        width: "500px",
+        data: {
+          spot: this.isReserved ? this.car.spot : this.car,
+          cars: this.carsParked,
+          basePrice:this.basePrice,
+          dominical:this.extraDominical,
+          onDemand:this.extraOnDemand,
+          total:this.totalPriceReservation
+        },
+        panelClass: "popUp-generic",
       });
-  
-      dialogRef.afterClosed().subscribe(result => {
+
+      dialogRef.afterClosed().subscribe((result) => {
         this.car = result;
       });
     }
   }
 
-  cancelReservation(){
-    if(!this.isReserved)return;
-    this.parking.deleteReservation(this.car.id).subscribe((_:any)=>{
-      this.car=this.car.spot;
-    })
+  cancelReservation() {
+    if (!this.isReserved) return;
+    this.parking.deleteReservation(this.car.id).subscribe((_: any) => {
+      this.car = this.car.spot;
+    });
   }
 }

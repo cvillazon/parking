@@ -60,6 +60,34 @@
         }
     }
 
+    .summary-payment{
+        text-align: center;
+        .title__summary{
+            margin: 0;
+            font-size: 1.5em;
+            color: $color-secondary;
+            margin-top: 10px;
+        }
+    }
+
+    .table-summary{
+        width: 100%;
+        
+        tr{
+            display: flex;
+        }
+
+        td{
+            flex: 1;
+            color: $color-secondary;
+            // text-align: left;
+        }
+
+        td:nth-of-type(odd){
+            font-weight: 500;
+        }
+    }
+
     .btn-container__form{
         display: flex;
         justify-content: center;

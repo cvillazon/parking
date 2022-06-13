@@ -7,7 +7,7 @@
             <th>Fecha de Ingreso</th>
             <th>Fecha de Salida</th>
             <th>Valor Pagado</th>
-            <th>Aplica Recargo</th>
+            <!-- <th>Aplica Recargo</th> -->
             <th>Lugar Ocupado</th>
         </thead>
         <tbody>
@@ -15,8 +15,8 @@
                 <td>{{carParked.license | uppercase}}</td>
                 <td>{{carParked.date}}</td>
                 <td>{{carParked.dateEnd}}</td>
-                <td>{{carParked.license}}</td>
-                <td>{{carParked.license}}</td>
+                <!-- <td>{{carParked.license}}</td> -->
+                <td>{{carParked.totalPrice | currency}}</td>
                 <td>{{carParked.spot}}</td>
             </tr>
         </tbody>

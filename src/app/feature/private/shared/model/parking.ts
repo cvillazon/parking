@@ -10,5 +10,6 @@ export class Parking {
   timeEnd: number;
   id?: number;
   serviceOut: boolean = false;
-  frecuency?:any
+  frecuency?:any;
+  totalPrice?:number;
 }

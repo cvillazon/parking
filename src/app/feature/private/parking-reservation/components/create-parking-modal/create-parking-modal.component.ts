@@ -18,12 +18,14 @@ export class CreateParkingModalComponent implements OnInit {
   };
   public formatDateTime = new Intl.DateTimeFormat("en", this.dateOpt);
   public formReservation: FormGroup;
+  public extraPayment:boolean=true;
+  public base_price:5000;
 
   constructor(
     private parking: ParkingService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<CreateParkingModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public car: {spot:number, cars:Parking[]}
+    @Inject(MAT_DIALOG_DATA) public car: {total:number, spot:number, cars:Parking[], basePrice:number, dominical:any, onDemand:any}
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,22 @@ export class CreateParkingModalComponent implements OnInit {
 
   get isTheFormInvalid() {
     return this.formReservation.invalid;
+  }
+
+  get basePrice(){
+    return this.car.basePrice*this.formReservation.get("hour").value ?? 0;
+  }
+
+  get extraOnDemand(){
+    return this.car.onDemand*this.formReservation.get("hour").value ?? 0;
+  }
+
+  get extraWeekend(){
+    return this.car.dominical*this.formReservation.get("hour").value ?? 0;
+  }
+  
+  get totalPrice(){
+    return this.basePrice+this.extraOnDemand+this.extraWeekend;
   }
 
   initForm() {
@@ -89,7 +107,9 @@ export class CreateParkingModalComponent implements OnInit {
     if (!this.isTheFormInvalid) {
       this.setDateTimes();
       this.setCar();
-      const carModel = this.formReservation.value;
+      let carModel = this.formReservation.value;
+      carModel['totalPrice']=this.totalPrice;
+      // return;
       if (!this.IslicensePlateDuplicated(carModel.license)) {
         this.parking.createReservation(carModel).subscribe((data:Parking) => this.close(data));
       }else{
