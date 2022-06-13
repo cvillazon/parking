@@ -251,6 +251,34 @@
       "timeEnd": 1655137477887,
       "totalPrice": 10000,
       "id": 18
+    },
+    {
+      "serviceOut": false,
+      "spot": 1,
+      "carType": "./assets/svg/car2-icon.svg",
+      "owner": "andres villazon",
+      "hour": 2,
+      "license": "gfd718",
+      "date": "6/13/22, 2:03:42 PM",
+      "dateEnd": "6/13/22, 4:03:52 PM",
+      "timeStart": 1655147032708,
+      "timeEnd": 1655154232708,
+      "totalPrice": 20000,
+      "id": 19
+    },
+    {
+      "serviceOut": true,
+      "spot": 3,
+      "carType": "./assets/svg/car3-icon.svg",
+      "owner": "hector villazon",
+      "hour": 1,
+      "license": "nhy716",
+      "date": "6/13/22, 2:07:54 PM",
+      "dateEnd": "6/13/22, 3:08:01 PM",
+      "timeStart": 1655147281985,
+      "timeEnd": 1655150881985,
+      "totalPrice": 10000,
+      "id": 20
     }
   ],
   "posts": [],

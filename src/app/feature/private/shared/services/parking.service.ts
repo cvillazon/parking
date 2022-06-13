@@ -22,10 +22,10 @@ export class ParkingService {
   }
   
   loadAllReservation(){
-    return this.http.doGet(`${environment.endpoint}/parking/`);
+    return this.http.doGet(`${environment.endpoint}/parking`);
   }
 
   loadAllLicensePlates(){
-    return this.http.doGet(`${environment.endpoint}/parking/`);
+    return this.http.doGet(`${environment.endpoint}/parking`);
   }
 }
