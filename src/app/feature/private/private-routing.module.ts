@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: 'parking', component: ParkingReservationComponent},
       { path: 'historical', component: ParkingHistoryComponent},
       { path: 'license-plates', component: LicensePlatesComponent},
-      { path: '**', redirectTo: 'private/home', pathMatch: 'full',  },
+      { path: '**', redirectTo: 'home', pathMatch: 'full',  },
     ]
   }
 ];

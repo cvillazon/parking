@@ -48,4 +48,39 @@
             text-align: center;
         }
     }
+
+    .mobile-view{
+        display: none;
+    }
+
+    @media screen and (max-width: map-get($sizes-max,'xs')) {
+        padding: 0 20px;
+        .c-table, table{
+            display: none;
+        }
+
+        .mobile-view{
+            display: block;
+        }
+        
+        .mobile-historical-item{
+            border: 1px solid;
+            padding: 5px;
+            margin-bottom: 10px;
+            .row__item{
+                padding: 5px;
+                border: 1px solid;
+                display: flex;
+                justify-content: space-between;    
+                .title__item, .value__item{
+                    margin: 0px;
+                    color: $color-secondary;
+                }
+
+                .title__item{
+                    font-weight: 500;
+                }
+            }
+        }
+    }
 }

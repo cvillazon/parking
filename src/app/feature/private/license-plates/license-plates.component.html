@@ -17,5 +17,32 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="mobile-view">
+        <div
+          class="mobile-historical-item"
+          *ngFor="let license of groupByLicense"
+        >
+          <div class="row__item">
+            <p class="title__item">Placa Vehicular</p>
+            <p class="value__item">{{license.license | uppercase}}</p>
+          </div>
+    
+          <div class="row__item">
+            <p class="title__item">Primer Ingreso</p>
+            <p class="value__item">{{ license.date }}</p>
+          </div>
+    
+          <div class="row__item">
+            <p class="title__item">N° de Servicios</p>
+            <p class="value__item">{{ license.frecuency }}</p>
+          </div>
+    
+          <div class="row__item">
+            <p class="title__item">Total de horas</p>
+            <p class="value__item">{{ license.hour }}</p>
+          </div>
+        </div>
+      </div>
 </div>
 

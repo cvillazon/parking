@@ -28,12 +28,12 @@ export class CarZoneComponent implements OnInit {
   }
 
   get extraDominical() {
-    return [6, 0].includes(new Date().getDay()) ? this.basePrice * 1.5 : 0;
+    return [6, 0].includes(new Date().getDay()) ? this.basePrice * 0.5 : 0;
   }
 
   get extraOnDemand() {
-    return this.carsParked.length / this.spots < 0.4
-      ? this.basePrice * 1.25
+    return this.carsParked.length / this.spots > 0.6
+      ? this.basePrice * 0.25
       : 0;
   }
   
@@ -44,11 +44,11 @@ export class CarZoneComponent implements OnInit {
   get endTimeParking() {
     return this.formatDateTime.format(new Date(this.car.timeEnd)) ?? "";
   }
-
+//hour
   openCreateReservation(): void {
     if (!this.isReserved) {
       let dialogRef = this.dialog.open(CreateParkingModalComponent, {
-        width: "500px",
+        width: '500px',
         data: {
           spot: this.isReserved ? this.car.spot : this.car,
           cars: this.carsParked,
@@ -57,11 +57,13 @@ export class CarZoneComponent implements OnInit {
           onDemand:this.extraOnDemand,
           total:this.totalPriceReservation
         },
-        panelClass: "popUp-generic",
+        panelClass: 'popUp-generic',
       });
 
       dialogRef.afterClosed().subscribe((result) => {
+        if(!result) return;
         this.car = result;
+        this.carsParked.push(result)
       });
     }
   }
@@ -69,7 +71,20 @@ export class CarZoneComponent implements OnInit {
   cancelReservation() {
     if (!this.isReserved) return;
     this.parking.deleteReservation(this.car.id).subscribe((_: any) => {
+      this.removeFromParking(this.car.id);
       this.car = this.car.spot;
     });
+  }
+
+  removeFromParking(carDeleted:number) {
+    let idx:number=null;
+    this.carsParked.find((car:Parking, id: number) =>{
+      idx = id;
+      return car.id === carDeleted;
+    });
+
+    if(idx){
+      this.carsParked.splice(idx,1);
+    }
   }
 }

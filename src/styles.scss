@@ -8,39 +8,6 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// $md-mcgpalette0: (
-//     50 : #e6f9f3,
-//     100 : #c1f1e2,
-//     200 : #97e7cf,
-//     300 : #6dddbc,
-//     400 : #4ed6ad,
-//     500 : #2fcf9f,
-//     600 : #2aca97,
-//     700 : #23c38d,
-//     800 : #1dbd83,
-//     900 : #12b272,
-//     A100 : #e2fff3,
-//     A200 : #afffdd,
-//     A400 : #7cffc7,
-//     A700 : #63ffbc,
-//     contrast: (
-//         50 : #000000,
-//         100 : #000000,
-//         200 : #000000,
-//         300 : #000000,
-//         400 : #000000,
-//         500 : #000000,
-//         600 : #000000,
-//         700 : #000000,
-//         800 : #000000,
-//         900 : #ffffff,
-//         A100 : #000000,
-//         A200 : #000000,
-//         A400 : #000000,
-//         A700 : #000000,
-//     )
-// );
-
 $md-mcgpalette0: (
   50: #e0e9ea,
   100: #b3c9cb,
@@ -132,6 +99,18 @@ $font-regular: 300;
 $border-radius: 5px;
 $border-radius: 5px;
 $padding_adn:40px;
+
+$sizes-max:(
+  "xs": 599px,
+  "sm": 959px,
+  "md": 1279px,
+);
+
+$sizes-min:(
+  "sm": 600px,
+  "md": 960px,
+  "lg": 1280px,
+);
 
 body,
 html {

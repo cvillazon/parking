@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   logout(){
-    this.cookie.delete('token');
+    this.cookie.delete('token','/');
     this.redirectTo();
   }
 

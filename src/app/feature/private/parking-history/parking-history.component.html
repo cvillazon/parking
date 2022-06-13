@@ -1,24 +1,60 @@
 <div class="container__historical">
-    <h1 class="title_historical">Registro historico de estacionamiento</h1>
-    <h3 class="description_historical">En este espacio podras visualizar el registro historico de estacionamiento de vehiculos. Todos los servicios de estacionamiento prestados, serán visualizados en esta sección.</h3>
-    <table aria-describedby="historical services in the platform" class="c-table">
-        <thead>
-            <th>Placa Vehicular</th>
-            <th>Fecha de Ingreso</th>
-            <th>Fecha de Salida</th>
-            <th>Valor Pagado</th>
-            <!-- <th>Aplica Recargo</th> -->
-            <th>Lugar Ocupado</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let carParked of parkingHistory">
-                <td>{{carParked.license | uppercase}}</td>
-                <td>{{carParked.date}}</td>
-                <td>{{carParked.dateEnd}}</td>
-                <!-- <td>{{carParked.license}}</td> -->
-                <td>{{carParked.totalPrice | currency}}</td>
-                <td>{{carParked.spot}}</td>
-            </tr>
-        </tbody>
-    </table>
+  <h1 class="title_historical">Registro historico de estacionamiento</h1>
+  <h3 class="description_historical">
+    En este espacio podras visualizar el registro historico de estacionamiento
+    de vehiculos. Todos los servicios de estacionamiento prestados, serán
+    visualizados en esta sección.
+  </h3>
+  <table aria-describedby="historical services in the platform" class="c-table">
+    <thead>
+      <th>Placa Vehicular</th>
+      <th>Fecha de Ingreso</th>
+      <th>Fecha de Salida</th>
+      <th>Valor Pagado</th>
+      <!-- <th>Aplica Recargo</th> -->
+      <th>Lugar Ocupado</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let carParked of parkingHistory">
+        <td>{{ carParked.license | uppercase }}</td>
+        <td>{{ carParked.date }}</td>
+        <td>{{ carParked.dateEnd }}</td>
+        <!-- <td>{{carParked.license}}</td> -->
+        <td>{{ carParked.totalPrice | currency }}</td>
+        <td>{{ carParked.spot }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="mobile-view">
+    <div
+      class="mobile-historical-item"
+      *ngFor="let carParked of parkingHistory"
+    >
+      <div class="row__item">
+        <p class="title__item">Placa Vehicular</p>
+        <p class="value__item">{{ carParked.license | uppercase }}</p>
+      </div>
+
+      <div class="row__item">
+        <p class="title__item">Fecha de Ingreso</p>
+        <p class="value__item">{{ carParked.date }}</p>
+      </div>
+
+      <div class="row__item">
+        <p class="title__item">Fecha de Salida</p>
+        <p class="value__item">{{ carParked.dateEnd }}</p>
+      </div>
+
+      <div class="row__item">
+        <p class="title__item">Valor Pagado</p>
+        <p class="value__item">{{ carParked.totalPrice | currency }}</p>
+      </div>
+
+      <div class="row__item">
+        <p class="title__item">Lugar Ocupado</p>
+        <p class="value__item">{{ carParked.spot }}</p>
+      </div>
+    </div>
+  </div>
 </div>
