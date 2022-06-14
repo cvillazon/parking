@@ -30,7 +30,7 @@ export class CarZoneComponent {
   }
 
   get extraOnDemand() {
-    return this.carsParked.length / this.spots > 0.6
+    return this.carsParked.length / this.spots >= 0.6
       ? this.basePrice * 0.25
       : 0;
   }
@@ -49,7 +49,7 @@ export class CarZoneComponent {
       const dialogRef = this.dialog.open(CreateParkingModalComponent, {
         width: '500px',
         data: {
-          spot: this.isReserved ? this.car.spot : this.car,
+          spot: this.car,
           cars: this.carsParked,
           basePrice:this.basePrice,
           dominical:this.extraDominical,

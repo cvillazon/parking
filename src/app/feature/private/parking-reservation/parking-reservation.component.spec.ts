@@ -5,6 +5,8 @@ import { Parking } from '../shared/model/parking';
 import { ParkingService } from '../shared/services/parking.service';
 import {of } from 'rxjs';
 import { ParkingReservationComponent } from './parking-reservation.component';
+import { CarZoneComponent } from './components/car-zone/car-zone.component';
+import { MatDialogModule } from '@angular/material/dialog';
 const activeParking: Parking[] = [
   {
     serviceOut: false,
@@ -57,8 +59,9 @@ describe('ParkingReservationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ParkingReservationComponent ],
+      declarations: [ ParkingReservationComponent , CarZoneComponent],
       imports:[
+        MatDialogModule,
         HttpClientTestingModule
       ],
       providers:[ParkingService, HttpService]

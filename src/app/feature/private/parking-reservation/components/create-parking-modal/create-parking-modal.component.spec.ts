@@ -8,6 +8,8 @@ import { of } from "rxjs";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
+import { MatInputModule } from "@angular/material/input";
+import { LicenseInputComponent } from "@shared/components/license-input/license-input.component";
 
 class dialogRefMock {
   close() {}
@@ -34,7 +36,7 @@ describe("CreateParkingModalComponent", () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CreateParkingModalComponent],
+      declarations: [CreateParkingModalComponent, LicenseInputComponent],
       imports: [
         CommonModule,
         BrowserModule,
@@ -42,6 +44,7 @@ describe("CreateParkingModalComponent", () => {
         FormsModule,
         ReactiveFormsModule,
         HttpClientTestingModule,
+        MatInputModule
       ],
       providers: [
         ParkingService,
