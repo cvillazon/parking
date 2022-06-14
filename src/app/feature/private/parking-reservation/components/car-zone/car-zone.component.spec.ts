@@ -1,6 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpService } from '@core/services/http.service';
 import { of } from 'rxjs';
 import { ParkingService } from '../../../shared/services/parking.service';
@@ -35,7 +37,9 @@ describe('CarZoneComponent', () => {
       declarations: [ CarZoneComponent ],
       imports:[
         MatDialogModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        CommonModule,
+        BrowserModule,
       ],
       providers:[ParkingService, HttpService]
     })
