@@ -27,7 +27,7 @@ export class AuthService {
     this.redirectTo();
   }
 
-  redirectTo(path='/login'){
+  redirectTo(path='/login/'){
     this.router.navigate([path]);
   }
 }

@@ -40,7 +40,8 @@ export class CarZoneComponent {
   }
 
   get endTimeParking() {
-    return this.formatDateTime.format(new Date(this.car.timeEnd)) ?? '';
+    if(!this.car.timeEnd)return '';
+    return this.formatDateTime.format(new Date(this.car?.timeEnd)) ?? '';
   }
   //hour
   openCreateReservation(): void {
@@ -68,9 +69,11 @@ export class CarZoneComponent {
 
   cancelReservation() {
     if (!this.isReserved) return;
-    this.parking.deleteReservation(this.car.id).subscribe(() => {
-      this.removeFromParking(this.car.id);
-      this.car = this.car.spot;
+    this.parking.deleteReservation(this.car.id).subscribe((car: Parking) => {
+      if(car){
+        this.removeFromParking(this.car.id);
+        this.car = this.car.spot;
+      }
     });
   }
 
@@ -81,7 +84,7 @@ export class CarZoneComponent {
       return car.id === carDeleted;
     });
 
-    if(idx){
+    if(idx>=0){
       this.carsParked.splice(idx,1);
     }
   }

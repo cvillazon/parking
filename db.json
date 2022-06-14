@@ -279,6 +279,20 @@
       "timeEnd": 1655150881985,
       "totalPrice": 10000,
       "id": 20
+    },
+    {
+      "serviceOut": true,
+      "spot": 1,
+      "carType": "./assets/svg/car2-icon.svg",
+      "owner": "andres villazon",
+      "hour": 2,
+      "license": "tyq665",
+      "date": "6/13/22, 4:39:34 PM",
+      "dateEnd": "6/13/22, 6:39:42 PM",
+      "timeStart": 1655156382934,
+      "timeEnd": 1655163582934,
+      "totalPrice": 20000,
+      "id": 21
     }
   ],
   "posts": [],

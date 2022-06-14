@@ -1,7 +1,10 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthComponent } from '@auth/auth.component';
 import { HttpService } from '@core/services/http.service';
+import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
 import { Credentials } from '../model/CredentialAuth';
 import { AuthService } from './auth.service';
@@ -10,6 +13,8 @@ import { AuthService } from './auth.service';
 describe('AuthService', () => {
   let httpMock: HttpTestingController;
   let service: AuthService;
+  let router:Router;
+  let cookie:CookieService;
   const apiEndpointLogin = environment.endpoint+'/users?email=andres.villazon@ceiba.com&password=ceibaSoftware*123&_limit=1';
   const apiEndpointFail = environment.endpoint+'/users?email=andres.villazon@ceiba.com&password=test&_limit=1';
 
@@ -17,11 +22,17 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({
       imports:[
         HttpClientTestingModule,
-        RouterTestingModule
+        RouterTestingModule.withRoutes(
+          [
+            {path:'login', component: AuthComponent}
+          ]
+        )
       ],
-      providers:[AuthService, HttpService]
+      providers:[AuthService, HttpService,CookieService]
     });
     service = TestBed.inject(AuthService);
+    router = TestBed.inject(Router);
+    cookie = TestBed.inject(CookieService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -29,7 +40,7 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
   
-  xit('should allow the sign in', () => {
+  it('should allow the sign in', () => {
     const cred: Credentials={
       email:'andres.villazon@ceiba.com',
       password:'ceibaSoftware*123',
@@ -71,5 +82,25 @@ describe('AuthService', () => {
     const req = httpMock.expectOne(apiEndpointFail);
     expect(req.request.method).toBe('GET');
     req.flush(dummyResponseLogin);
+  });
+
+  it('should redirectTo', () => {
+    
+    const spyRouter = spyOn(router,'navigate').and.callFake(() =>{
+      return null;
+    });
+    service.redirectTo();
+
+    expect(spyRouter).toHaveBeenCalled();
+    
+  });
+  
+  it('should close sesion', () => {
+    const spyCookie = spyOn(cookie,'delete').and.callFake(() =>{
+      return null;
+    });
+    service.logout();
+
+    expect(spyCookie).toHaveBeenCalled();
   });
 });
