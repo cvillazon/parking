@@ -37,7 +37,7 @@ export class GenericAlertService {
       });
 
       this.dialogRef.beforeClosed().subscribe((result: number) => {
-        this.handlerHideAlert(callback,result)
+        this.handlerHideAlert(callback,result);
       });
     }else{
       const obj = type===1?this.configSuccesfully(message):this.configError(message);
@@ -48,7 +48,7 @@ export class GenericAlertService {
       });
 
       this.dialogRef.beforeClosed().subscribe((result: number) => {
-        this.handlerHideAlert(callback, result)
+        this.handlerHideAlert(callback, result);
       });
     }
   }

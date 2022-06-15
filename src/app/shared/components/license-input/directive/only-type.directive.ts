@@ -12,14 +12,14 @@ export class OnlyTypeDirective {
   
   constructor() {}
 
-  @HostListener('keyup',['$event.target.value'])
-  enterNumber(event: string){
-    let val = event.replace(/\d/g,'');
+  @HostListener('keyup',['$event.target'])
+  enterNumber(event: any){
+    let val = event.value.replace(/\d/g,'');
     if(this.only==='number'){
-      val = event.replace(/\D/g,'');
+      val = event.value.replace(/\D/g,'');
     } 
     this.val=val.substring(0,MAX_LEN);
-    event=val.substring(0,MAX_LEN);
+    event.value=val.substring(0,MAX_LEN);
   }
 
 }
