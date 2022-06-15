@@ -1,6 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { CookieServiceMock } from '@core/mocks/CookieServiceMock.service';
 import { CookieService } from 'ngx-cookie-service';
 
 import { SecurityGuard } from './security.guard';
@@ -10,7 +9,6 @@ describe('SecurityGuard', () => {
     TestBed.configureTestingModule({
       providers: [
         SecurityGuard,
-        { provide: CookieService, useClass: CookieServiceMock },
         { provide: Router, useValue: { navigate: () => Promise.resolve('hola') } },
       ],
     });

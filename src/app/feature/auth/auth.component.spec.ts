@@ -8,12 +8,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
-import { loginSuccesfullyResult } from '@core/mocks/auth-data-mock';
 import { of, throwError } from 'rxjs';
 
 import { AuthComponent } from './auth.component';
 import { AuthService } from './shared/service/auth.service';
 import { HomeComponent } from '@home/home.component';
+import { Users } from './shared/model/Users';
+
+const loginSuccesfullyResult = (): Users[] => {
+  return [
+    {
+      id: 1,
+      email: 'andres.villazon@ceiba.com',
+      password:'',
+      token:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s',
+    },
+  ];
+};
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
