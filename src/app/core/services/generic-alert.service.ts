@@ -29,7 +29,7 @@ export class GenericAlertService {
        message='Action Done',
        classContainer?: string,
        dinamicConfig?: EntryData,
-       callback?: Function): void{
+       callback?: (result) => void): void{
     if(dinamicConfig){
       this.dialogRef=this.dialog.open(AlertActionsComponent,{
         data:dinamicConfig,

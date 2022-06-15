@@ -73,15 +73,13 @@
 
     .table-summary{
         width: 100%;
-        
-        tr{
-            display: flex;
-        }
 
+        thead th{
+            width: 50%;
+        }
+        
         td{
-            flex: 1;
             color: $color-secondary;
-            // text-align: left;
         }
 
         td:nth-of-type(odd){
