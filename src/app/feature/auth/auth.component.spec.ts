@@ -117,11 +117,11 @@ describe('AuthComponent', () => {
       email: 'andres.villazon@ceiba.com',
       password: 'ceibaSofwtare',
     };
-    spyOn(console,'log').and.callFake(()=>console.log('ejecuto alert auth'));
+    spyOn(window,'alert').and.callFake(()=>console.log('ejecuto alert auth'));
     spyOn(authService, 'login').and.returnValue(throwError(() => ({status:404, message:'Usuario no econtrado'})));
 
     component.login();
 
-    expect(console.log).toHaveBeenCalled();
+    expect(window.alert).toHaveBeenCalled();
   });
 });

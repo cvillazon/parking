@@ -28,10 +28,13 @@ export class AuthComponent {
     if(!this.validateCredentials()){
       return;
     }
-    this.auth.login(this.loginCredentials).subscribe(() =>{
-      this.router.navigate(['home']);
-    },()=>{
-      console.log('Credenciales invalidas');
+    this.auth.login(this.loginCredentials).subscribe({
+      next: () =>{
+        this.router.navigate(['home']);
+      },
+      error:() =>{
+        alert('Credenciales invalidas');
+      }
     });
   }
 

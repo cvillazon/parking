@@ -104,8 +104,9 @@ describe('LicensePlatesComponent', () => {
   });
 
   it('should load all history of parkings', () => {
-    spyOn(parkingService, 'loadAllLicensePlates').and.returnValue(of(historicalParking));
-    component.getAllLicensePlates();
+    spyOn(parkingService, 'loadAllReservation').and.returnValue(of(historicalParking));
+
+    fixture.detectChanges();
 
     expect(component.historyParked.length).toBeGreaterThan(0);
     expect(component.historyParked).toEqual(historicalParking);

@@ -17,11 +17,7 @@ export class LicensePlatesComponent implements OnInit {
   constructor(private parking: ParkingService) { }
 
   ngOnInit(): void {
-    this.getAllLicensePlates();
-  }
-
-  getAllLicensePlates(){
-    this.parking.loadAllLicensePlates().subscribe((data: Parking[]) =>{
+    this.parking.loadAllReservation().subscribe((data: Parking[]) =>{
       this.historyParked=data;
       this.groupByLicensePlates();
     });
