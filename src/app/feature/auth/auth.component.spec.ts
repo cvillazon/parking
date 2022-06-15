@@ -100,7 +100,7 @@ describe('AuthComponent', () => {
     expect(spyRedirect).toHaveBeenCalled();
   });
 
-  xit('if the login failed, it should show an alert', () => {
+  it('if the login failed, it should show an alert', () => {
     component.loginCredentials = {
       email: 'andres.villazon@ceiba.com',
       password: 'ceibaSofwtare',

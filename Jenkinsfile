@@ -38,12 +38,12 @@ stages{
       }
     }
 
-    stage('Test end-to-end') {
-        steps{
-            echo "------------>Testing Protractor<------------"
-            sh 'ng e2e'
-        }
-    }
+    // stage('Test end-to-end') {
+    //     steps{
+    //         echo "------------>Testing Protractor<------------"
+    //         sh 'ng e2e'
+    //     }
+    // }
 
     stage('Static Code Analysis') {
       steps{
