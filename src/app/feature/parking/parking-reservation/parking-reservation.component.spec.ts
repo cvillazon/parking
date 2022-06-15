@@ -78,7 +78,9 @@ describe('ParkingReservationComponent', () => {
 
   it('should create', () => {
     fixture.detectChanges();
+    const SPOT_TOTAL = component.parkingSpot;
     expect(component).toBeTruthy();
+    expect(component.parkingArray.length).toBe(SPOT_TOTAL);
   });
   
   it('should load the active parking', () => {

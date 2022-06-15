@@ -69,7 +69,7 @@ describe('ParkingHistoryComponent', () => {
     fixture = TestBed.createComponent(ParkingHistoryComponent);
     component = fixture.componentInstance;
     parkingService = TestBed.inject(ParkingService);
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -81,7 +81,7 @@ describe('ParkingHistoryComponent', () => {
       of(activeParking)
     );
 
-    component.loadAllParking();
+    fixture.detectChanges();
 
     expect(component.parkingHistory).toEqual(activeParking);
   });

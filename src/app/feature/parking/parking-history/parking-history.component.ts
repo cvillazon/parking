@@ -13,13 +13,8 @@ export class ParkingHistoryComponent implements OnInit {
   constructor(private parking: ParkingService) { }
 
   ngOnInit(): void {
-    this.loadAllParking();
-  }
-
-  loadAllParking(){
     this.parking.loadAllReservation().subscribe((parking: Parking[])=>{
       this.parkingHistory=parking;
     });
   }
-
 }

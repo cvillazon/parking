@@ -8,7 +8,7 @@ describe('OnlyTypeDirective', () => {
   
   it('should accept only 3 strings', () => {
     const directive = new OnlyTypeDirective();
-    const eventInput:string= 'HJ2i1y1';
+    const eventInput = {value:'HJ2i1y1'};
     directive.only='string';
 
     directive.enterNumber(eventInput);
@@ -17,7 +17,7 @@ describe('OnlyTypeDirective', () => {
   
   it('should accept only 3 numbers', () => {
     const directive = new OnlyTypeDirective();
-    const eventInput='H982J2';
+    const eventInput = {value:'H982J2'};
     directive.only='number';
 
     directive.enterNumber(eventInput);

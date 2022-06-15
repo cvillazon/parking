@@ -12,7 +12,7 @@ export class HeaderComponent{
   constructor(private auth: AuthService) { }
 
   openSidenav(){
-    if (this.drawer){
+    if (typeof this.drawer === 'object'){
       this.drawer.toggle();
     }
   }

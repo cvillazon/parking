@@ -111,7 +111,7 @@ describe('LicensePlatesComponent', () => {
     expect(component.historyParked).toEqual(historicalParking);
   });
   
-  it('should group history parkin by license plates', () => {
+  it('should group history parking by license plates', () => {
     component.historyParked=historicalParking;
     component.groupByLicensePlates();
 

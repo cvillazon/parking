@@ -2,20 +2,17 @@ import { browser } from 'protractor';
 import { AppPage } from '../app.po';
 import { AuthPage } from '../page/auth/auth.po';
 import { HeaderPage } from '../page/header/header.po';
-import { ParkingPage } from '../page/parking/parking.po';
 
 describe('workspace-project Auth', () => {
     let page: AppPage;
     let auth: AuthPage;
     let header:HeaderPage;
-    let parking: ParkingPage;
 
 
     beforeEach(() => {
         page = new AppPage();
         auth = new AuthPage();
         header = new HeaderPage();
-        parking = new ParkingPage();
     });
     
     it('Deberia iniciar sesion y mostrar la pagina principal del parking', async () => {

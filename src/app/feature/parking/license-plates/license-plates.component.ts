@@ -28,13 +28,13 @@ export class LicensePlatesComponent implements OnInit {
   }
 
   groupByLicensePlates(){
-    const carGroupedArray=[];
+    let carGroupedArray:LicenseHistory[]=[];
     const carGrouped={};
-    let aux;
+    let aux:{position:number};
     this.historyParked.forEach((car: Parking)=>{
       aux =carGrouped[car.license];
       if(aux){
-        const carStored: Parking = Object.assign({},carGroupedArray[aux.position]); 
+        const carStored: LicenseHistory = Object.assign({},carGroupedArray[aux.position]); 
 
         carStored.frecuency=carStored.frecuency+1;
         carStored.date=this.formatDateTime.format(new Date(Math.min(carStored.timeStart,car.timeStart)));
@@ -43,7 +43,7 @@ export class LicensePlatesComponent implements OnInit {
         carGroupedArray[aux.position]=carStored;
       }else{
         carGrouped[car.license]={
-          position:carGroupedArray.length
+          position:carGroupedArray?.length
         };
         carGroupedArray.push({
           frecuency:1,
