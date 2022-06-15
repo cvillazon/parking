@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AlertActionsComponent } from '@core/components/alert-actions/alert-actions.component';
-import { entryData } from '@core/model/entry-data';
+import { EntryData } from '@core/model/entry-data';
 
 @Injectable()
 /**
@@ -28,7 +28,7 @@ export class GenericAlertService {
   show(type=1,
        message='Action Done',
        classContainer?: string,
-       dinamicConfig?: entryData,
+       dinamicConfig?: EntryData,
        callback?: Function): void{
     if(dinamicConfig){
       this.dialogRef=this.dialog.open(AlertActionsComponent,{
@@ -36,7 +36,7 @@ export class GenericAlertService {
         panelClass:classContainer?classContainer:'class-container-generic-alert'
       });
 
-      this.dialogRef.beforeClosed().subscribe((result: any) => {
+      this.dialogRef.beforeClosed().subscribe((result: number) => {
         if(callback){
           callback(result);
         } 

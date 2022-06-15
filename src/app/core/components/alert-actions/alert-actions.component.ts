@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { entryData } from '@core/model/entry-data';
+import { EntryData } from '@core/model/entry-data';
 
 @Component({
   selector: 'app-alert-actions',
@@ -18,7 +18,7 @@ export class AlertActionsComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AlertActionsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: entryData) {}
+    @Inject(MAT_DIALOG_DATA) public data: EntryData) {}
 
   action(action: number): void {
     this.dialogRef.close(action);

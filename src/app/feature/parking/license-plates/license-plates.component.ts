@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LicenseHistory } from './../shared/model/license-history';
 import { Parking } from '../shared/model/parking';
 import { ParkingService } from '../shared/services/parking.service';
+import { formatDateGlobal } from '@parking/shared/utils/format-date';
 
 @Component({
   selector: 'app-license-plates',
@@ -10,11 +11,7 @@ import { ParkingService } from '../shared/services/parking.service';
 })
 export class LicensePlatesComponent implements OnInit {
 
-  public dateOpt:any = {
-    timeStyle: 'medium',
-    dateStyle: 'short',
-  };
-  public formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
+  public formatDateTime = new Intl.DateTimeFormat('en', formatDateGlobal);
   public historyParked: Parking[];
   public groupByLicense: LicenseHistory[];
   constructor(private parking: ParkingService) { }

@@ -130,7 +130,6 @@ export class MensajeErrorCamposDirective implements OnInit, OnDestroy, AfterView
       this.componente.instance.text = texto;
       this.claseError(true);
     } catch (error) {
-      console.error(error);
     }
   }
 
@@ -159,7 +158,6 @@ export class MensajeErrorCamposDirective implements OnInit, OnDestroy, AfterView
         this.claseError(false);
       }
     } catch (error) {
-      console.error(error);
     }
   }
 

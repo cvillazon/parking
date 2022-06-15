@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { formatDateGlobal } from '@parking/shared/utils/format-date';
 import { Parking } from '../../../shared/model/parking';
 import { ParkingService } from '../../../shared/services/parking.service';
 import { CreateParkingModalComponent } from '../create-parking-modal/create-parking-modal.component';
@@ -15,11 +16,7 @@ export class CarZoneComponent {
   @Input() spots = 0;
   @Input() car: any | Parking;
   @Input() carsParked: Parking[] = [];
-  dateOpt: any = {
-    timeStyle: 'medium',
-    dateStyle: 'short',
-  };
-  formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
+  formatDateTime = new Intl.DateTimeFormat('en', formatDateGlobal);
   constructor(public dialog: MatDialog, private parking: ParkingService) {}
 
   get isReserved() {
@@ -27,7 +24,9 @@ export class CarZoneComponent {
   }
 
   get extraDominical() {
-    const WEEKENDS = [6,0];
+    const SUNDAY = 6;
+    const SATURDAY = 0;
+    const WEEKENDS = [SUNDAY,SATURDAY];
     const EXTRA_PAYMENT_WEEKENDS = 0.5;
     return WEEKENDS.includes(new Date().getDay()) ? this.basePrice * EXTRA_PAYMENT_WEEKENDS : 0;
   }
@@ -47,8 +46,8 @@ export class CarZoneComponent {
 
   get endTimeParking() {
     if(!this.car.timeEnd){
-      return ''
-    };
+      return '';
+    }
     return this.formatDateTime.format(new Date(this.car?.timeEnd)) ?? '';
   }
   //hour
@@ -84,7 +83,7 @@ export class CarZoneComponent {
           this.car = this.car.spot;
         }
       });
-    };
+    }
   }
 
   removeFromParking(carDeleted: number) {

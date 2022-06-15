@@ -14,7 +14,7 @@ export class HeaderComponent{
   openSidenav(){
     if (this.drawer){
       this.drawer.toggle();
-    };
+    }
   }
   
   logout(){

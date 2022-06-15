@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { formatDateGlobal } from '@parking/shared/utils/format-date';
 import { Parking } from '../../../shared/model/parking';
 import { ParkingService } from '../../../shared/services/parking.service';
 import { getRandomCar } from '../../../shared/utils/list-car';
@@ -12,11 +13,7 @@ import { getRandomCar } from '../../../shared/utils/list-car';
   styleUrls: ['./create-parking-modal.component.scss'],
 })
 export class CreateParkingModalComponent implements OnInit {
-  dateOpt: any = {
-    timeStyle: 'medium',
-    dateStyle: 'short',
-  };
-  formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
+  formatDateTime = new Intl.DateTimeFormat('en', formatDateGlobal);
   formReservation: FormGroup;
   extraPayment=true;
 
