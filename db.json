@@ -223,6 +223,34 @@
       "timeEnd": 1655324359927,
       "totalPrice": 10000,
       "id": 16
+    },
+    {
+      "serviceOut": false,
+      "spot": 4,
+      "carType": "./assets/svg/prison-bus-icon.svg",
+      "owner": "andres villazon",
+      "hour": 4,
+      "license": "tnq917",
+      "date": "6/15/22, 2:46:45 PM",
+      "dateEnd": "6/15/22, 6:46:56 PM",
+      "timeStart": 1655322416216,
+      "timeEnd": 1655336816216,
+      "totalPrice": 40000,
+      "id": 17
+    },
+    {
+      "serviceOut": false,
+      "spot": 5,
+      "carType": "./assets/svg/car2-icon.svg",
+      "owner": "valerir  villazon",
+      "hour": 2,
+      "license": "kau897",
+      "date": "6/15/22, 2:46:57 PM",
+      "dateEnd": "6/15/22, 4:47:08 PM",
+      "timeStart": 1655322428380,
+      "timeEnd": 1655329628380,
+      "totalPrice": 20000,
+      "id": 18
     }
   ],
   "posts": [],
@@ -309,6 +337,12 @@
       "password": "Ceiba1920876876",
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
       "id": 13
+    },
+    {
+      "email": "andres.villazon@ceiba.com",
+      "password": "qiuytuyqtuytq",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 14
     }
   ]
 }

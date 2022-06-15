@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpService } from '@core/services/http.service';
-import { ParkingService } from '../../../shared/services/parking.service';
 import { CreateParkingModalComponent } from './create-parking-modal.component';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -10,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { LicenseInputComponent } from '@shared/components/license-input/license-input.component';
+import { ParkingService } from '@parking/shared/services/parking.service';
 
 class dialogRefMock {
   close() {}

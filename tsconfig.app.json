@@ -17,6 +17,9 @@
       "@producto/*": [
         "src/app/feature/producto/*"
       ],
+      "@parking/*": [
+        "src/app/feature/parking/*"
+      ],
       "@auth/*": [
         "src/app/feature/auth/*"
       ],

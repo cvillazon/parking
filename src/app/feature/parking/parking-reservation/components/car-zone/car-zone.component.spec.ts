@@ -4,8 +4,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpService } from '@core/services/http.service';
+import { ParkingService } from '@parking/shared/services/parking.service';
 import { of } from 'rxjs';
-import { ParkingService } from '../../../shared/services/parking.service';
 
 import { CarZoneComponent } from './car-zone.component';
 

@@ -1,10 +1,12 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { formatDateGlobal } from '../../../shared/utils/format-date';
-import { Parking } from '../../../shared/model/parking';
-import { ParkingService } from '../../../shared/services/parking.service';
-import { getRandomCar } from '../../../shared/utils/list-car';
+
+import { CreateParking } from '@parking/shared/model/create-parking-data';
+import { Parking } from '@parking/shared/model/parking';
+import { ParkingService } from '@parking/shared/services/parking.service';
+import { formatDateGlobal } from '@parking/shared/utils/format-date';
+import { getRandomCar } from '@parking/shared/utils/list-car';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -21,7 +23,7 @@ export class CreateParkingModalComponent implements OnInit {
     private parking: ParkingService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<CreateParkingModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public car: {total: number; spot: number; cars: Parking[]; basePrice: number; dominical: number; onDemand: number}
+    @Inject(MAT_DIALOG_DATA) public car: CreateParking
   ) {}
 
   get isTheFormInvalid() {
