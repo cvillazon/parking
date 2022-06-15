@@ -8,12 +8,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class AlertActionsComponent implements OnInit {
 
-  public title_start=false;
+  public titleStart=false;
   public msg=false;
-  public btn_opt1=false;
-  public btn_opt2=false;
-  public title_sub=false;
-  public align_left=false;
+  public btnOpt1=false;
+  public btnOpt2=false;
+  public titleSub=false;
+  public alignLeft=false;
 
   constructor(
     public dialogRef: MatDialogRef<AlertActionsComponent>,
@@ -25,10 +25,10 @@ export class AlertActionsComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.data.title){
-      this.title_start=true;
+      this.titleStart=true;
     }
     if(this.data.subtitle){
-      this.title_sub=true;
+      this.titleSub=true;
 
     }
     if(this.data.message){
@@ -36,14 +36,14 @@ export class AlertActionsComponent implements OnInit {
 
     }
     if(this.data.text_button1){
-      this.btn_opt1=true;
+      this.btnOpt1=true;
 
     }
     if(this.data.text_button2){
-      this.btn_opt2=true;
+      this.btnOpt2=true;
     }
     if(this.data.align_left){
-      this.align_left=true;
+      this.alignLeft=true;
     }
   }
 

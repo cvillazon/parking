@@ -80,12 +80,12 @@ export class CarZoneComponent {
 
   removeFromParking(carDeleted: number) {
     let idx: number=null;
-    this.carsParked.find((car: Parking, id: number) =>{
+    let carFounded = this.carsParked.forEach((car: Parking, id: number) =>{
       idx = id;
       return car.id === carDeleted;
     });
 
-    if(idx>=0){
+    if(idx>=0 && carFounded!=null){
       this.carsParked.splice(idx,1);
     }
   }
