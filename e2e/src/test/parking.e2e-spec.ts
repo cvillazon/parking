@@ -42,7 +42,7 @@ describe('workspace-project Parking', () => {
         const LICENSE_NUMBER = "987"
         const NAME_OWNER = "ANDRES VILLAZON"
         const HOUR = "1"
-
+        page.navigateTo();
         header.clickBotonOpenSideNav();
 
         sideNav.clickBotonGoParkingReservation();
@@ -68,6 +68,7 @@ describe('workspace-project Parking', () => {
     });
     
     it('Deberia cancelar una reservacion', async () => {
+        page.navigateTo();
         header.clickBotonOpenSideNav();
 
         sideNav.clickBotonGoParkingReservation();
@@ -78,22 +79,24 @@ describe('workspace-project Parking', () => {
 
         expect(salirButton).toBe(false);
     });
-   
-    xit('Deberia listar el historial de reservas', () => {
-        header.clickBotonOpenSideNav();
-        sideNav.clickBotonGoHistorical();
-
-        const listOfReservations = parking.contarHistoricalReservation();
-
-        expect(listOfReservations).toBeGreaterThan(0);
-    });
 
     it('Deberia listar el historial de placas registradas', () => {
+        page.navigateTo();
         header.clickBotonOpenSideNav();
         sideNav.clickBotonGoHistoricalLicense();
 
         const listOfReservationsLicense = parking.contarLicensePlates();
 
         expect(listOfReservationsLicense).toBeGreaterThan(0);
+    });
+
+    it('Deberia listar el historial de reservas', () => {
+        page.navigateTo();
+        header.clickBotonOpenSideNav();
+        sideNav.clickBotonGoHistorical();
+
+        const listOfReservations = parking.contarHistoricalReservation();
+
+        expect(listOfReservations).toBeGreaterThan(0);
     });
 });

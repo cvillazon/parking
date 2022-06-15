@@ -153,6 +153,34 @@
       "timeEnd": 1655309382144,
       "totalPrice": 10000,
       "id": 11
+    },
+    {
+      "serviceOut": true,
+      "spot": 1,
+      "carType": "./assets/svg/car1-icon.svg",
+      "owner": "ANDRES VILLAZON",
+      "hour": 1,
+      "license": "ABC987",
+      "date": "6/15/22, 10:17:25 AM",
+      "dateEnd": "6/15/22, 11:17:26 AM",
+      "timeStart": 1655306246221,
+      "timeEnd": 1655309846221,
+      "totalPrice": 10000,
+      "id": 12
+    },
+    {
+      "serviceOut": true,
+      "spot": 1,
+      "carType": "./assets/svg/police-icon.svg",
+      "owner": "ANDRES VILLAZON",
+      "hour": 1,
+      "license": "ABC987",
+      "date": "6/15/22, 10:18:00 AM",
+      "dateEnd": "6/15/22, 11:18:00 AM",
+      "timeStart": 1655306280737,
+      "timeEnd": 1655309880737,
+      "totalPrice": 10000,
+      "id": 13
     }
   ],
   "posts": [],
@@ -191,6 +219,30 @@
       "password": "Ceiba1920876876",
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
       "id": 5
+    },
+    {
+      "email": "andres.villazon@ceiba.com.co",
+      "password": "Ceiba1920876876",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 6
+    },
+    {
+      "email": "andres.villazon@ceiba.com",
+      "password": "Ceiba1920876876",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 7
+    },
+    {
+      "email": "andres.villazon@ceiba.com.co",
+      "password": "Ceiba1920876876",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 8
+    },
+    {
+      "email": "andres.villazon@ceiba.com",
+      "password": "Ceiba1920876876",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 9
     }
   ]
 }
