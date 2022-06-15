@@ -18,14 +18,16 @@ export class AuthComponent {
   constructor(private auth: AuthService, private router: Router) { }
 
   validateCredentials(){
-    if(this.loginCredentials.email=='' || this.loginCredentials.password==''){
+    if(this.loginCredentials.email==='' || this.loginCredentials.password===''){
       return false;
     }
     return true;
   }
 
   login(){
-    if(!this.validateCredentials()){return;}
+    if(!this.validateCredentials()){
+      return;
+    }
     this.auth.login(this.loginCredentials).subscribe(() =>{
       this.router.navigate(['home']);
     },()=>{

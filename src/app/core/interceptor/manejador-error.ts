@@ -28,7 +28,8 @@ export class ManejadorError implements ErrorHandler {
   }
   
   private imprimirErrorEnModal(error) {
-    this.genericAlert.show(2,error);
+    const ERROR_NUMBER=2;
+    this.genericAlert.show(ERROR_NUMBER,error);
   }
 
   private imprimirErrorConsola(mensaje): void {

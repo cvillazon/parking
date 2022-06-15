@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LicenseHistory } from './../shared/model/license-history';
 import { Parking } from '../shared/model/parking';
 import { ParkingService } from '../shared/services/parking.service';
 
@@ -9,13 +10,13 @@ import { ParkingService } from '../shared/services/parking.service';
 })
 export class LicensePlatesComponent implements OnInit {
 
-  public dateOpt: any = {
+  public dateOpt:any = {
     timeStyle: 'medium',
     dateStyle: 'short',
   };
   public formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
   public historyParked: Parking[];
-  public groupByLicense: any[];
+  public groupByLicense: LicenseHistory[];
   constructor(private parking: ParkingService) { }
 
   ngOnInit(): void {

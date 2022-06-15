@@ -47,16 +47,16 @@ describe('AlertActionComponent', () => {
   
   it('should close the actionAlert', () => {
     const spyDialog = spyOn(dialogRef,'close').and.callThrough();
-    component.action(false);
+    component.action(0);
     expect(spyDialog).toHaveBeenCalled();
   });
 
   it('all boolean variables should be falsy', () => {
-    expect(component.title_start).toBeFalsy();
+    expect(component.titleStart).toBeFalsy();
     expect(component.msg).toBeFalsy();
-    expect(component.btn_opt1).toBeFalsy();
-    expect(component.btn_opt2).toBeFalsy();
-    expect(component.title_sub).toBeFalsy();
-    expect(component.align_left).toBeFalsy();
+    expect(component.btnOpt1).toBeFalsy();
+    expect(component.btnOpt2).toBeFalsy();
+    expect(component.titleSub).toBeFalsy();
+    expect(component.alignLeft).toBeFalsy();
   });  
 });

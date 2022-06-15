@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AlertActionsComponent } from '@core/components/alert-actions/alert-actions.component';
+import { entryData } from '@core/model/entry-data';
 
 @Injectable()
 /**
  * This allows us to launch generic modalities, whenever we want with its perzonaliable content, we can change the icon, titles, subtitles, action buttons.
  */
 export class GenericAlertService {
-  public dialogRef: any;
+  public dialogRef: MatDialogRef<any>;
   constructor(public dialog: MatDialog){}
 
   /**
@@ -24,11 +25,11 @@ export class GenericAlertService {
    *                desde aqui, Recibe un objeto de tipo entryData. Si usamos este parametro los anteriores serán
    *                omitidos.
    */
-  show(type: number=1,
-       message: string='Action Done',
+  show(type=1,
+       message='Action Done',
        classContainer?: string,
-       dinamicConfig?: any,
-       callback?: any): void{
+       dinamicConfig?: entryData,
+       callback?: Function): void{
     if(dinamicConfig){
       this.dialogRef=this.dialog.open(AlertActionsComponent,{
         data:dinamicConfig,
@@ -36,18 +37,22 @@ export class GenericAlertService {
       });
 
       this.dialogRef.beforeClosed().subscribe((result: any) => {
-        if(callback) callback(result);
+        if(callback){
+          callback(result);
+        } 
       });
     }else{
-      const obj = type==1?this.configSuccesfully(message):this.configError(message);
+      const obj = type===1?this.configSuccesfully(message):this.configError(message);
 
       this.dialogRef=this.dialog.open(AlertActionsComponent,{
         data:obj,
         panelClass:classContainer?classContainer:'class-container-generic-alert'
       });
 
-      this.dialogRef.beforeClosed().subscribe((result: any) => {
-        if(callback) callback(result);
+      this.dialogRef.beforeClosed().subscribe((result: number) => {
+        if(callback){
+          callback(result);
+        } 
       });
     }
   }
