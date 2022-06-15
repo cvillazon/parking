@@ -79,7 +79,7 @@ describe('workspace-project Parking', () => {
         expect(salirButton).toBe(false);
     });
    
-    it('Deberia listar el historial de reservas', () => {
+    xit('Deberia listar el historial de reservas', () => {
         header.clickBotonOpenSideNav();
         sideNav.clickBotonGoHistorical();
 
@@ -92,8 +92,8 @@ describe('workspace-project Parking', () => {
         header.clickBotonOpenSideNav();
         sideNav.clickBotonGoHistoricalLicense();
 
-        const listOfReservations = parking.contarLicensePlates();
+        const listOfReservationsLicense = parking.contarLicensePlates();
 
-        expect(listOfReservations).toBeGreaterThan(0);
+        expect(listOfReservationsLicense).toBeGreaterThan(0);
     });
 });
