@@ -28,7 +28,7 @@ export class GenericAlertService {
        message: string='Action Done',
        classContainer?: string,
        dinamicConfig?: any,
-       callback?: Function): void{
+       callback?: any): void{
     if(dinamicConfig){
       this.dialogRef=this.dialog.open(AlertActionsComponent,{
         data:dinamicConfig,
@@ -36,7 +36,7 @@ export class GenericAlertService {
       });
 
       this.dialogRef.beforeClosed().subscribe((result: any) => {
-        callback?callback(result):null;
+        if(callback) callback(result);
       });
     }else{
       const obj = type==1?this.configSuccesfully(message):this.configError(message);
@@ -47,7 +47,7 @@ export class GenericAlertService {
       });
 
       this.dialogRef.beforeClosed().subscribe((result: any) => {
-        callback?callback(result):null;
+        if(callback) callback(result);
       });
     }
   }
@@ -56,7 +56,7 @@ export class GenericAlertService {
     this.dialogRef?.close();
   }
 
-  private configSuccesfully(message: string): any{
+  private configSuccesfully(message: string){
     return{
       icon:'adn-success',
       subtitle:message,
@@ -64,7 +64,7 @@ export class GenericAlertService {
     };
   }
   
-  private configError(message: string): any{
+  private configError(message: string){
     return{
       subtitle:message,
       text_button1:'OK',
