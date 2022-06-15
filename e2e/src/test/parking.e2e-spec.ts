@@ -62,6 +62,7 @@ describe('workspace-project Parking', () => {
 
 
         parking.clickSaveReservation();
+        browser.sleep(500)
         const salirButton = await parking.getCarParked().isPresent();
 
         expect(salirButton).toBe(true);
