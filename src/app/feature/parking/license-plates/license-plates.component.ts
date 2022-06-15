@@ -24,9 +24,9 @@ export class LicensePlatesComponent implements OnInit {
   }
 
   groupByLicensePlates(){
-    let carGroupedArray:LicenseHistory[]=[];
+    const carGroupedArray: LicenseHistory[]=[];
     const carGrouped={};
-    let aux:{position:number};
+    let aux: {position: number};
     this.historyParked.forEach((car: Parking)=>{
       aux =carGrouped[car.license];
       if(aux){

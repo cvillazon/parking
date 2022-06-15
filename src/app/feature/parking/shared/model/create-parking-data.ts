@@ -1,4 +1,4 @@
-import { Parking } from "./parking";
+import { Parking } from './parking';
 
 export class CreateParking {
   spot: number;

@@ -20,11 +20,11 @@ export class CarZoneComponent {
   formatDateTime = new Intl.DateTimeFormat('en', formatDateGlobal);
   constructor(public dialog: MatDialog, private parking: ParkingService) {}
 
-  get isReserved():boolean {
+  get isReserved(): boolean {
     return typeof this.car == 'object';
   }
 
-  get extraDominical():number {
+  get extraDominical(): number {
     const SUNDAY = 6;
     const SATURDAY = 0;
     const WEEKENDS = [SUNDAY,SATURDAY];
@@ -32,17 +32,17 @@ export class CarZoneComponent {
     return WEEKENDS.includes(new Date().getDay()) ? this.basePrice * EXTRA_PAYMENT_WEEKENDS : 0;
   }
 
-  get extraOnDemand():number {
+  get extraOnDemand(): number {
     const CONDITIONS =  0.6;
     const EXTRA_PAYMENT_ONDEMAND = 0.25;
-    const CURRENT_VALUE:number = this.carsParked.length / this.spots;
+    const CURRENT_VALUE: number = this.carsParked.length / this.spots;
 
     return CURRENT_VALUE >= CONDITIONS
       ? this.basePrice * EXTRA_PAYMENT_ONDEMAND
       : 0;
   }
   
-  get totalPriceReservation():number {
+  get totalPriceReservation(): number {
     return this.basePrice+this.extraDominical+this.extraOnDemand;
   }
 
