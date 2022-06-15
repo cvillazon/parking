@@ -1,6 +1,5 @@
 import { inject, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { CookieServiceMock } from '@core/mocks/CookieServiceMock.service';
 import { CookieService } from 'ngx-cookie-service';
 
 import { LoggedService } from './logged.guard';
@@ -10,7 +9,6 @@ describe('LoggedService', () => {
     TestBed.configureTestingModule({
       providers: [
         LoggedService,
-        { provide: CookieService, useClass: CookieServiceMock },
         {
           provide: Router,
           useValue: { navigate: () => Promise.resolve('return Promise!') },

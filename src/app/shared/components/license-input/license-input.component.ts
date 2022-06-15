@@ -13,7 +13,7 @@ export class LicenseInputComponent{
   constructor() { }
 
   onChange(){
-    if(this.letters?.length===MAX_LEN && String(this.numbers)?.length==MAX_LEN){
+    if(this.letters?.length===MAX_LEN && String(this.numbers)?.length===MAX_LEN){
       this.licenseEvent.emit(`${this.letters}${this.numbers}`);
     }
   }

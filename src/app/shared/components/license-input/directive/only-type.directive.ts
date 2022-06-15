@@ -13,7 +13,7 @@ export class OnlyTypeDirective {
   constructor() {}
 
   @HostListener('keyup',['$event.target'])
-  enterNumber(event: any){
+  enterNumber(event: HTMLInputElement){
     let val = event.value.replace(/\d/g,'');
     if(this.only==='number'){
       val = event.value.replace(/\D/g,'');

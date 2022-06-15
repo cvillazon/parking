@@ -8,7 +8,7 @@ import { EntryData } from '@core/model/entry-data';
  * This allows us to launch generic modalities, whenever we want with its perzonaliable content, we can change the icon, titles, subtitles, action buttons.
  */
 export class GenericAlertService {
-  public dialogRef: MatDialogRef<any>;
+  public dialogRef: MatDialogRef<AlertActionsComponent>;
   constructor(public dialog: MatDialog){}
 
   /**
@@ -37,9 +37,7 @@ export class GenericAlertService {
       });
 
       this.dialogRef.beforeClosed().subscribe((result: number) => {
-        if(callback){
-          callback(result);
-        } 
+        this.handlerHideAlert(callback,result)
       });
     }else{
       const obj = type===1?this.configSuccesfully(message):this.configError(message);
@@ -50,11 +48,15 @@ export class GenericAlertService {
       });
 
       this.dialogRef.beforeClosed().subscribe((result: number) => {
-        if(callback){
-          callback(result);
-        } 
+        this.handlerHideAlert(callback, result)
       });
     }
+  }
+
+  handlerHideAlert(callback: (result) => void, result: number){
+    if(callback){
+      callback(result);
+    } 
   }
 
   closes(){
