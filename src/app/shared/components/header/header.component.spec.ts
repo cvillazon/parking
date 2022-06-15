@@ -9,7 +9,7 @@ import { HeaderComponent } from './header.component';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let service:AuthService;
+  let service: AuthService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -32,7 +32,7 @@ describe('HeaderComponent', () => {
   });
   
   it('should logout', () => {
-    let spyLogout = spyOn(service,'logout').and.returnValue(null);
+    const spyLogout = spyOn(service,'logout').and.returnValue(null);
     component.logout();
     expect(spyLogout).toHaveBeenCalled();
   });
@@ -44,7 +44,7 @@ describe('HeaderComponent', () => {
 
   it('should return undefined when we called openSidenav and the drawer be undefined', () => {
     component.drawer = {toggle:()=>{}};
-    let spyDrawer = spyOn(component.drawer,'toggle').and.callThrough();
+    const spyDrawer = spyOn(component.drawer,'toggle').and.callThrough();
     component.openSidenav();
     expect(spyDrawer).toHaveBeenCalled();
   });

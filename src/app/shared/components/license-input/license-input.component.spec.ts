@@ -25,26 +25,26 @@ describe('LicenseInputComponent', () => {
   });
   
   it('should emit the license plate, if the inputs are 3 numbers and 3 letters', () => {
-    const LETTERS = "HGT";
+    const LETTERS = 'HGT';
     const NUMBERS = 826;
 
     component.letters=LETTERS;
     component.numbers=NUMBERS;
 
-    let spyEventEmitter = spyOn(component.licenseEvent,'emit').and.returnValue(null);
+    const spyEventEmitter = spyOn(component.licenseEvent,'emit').and.returnValue(null);
     
     component.onChange();
     expect(spyEventEmitter).toHaveBeenCalled();
   });
   
   it('should NOT emit the license plate, if the inputs are invalid', () => {
-    const LETTERS = "HG";
+    const LETTERS = 'HG';
     const NUMBERS = 826;
 
     component.letters=LETTERS;
     component.numbers=NUMBERS;
 
-    let spyEventEmitter = spyOn(component.licenseEvent,'emit').and.returnValue(null);
+    const spyEventEmitter = spyOn(component.licenseEvent,'emit').and.returnValue(null);
     
     component.onChange();
     expect(spyEventEmitter).not.toHaveBeenCalled();

@@ -13,8 +13,8 @@ import { AuthService } from './auth.service';
 describe('AuthService', () => {
   let httpMock: HttpTestingController;
   let service: AuthService;
-  let router:Router;
-  let cookie:CookieService;
+  let router: Router;
+  let cookie: CookieService;
   const apiEndpointLogin = environment.endpoint+'/users';
   // const apiEndpointFail = environment.endpoint+'/users?email=andres.villazon@ceiba.com&password=test&_limit=1';
 

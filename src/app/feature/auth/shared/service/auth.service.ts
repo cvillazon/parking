@@ -13,7 +13,7 @@ export class AuthService {
   constructor(protected http: HttpService, private cookie: CookieService, private router: Router) { }
 
   login(credentials: Credentials){
-    credentials['token']="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s";
+    credentials.token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s';
     return this.http.doPost(`${environment.endpoint}/users`,credentials)
       .pipe(tap((user: Users) =>{
         if(!user){

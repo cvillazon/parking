@@ -1,23 +1,23 @@
-import { CommonModule } from "@angular/common";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { BrowserModule } from "@angular/platform-browser";
-import { HttpService } from "@core/services/http.service";
-import { of } from "rxjs";
-import { ParkingService } from "../../../shared/services/parking.service";
+import { CommonModule } from '@angular/common';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpService } from '@core/services/http.service';
+import { of } from 'rxjs';
+import { ParkingService } from '../../../shared/services/parking.service';
 
-import { CarZoneComponent } from "./car-zone.component";
+import { CarZoneComponent } from './car-zone.component';
 
 const result = {
   serviceOut: false,
   spot: 1,
-  carType: "./assets/svg/taxi-icon.svg",
-  owner: "andres villazon",
+  carType: './assets/svg/taxi-icon.svg',
+  owner: 'andres villazon',
   hour: 2,
-  license: "oiy644",
-  date: "6/12/22, 8:04:48 PM",
-  dateEnd: "6/12/22, 10:04:59 PM",
+  license: 'oiy644',
+  date: '6/12/22, 8:04:48 PM',
+  dateEnd: '6/12/22, 10:04:59 PM',
   timeStart: 1655082299569,
   timeEnd: 1655089499569,
   totalPrice: 75000,
@@ -28,12 +28,12 @@ const parked = [
   {
     serviceOut: false,
     spot: 1,
-    carType: "./assets/svg/taxi-icon.svg",
-    owner: "andres villazon",
+    carType: './assets/svg/taxi-icon.svg',
+    owner: 'andres villazon',
     hour: 2,
-    license: "oiy644",
-    date: "6/12/22, 8:04:48 PM",
-    dateEnd: "6/12/22, 10:04:59 PM",
+    license: 'oiy644',
+    date: '6/12/22, 8:04:48 PM',
+    dateEnd: '6/12/22, 10:04:59 PM',
     timeStart: 1655082299569,
     timeEnd: 1655089499569,
     totalPrice: 75000,
@@ -42,12 +42,12 @@ const parked = [
   {
     serviceOut: false,
     spot: 2,
-    carType: "./assets/svg/car1-icon.svg",
-    owner: "valerir  villazon",
+    carType: './assets/svg/car1-icon.svg',
+    owner: 'valerir  villazon',
     hour: 2,
-    license: "mkl918",
-    date: "6/12/22, 8:05:00 PM",
-    dateEnd: "6/12/22, 10:05:11 PM",
+    license: 'mkl918',
+    date: '6/12/22, 8:05:00 PM',
+    dateEnd: '6/12/22, 10:05:11 PM',
     timeStart: 1655082311265,
     timeEnd: 1655089511265,
     totalPrice: 75000,
@@ -56,12 +56,12 @@ const parked = [
   {
     serviceOut: false,
     spot: 3,
-    carType: "./assets/svg/car1-icon.svg",
-    owner: "karen perez",
+    carType: './assets/svg/car1-icon.svg',
+    owner: 'karen perez',
     hour: 1,
-    license: "gfy716",
-    date: "6/12/22, 8:05:12 PM",
-    dateEnd: "6/12/22, 9:05:28 PM",
+    license: 'gfy716',
+    date: '6/12/22, 8:05:12 PM',
+    dateEnd: '6/12/22, 9:05:28 PM',
     timeStart: 1655082328948,
     timeEnd: 1655085928948,
     totalPrice: 37500,
@@ -69,15 +69,15 @@ const parked = [
   },
 ];
 
-describe("CarZoneComponent", () => {
+describe('CarZoneComponent', () => {
   let component: CarZoneComponent;
   let fixture: ComponentFixture<CarZoneComponent>;
   let dialog: MatDialog;
-  let dialogRefSpyObj = jasmine.createSpyObj({
+  const dialogRefSpyObj = jasmine.createSpyObj({
     afterClosed: of(),
     close: null,
   });
-  let dialogRefSpyObjCreated = jasmine.createSpyObj({
+  const dialogRefSpyObjCreated = jasmine.createSpyObj({
     afterClosed: of(result),
     close: null,
   });
@@ -104,13 +104,13 @@ describe("CarZoneComponent", () => {
     // fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it("should open modal to create a reservation", () => {
+  it('should open modal to create a reservation', () => {
     component.car = 10;
-    let spyDialog = spyOn(dialog, "open").and.returnValue(dialogRefSpyObj);
+    const spyDialog = spyOn(dialog, 'open').and.returnValue(dialogRefSpyObj);
 
     component.openCreateReservation();
 
@@ -119,9 +119,9 @@ describe("CarZoneComponent", () => {
     expect(component.carsParked.length).toBe(0);
   });
 
-  it("should open modal to create a reservation and successfully created", () => {
+  it('should open modal to create a reservation and successfully created', () => {
     component.car = 10;
-    let spyDialog = spyOn(dialog, "open").and.returnValue(
+    const spyDialog = spyOn(dialog, 'open').and.returnValue(
       dialogRefSpyObjCreated
     );
 
@@ -132,10 +132,10 @@ describe("CarZoneComponent", () => {
     expect(component.carsParked.length).toBe(1);
   });
 
-  it("should cancel a reservation (failed)", () => {
+  it('should cancel a reservation (failed)', () => {
     component.car = { id: 1 };
     component.carsParked = [result];
-    let spyDelete = spyOn(parkingService, "deleteReservation").and.callFake(
+    const spyDelete = spyOn(parkingService, 'deleteReservation').and.callFake(
       () => {
         return of();
       }
@@ -143,17 +143,17 @@ describe("CarZoneComponent", () => {
 
     component.cancelReservation();
 
-    expect(typeof component.car).toEqual("object");
+    expect(typeof component.car).toEqual('object');
     expect(spyDelete).toHaveBeenCalled();
     expect(component.carsParked.length).toBe(1);
   });
 
-  it("should cancel a reservation (successfully)", () => {
+  it('should cancel a reservation (successfully)', () => {
     component.car = { id: 1, spot: 6 };
     component.carsParked = [result];
     const patchResult = result;
     patchResult.serviceOut = true;
-    let spyDelete = spyOn(parkingService, "deleteReservation").and.callFake(
+    const spyDelete = spyOn(parkingService, 'deleteReservation').and.callFake(
       () => {
         return of(patchResult);
       }
@@ -161,15 +161,15 @@ describe("CarZoneComponent", () => {
 
     component.cancelReservation();
 
-    expect(typeof component.car).toEqual("number");
+    expect(typeof component.car).toEqual('number');
     expect(spyDelete).toHaveBeenCalled();
     expect(component.carsParked.length).toBe(0);
   });
 
-  it("should increase the price on weekends", () => {
+  it('should increase the price on weekends', () => {
 
     component.basePrice = 1000;
-    let dateMock = new Date(1655043926363); //Sun
+    const dateMock = new Date(1655043926363); //Sun
     jasmine.clock().mockDate(dateMock);
 
     const extraPayment = component.extraDominical;
@@ -177,10 +177,10 @@ describe("CarZoneComponent", () => {
     expect(extraPayment).toBe(500);
   });
   
-  it("should not increase the price on weekends", () => {
+  it('should not increase the price on weekends', () => {
 
     component.basePrice = 1000;
-    let dateMock = new Date(1655222912188); //Tuesday
+    const dateMock = new Date(1655222912188); //Tuesday
     jasmine.clock().mockDate(dateMock);
 
     const extraPayment = component.extraDominical;
@@ -188,7 +188,7 @@ describe("CarZoneComponent", () => {
     expect(extraPayment).toBe(0);
   });
 
-  it("should increase the price on extraOnDemand", () => {
+  it('should increase the price on extraOnDemand', () => {
     component.spots = 5;
     component.carsParked=parked;
     component.basePrice = 1000;
