@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '@core/services/http.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -14,6 +14,8 @@ export class AuthService {
 
   login(credentials: Credentials){
     credentials.token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s';
+
+    // throw Error('HOLA SOY EL ERROR');
     return this.http.doPost(`${environment.endpoint}/users`,credentials)
       .pipe(tap((user: Users) =>{
         if(!user){

@@ -9,15 +9,20 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpService } from './services/http.service';
 import { ManejadorError } from './interceptor/manejador-error';
 import { RouterModule } from '@angular/router';
+import { AlertActionsComponent } from './components/alert-actions/alert-actions.component';
+import { GenericAlertService } from './services/generic-alert.service';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [ToolbarComponent, NavbarComponent],
+  declarations: [ToolbarComponent, NavbarComponent, AlertActionsComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ],
-  exports: [ToolbarComponent, NavbarComponent],
+  exports: [ToolbarComponent, NavbarComponent, AlertActionsComponent],
   providers: [
+    GenericAlertService,
     HttpService,
     SecurityGuard,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
