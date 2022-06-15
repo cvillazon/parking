@@ -31,7 +31,7 @@ export class AuthComponent {
     this.auth.login(this.loginCredentials).subscribe(() =>{
       this.router.navigate(['home']);
     },()=>{
-      alert('Credenciales invalidas');
+      console.log('Credenciales invalidas');
     });
   }
 
