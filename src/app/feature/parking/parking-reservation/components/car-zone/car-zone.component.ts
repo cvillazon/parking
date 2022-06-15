@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { formatDateGlobal } from '@parking/shared/utils/format-date';
+import { formatDateGlobal } from '../../../shared/utils/format-date';
 import { Parking } from '../../../shared/model/parking';
 import { ParkingService } from '../../../shared/services/parking.service';
 import { CreateParkingModalComponent } from '../create-parking-modal/create-parking-modal.component';

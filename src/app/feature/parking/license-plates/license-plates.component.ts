@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LicenseHistory } from './../shared/model/license-history';
 import { Parking } from '../shared/model/parking';
 import { ParkingService } from '../shared/services/parking.service';
-import { formatDateGlobal } from '@parking/shared/utils/format-date';
+import { formatDateGlobal } from '../shared/utils/format-date';
 
 @Component({
   selector: 'app-license-plates',

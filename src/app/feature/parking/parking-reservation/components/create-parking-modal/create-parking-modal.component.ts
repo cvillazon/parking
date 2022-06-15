@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { formatDateGlobal } from '@parking/shared/utils/format-date';
+import { formatDateGlobal } from '../../../shared/utils/format-date';
 import { Parking } from '../../../shared/model/parking';
 import { ParkingService } from '../../../shared/services/parking.service';
 import { getRandomCar } from '../../../shared/utils/list-car';
