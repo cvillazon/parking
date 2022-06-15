@@ -112,8 +112,6 @@ export class CreateParkingModalComponent implements OnInit {
       // return;
       if (!this.islicensePlateDuplicated(carModel.license)) {
         this.parking.createReservation(carModel).subscribe((data: Parking) => this.close(data));
-      }else{
-        alert('El vehiculo ya se encuentra en el parqueadero');
       }
     }
   }

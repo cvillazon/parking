@@ -92,8 +92,8 @@ describe('workspace-project Parking', () => {
         header.clickBotonOpenSideNav();
         sideNav.clickBotonGoHistoricalLicense();
 
-        // const listOfReservations = parking.contarLicensePlates();
+        const listOfReservations = parking.contarLicensePlates();
 
-        // expect(listOfReservations).toBeGreaterThan(0);
+        expect(listOfReservations).toBeGreaterThan(0);
     });
 });
