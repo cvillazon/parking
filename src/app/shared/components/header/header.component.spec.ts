@@ -36,11 +36,6 @@ describe('HeaderComponent', () => {
     component.logout();
     expect(spyLogout).toHaveBeenCalled();
   });
-  
-  it('should return false when we called openSidenav and the drawer be undefined', () => {
-    const resOpen = component.openSidenav();
-    expect(resOpen).toBe(false);
-  });
 
   it('should return undefined when we called openSidenav and the drawer be undefined', () => {
     component.drawer = {toggle:()=>{}};

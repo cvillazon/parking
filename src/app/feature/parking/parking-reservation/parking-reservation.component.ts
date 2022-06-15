@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Parking } from '../shared/model/parking';
 import { ParkingService } from '../shared/services/parking.service';
-
+const SPOTS_PAKRING = 20;
 @Component({
   selector: 'app-parking-reservation',
   templateUrl: './parking-reservation.component.html',
@@ -9,7 +9,7 @@ import { ParkingService } from '../shared/services/parking.service';
 })
 export class ParkingReservationComponent implements OnInit {
 
-  public parkingSpot=20;
+  public parkingSpot=SPOTS_PAKRING;
   public carsInParking: Parking[];
   public parkingArray;
   constructor(private parking: ParkingService) { }
@@ -27,7 +27,7 @@ export class ParkingReservationComponent implements OnInit {
   }
 
   getInfoParking(idx: number){
-    return this.carsInParking?.find((cars: any)=>cars.spot===idx) ?? idx;
+    return this.carsInParking?.find((cars: Parking)=>cars.spot===idx) ?? idx;
   }
 
 }

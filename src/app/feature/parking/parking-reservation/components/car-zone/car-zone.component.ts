@@ -27,12 +27,17 @@ export class CarZoneComponent {
   }
 
   get extraDominical() {
-    return [6, 0].includes(new Date().getDay()) ? this.basePrice * 0.5 : 0;
+    const WEEKENDS = [6,0];
+    const EXTRA_PAYMENT_WEEKENDS = 0.5;
+    return WEEKENDS.includes(new Date().getDay()) ? this.basePrice * EXTRA_PAYMENT_WEEKENDS : 0;
   }
 
   get extraOnDemand() {
-    return this.carsParked.length / this.spots >= 0.6
-      ? this.basePrice * 0.25
+    const CONDITIONS =  0.6;
+    const EXTRA_PAYMENT_ONDEMAND = 0.25;
+
+    return this.carsParked.length / this.spots >= CONDITIONS
+      ? this.basePrice * EXTRA_PAYMENT_ONDEMAND
       : 0;
   }
   
@@ -41,7 +46,9 @@ export class CarZoneComponent {
   }
 
   get endTimeParking() {
-    if(!this.car.timeEnd)return '';
+    if(!this.car.timeEnd){
+      return ''
+    };
     return this.formatDateTime.format(new Date(this.car?.timeEnd)) ?? '';
   }
   //hour
@@ -61,31 +68,33 @@ export class CarZoneComponent {
       });
 
       dialogRef.afterClosed().subscribe((result) => {
-        if(!result) return;
-        this.car = result;
-        this.carsParked.push(result);
+        if(result){
+          this.car = result;
+          this.carsParked.push(result);
+        }
       });
     }
   }
 
   cancelReservation() {
-    if (!this.isReserved) return;
-    this.parking.deleteReservation(this.car.id).subscribe((car: Parking) => {
-      if(car){
-        this.removeFromParking(this.car.id);
-        this.car = this.car.spot;
-      }
-    });
+    if (this.isReserved){
+      this.parking.deleteReservation(this.car.id).subscribe((car: Parking) => {
+        if(car){
+          this.removeFromParking(this.car.id);
+          this.car = this.car.spot;
+        }
+      });
+    };
   }
 
   removeFromParking(carDeleted: number) {
     let idx: number=null;
-    let carFounded = this.carsParked.forEach((car: Parking, id: number) =>{
+    this.carsParked.forEach((car: Parking, id: number) =>{
       idx = id;
       return car.id === carDeleted;
     });
 
-    if(idx>=0 && carFounded!=null){
+    if(idx>=0){
       this.carsParked.splice(idx,1);
     }
   }

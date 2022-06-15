@@ -19,13 +19,12 @@ export class CreateParkingModalComponent implements OnInit {
   formatDateTime = new Intl.DateTimeFormat('en', this.dateOpt);
   formReservation: FormGroup;
   extraPayment=true;
-  base_price: 5000;
 
   constructor(
     private parking: ParkingService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<CreateParkingModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public car: {total: number; spot: number; cars: Parking[]; basePrice: number; dominical: any; onDemand: any}
+    @Inject(MAT_DIALOG_DATA) public car: {total: number; spot: number; cars: Parking[]; basePrice: number; dominical: number; onDemand: number}
   ) {}
 
   get isTheFormInvalid() {
@@ -86,8 +85,12 @@ export class CreateParkingModalComponent implements OnInit {
   }
 
   setDateTimes() {
+    const MILLISECONDS = 1000;
+    const SECONDS = 60;
+    const MINUTES = 60;
+
     const start = new Date().getTime();
-    const end = start + 1000 * 60 * 60 * this.formReservation.get('hour').value;
+    const end = start + MILLISECONDS * SECONDS * MINUTES * this.formReservation.get('hour').value;
     const formatEnd = this.formatDateTime.format(new Date(end));
 
     this.formReservation.get('timeStart').setValue(start);
@@ -95,7 +98,7 @@ export class CreateParkingModalComponent implements OnInit {
     this.formReservation.get('dateEnd').setValue(formatEnd);
   }
 
-  IslicensePlateDuplicated(licensePlate: string) {
+  islicensePlateDuplicated(licensePlate: string) {
     return this.car.cars.find((carInDb) => {
       return carInDb.license.toLowerCase() === licensePlate;
     })
@@ -110,7 +113,7 @@ export class CreateParkingModalComponent implements OnInit {
       const carModel = this.formReservation.value;
       carModel.totalPrice=this.totalPrice;
       // return;
-      if (!this.IslicensePlateDuplicated(carModel.license)) {
+      if (!this.islicensePlateDuplicated(carModel.license)) {
         this.parking.createReservation(carModel).subscribe((data: Parking) => this.close(data));
       }else{
         alert('El vehiculo ya se encuentra en el parqueadero');

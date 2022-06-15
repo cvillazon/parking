@@ -5,7 +5,7 @@
     .parking-zone{
         min-height: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));;
+        grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
         grid-template-rows: repeat(auto-fill, minmax(200px, 250px));
         background-color: $color-secondary;
     }
