@@ -28,10 +28,8 @@ describe('workspace-project Auth', () => {
         auth.ingresarPassword(PASSWORD)
         auth.clickLogin();
 
-        const title = parking.getTitleHome();
         const currentURL = await browser.getCurrentUrl();
 
-        expect(title).toBeTruthy();
         expect(currentURL).not.toContain(PATH_LOGIN)
     });
     

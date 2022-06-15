@@ -181,6 +181,34 @@
       "timeEnd": 1655309880737,
       "totalPrice": 10000,
       "id": 13
+    },
+    {
+      "serviceOut": false,
+      "spot": 2,
+      "carType": "./assets/svg/excavator2-icon.svg",
+      "owner": "andres villazon",
+      "hour": 1,
+      "license": "uyr715",
+      "date": "6/15/22, 10:45:51 AM",
+      "dateEnd": "6/15/22, 11:46:00 AM",
+      "timeStart": 1655307960572,
+      "timeEnd": 1655311560572,
+      "totalPrice": 10000,
+      "id": 14
+    },
+    {
+      "serviceOut": true,
+      "spot": 1,
+      "carType": "./assets/svg/car1-icon.svg",
+      "owner": "ANDRES VILLAZON",
+      "hour": 1,
+      "license": "ABC987",
+      "date": "6/15/22, 10:51:44 AM",
+      "dateEnd": "6/15/22, 11:51:44 AM",
+      "timeStart": 1655308304693,
+      "timeEnd": 1655311904693,
+      "totalPrice": 10000,
+      "id": 15
     }
   ],
   "posts": [],
@@ -243,6 +271,18 @@
       "password": "Ceiba1920876876",
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
       "id": 9
+    },
+    {
+      "email": "andres.villazon@ceiba.com.co",
+      "password": "Ceiba1920876876",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 10
+    },
+    {
+      "email": "andres.villazon@ceiba.com",
+      "password": "Ceiba1920876876",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 11
     }
   ]
 }
