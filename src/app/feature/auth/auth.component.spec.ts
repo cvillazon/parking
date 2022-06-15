@@ -10,10 +10,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
 import { loginSuccesfullyResult } from '@core/mocks/auth-data-mock';
 import { of, throwError } from 'rxjs';
-import { PrivateComponent } from '../private/private.component';
 
 import { AuthComponent } from './auth.component';
 import { AuthService } from './shared/service/auth.service';
+import { HomeComponent } from '@home/home.component';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -29,7 +29,7 @@ describe('AuthComponent', () => {
         BrowserAnimationsModule,
         HttpClientModule,
         RouterTestingModule.withRoutes([
-          {path:'private', component:PrivateComponent}
+          {path:'home', component:HomeComponent}
         ]),
         MatInputModule,
         MatFormFieldModule,
@@ -79,7 +79,7 @@ describe('AuthComponent', () => {
       password: 'ceibaSofwtare',
     };
     const resultLogin = loginSuccesfullyResult();
-    const spyLogin = spyOn(authService, 'login').and.returnValue(of(resultLogin));
+    const spyLogin = spyOn(authService, 'login').and.returnValue(of(resultLogin[0]));
 
     component.login();
 
@@ -92,7 +92,7 @@ describe('AuthComponent', () => {
       password: 'ceibaSofwtare',
     };
     const resultLogin = loginSuccesfullyResult();
-    spyOn(authService, 'login').and.returnValue(of(resultLogin));
+    spyOn(authService, 'login').and.returnValue(of(resultLogin[0]));
     const spyRedirect = spyOn(router, 'navigate');
 
     component.login();

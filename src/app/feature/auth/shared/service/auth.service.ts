@@ -13,12 +13,13 @@ export class AuthService {
   constructor(protected http: HttpService, private cookie: CookieService, private router: Router) { }
 
   login(credentials: Credentials){
-    return this.http.doGet(`${environment.endpoint}/users?email=${credentials.email}&password=${credentials.password}&_limit=1`)
-      .pipe(tap((user: Users[]) =>{
-        if(!user || !user.length){
+    credentials['token']="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s";
+    return this.http.doPost(`${environment.endpoint}/users`,credentials)
+      .pipe(tap((user: Users) =>{
+        if(!user){
           return throwError(() => ({status:404, message:'Usuario no econtrado'}));
         }
-        this.cookie.set('token',user[0].token);
+        this.cookie.set('token',user.token);
       }));
   }
 

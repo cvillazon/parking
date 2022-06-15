@@ -1,7 +1,7 @@
 <div class="input-license-plate-container">
     <div class="border-license-plates">
-        <input [(ngModel)]="letters" validar (blur)="onChange()" appOnlyType only="string" maxlength="3" class="border-license-plates__input">
+        <input id="licenseLetter" [(ngModel)]="letters" validar (blur)="onChange()" appOnlyType only="string" maxlength="3" class="border-license-plates__input">
         <span class="border-license-plates__dot"></span>
-        <input [(ngModel)]="numbers" validar (blur)="onChange()" appOnlyType only="number" maxlength="3" class="border-license-plates__input">
+        <input id="licenseNumber" [(ngModel)]="numbers" validar (blur)="onChange()" appOnlyType only="number" maxlength="3" class="border-license-plates__input">
     </div>
 </div>

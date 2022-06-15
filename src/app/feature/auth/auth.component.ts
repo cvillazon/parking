@@ -27,7 +27,7 @@ export class AuthComponent {
   login(){
     if(!this.validateCredentials()){return;}
     this.auth.login(this.loginCredentials).subscribe(() =>{
-      this.router.navigate(['/private/']);
+      this.router.navigate(['home']);
     },()=>{
       alert('Credenciales invalidas');
     });

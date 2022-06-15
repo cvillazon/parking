@@ -4,10 +4,11 @@ import { LoggedService } from '@core/guard/logged.guard';
 import { SecurityGuard } from '@core/guard/security.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'private/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule), canActivate:[LoggedService] },
-  { path: 'private', loadChildren: () => import('./feature/private/private.module').then(m => m.PrivateModule) , canActivate: [SecurityGuard]  },
-  { path: '**', redirectTo: 'private/home', pathMatch: 'full',  },
+  { path: 'producto', loadChildren: () => import('@producto/producto.module').then(m => m.ProductoModule)},
+  { path: '', loadChildren: () => import('./feature/parking/private.module').then(m => m.PrivateModule) , canActivate: [SecurityGuard]  },
+  { path: '**', redirectTo: 'home', pathMatch: 'full',  },
   
 ];
 

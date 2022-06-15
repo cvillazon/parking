@@ -10,6 +10,7 @@ import { CreateParkingModalComponent } from '../create-parking-modal/create-park
   styleUrls: ['./car-zone.component.scss'],
 })
 export class CarZoneComponent {
+  @Input() id: number;
   @Input() basePrice: number;
   @Input() spots = 0;
   @Input() car: any | Parking;

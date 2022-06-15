@@ -28,10 +28,13 @@
         "src/app/core/services/*"
       ],
       "@home/*": [
-        "src/app/feature/private/home/*"
+        "src/app/feature/parking/home/*"
       ],
       "@producto/*": [
         "src/app/feature/producto/*"
+      ],
+      "@parking/*": [
+        "src/app/feature/parking/*"
       ],
       "@auth/*": [
         "src/app/feature/auth/*"
