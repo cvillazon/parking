@@ -1,25 +1,51 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from '@auth/shared/service/auth.service';
+import { HttpService } from '@core/services/http.service';
 
 import { HeaderComponent } from './header.component';
 
-xdescribe('HeaderComponent', () => {
+describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
+  let service:AuthService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ HeaderComponent ],
+      imports:[HttpClientTestingModule, RouterTestingModule],
+      providers:[AuthService, HttpService]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
+    service=TestBed.inject(AuthService);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  
+  it('should logout', () => {
+    let spyLogout = spyOn(service,'logout').and.returnValue(null);
+    component.logout();
+    expect(spyLogout).toHaveBeenCalled();
+  });
+  
+  it('should return false when we called openSidenav and the drawer be undefined', () => {
+    const resOpen = component.openSidenav();
+    expect(resOpen).toBe(false);
+  });
+
+  it('should return undefined when we called openSidenav and the drawer be undefined', () => {
+    component.drawer = {toggle:()=>{}};
+    let spyDrawer = spyOn(component.drawer,'toggle').and.callThrough();
+    component.openSidenav();
+    expect(spyDrawer).toHaveBeenCalled();
   });
 });

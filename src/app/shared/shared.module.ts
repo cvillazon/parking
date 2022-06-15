@@ -6,7 +6,6 @@ import { MensajeErrorCamposSubmitDirective } from './directivas/error-campos/dir
 import { MensajeErrorCamposContenedorDirective } from './directivas/error-campos/directiva/mensaje-error-campos-contenedor.directive';
 import { ErrorCamposPlantillaComponent } from './directivas/error-campos/componente/error-campos-plantilla.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { TrackByPipe } from './pipe/track-by.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { LicenseInputComponent } from './components/license-input/license-input.component';
 import { OnlyTypeDirective } from './components/license-input/directive/only-type.directive';
@@ -17,7 +16,6 @@ import { OnlyTypeDirective } from './components/license-input/directive/only-typ
     MensajeErrorCamposDirective,
     MensajeErrorCamposContenedorDirective,
     MensajeErrorCamposSubmitDirective,
-    TrackByPipe,
     HeaderComponent,
     LicenseInputComponent,
     OnlyTypeDirective,
@@ -31,7 +29,6 @@ import { OnlyTypeDirective } from './components/license-input/directive/only-typ
     MensajeErrorCamposSubmitDirective,
     ReactiveFormsModule,
     FormsModule,
-    TrackByPipe,
     HeaderComponent,
     LicenseInputComponent,
   ]

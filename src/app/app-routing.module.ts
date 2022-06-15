@@ -6,7 +6,6 @@ import { SecurityGuard } from '@core/guard/security.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule), canActivate:[LoggedService] },
-  { path: 'producto', loadChildren: () => import('@producto/producto.module').then(m => m.ProductoModule)},
   { path: '', loadChildren: () => import('./feature/parking/private.module').then(m => m.PrivateModule) , canActivate: [SecurityGuard]  },
   { path: '**', redirectTo: 'home', pathMatch: 'full',  },
   

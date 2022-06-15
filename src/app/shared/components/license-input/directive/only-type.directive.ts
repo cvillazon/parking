@@ -6,7 +6,9 @@ import { Directive, HostListener, Input } from '@angular/core';
 export class OnlyTypeDirective {
 
   @Input() 
-  private only: any;
+  public only: any;
+
+  public val;
   
   constructor() {}
 
@@ -14,6 +16,7 @@ export class OnlyTypeDirective {
   enterNumber(event: any){
     let val = event.value.replace(/\d/g,'');
     if(this.only==='number') val = event.value.replace(/\D/g,'');
+    this.val=val.substring(0,3);
     event.value=val.substring(0,3);
   }
 

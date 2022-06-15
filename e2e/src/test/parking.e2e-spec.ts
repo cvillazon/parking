@@ -1,3 +1,4 @@
+import { browser } from 'protractor';
 import { AppPage } from '../app.po';
 import { AuthPage } from '../page/auth/auth.po';
 import { HeaderPage } from '../page/header/header.po';
@@ -18,25 +19,30 @@ describe('workspace-project Parking', () => {
         parking = new ParkingPage();
         header = new HeaderPage();
     });
-    
-    // beforeAll(()=>{
-    //     //loginCredentials
-    //     page.navigateTo();
-    //     auth.ingresarEmail("andres.villazon@ceiba.com.co");
-    //     auth.ingresarPassword("Ceiba1920876876")
-    //     auth.clickLogin();
-    // });
 
-    it('Deberia mostrar la pantalla principal del parking', () => {
+    it('Deberia mostrar la pantalla principal del parking', async () => {
+        const PATH_HOME = "/home";
+        const EMAIL = 'andres.villazon@ceiba.com';
+        const PASSWORD = 'Ceiba1920876876';
+
         page.navigateTo();
-        auth.ingresarEmail("andres.villazon@ceiba.com.co");
-        auth.ingresarPassword("Ceiba1920876876")
+        auth.ingresarEmail(EMAIL);
+        auth.ingresarPassword(PASSWORD)
         auth.clickLogin();
+
         const title = parking.getTitleHome();
+        const currentURL = await browser.getCurrentUrl();
+        
+        expect(currentURL).toContain(PATH_HOME)
         expect(title).toBeTruthy();
     });
     
     it('Deberia crear una reservacion', async () => {
+        const LICENSE_LETTER = "ABC"
+        const LICENSE_NUMBER = "987"
+        const NAME_OWNER = "ANDRES VILLAZON"
+        const HOUR = "1"
+
         header.clickBotonOpenSideNav();
 
         sideNav.clickBotonGoParkingReservation();
@@ -49,11 +55,10 @@ describe('workspace-project Parking', () => {
 
         parking.clickBotonAbrirCrearReservacion();
 
-        parking.ingresarLicenseLetter("ABC");
-        parking.ingresarLicenseNumber("987");
-
-        parking.ingresarNameOwner("Andres Villazon")
-        parking.ingresarHours(1);
+        parking.ingresarLicenseLetter(LICENSE_LETTER);
+        parking.ingresarLicenseNumber(LICENSE_NUMBER);
+        parking.ingresarNameOwner(NAME_OWNER)
+        parking.ingresarHours(HOUR);
 
 
         parking.clickSaveReservation();
@@ -72,5 +77,23 @@ describe('workspace-project Parking', () => {
         const salirButton = await parking.getCarParked().isPresent();
 
         expect(salirButton).toBe(false);
+    });
+   
+    it('Deberia listar el historial de reservas', async () => {
+        header.clickBotonOpenSideNav();
+        sideNav.clickBotonGoHistorical();
+
+        const listOfReservations = parking.contarHistoricalReservation();
+
+        expect(listOfReservations).toBeGreaterThan(0);
+    });
+
+    it('Deberia listar el historial de placas registradas', async () => {
+        header.clickBotonOpenSideNav();
+        sideNav.clickBotonGoHistoricalLicense();
+
+        const listOfReservations = parking.contarLicensePlates();
+
+        expect(listOfReservations).toBeGreaterThan(0);
     });
 });
