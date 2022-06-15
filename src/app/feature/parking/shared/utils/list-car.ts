@@ -1,3 +1,4 @@
+
 export const cars = [
   {
     id: 1,
@@ -61,4 +62,9 @@ export const cars = [
   },
 ];
 
-export const getRandomCar = () => cars[Math.floor(Math.random() * cars.length)];
+// export const getRandomCar = () => cars[Math.floor(Math.random() * cars.length)];
+export const getRandomCar = () => {
+  const crypto = window.crypto || window['msCrypto'];
+  var array = new Uint8Array(1)
+  return cars[crypto.getRandomValues(array)[0]%cars.length];
+}

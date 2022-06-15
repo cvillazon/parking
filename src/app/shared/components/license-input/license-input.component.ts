@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
+const MAX_LEN = 3;
 @Component({
   selector: 'app-license-input',
   templateUrl: './license-input.component.html',
@@ -7,14 +7,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class LicenseInputComponent{
 
-  @Output() licenseEvent = new EventEmitter<any>();
+  @Output() licenseEvent = new EventEmitter<string>();
   public letters: string;
   public numbers: number;
   constructor() { }
 
   onChange(){
-    if(this.letters?.length==3 && String(this.numbers)?.length==3){
-      this.licenseEvent.emit(this.letters+''+this.numbers);
+    if(this.letters?.length===MAX_LEN && String(this.numbers)?.length==MAX_LEN){
+      this.licenseEvent.emit(`${this.letters}${this.numbers}`);
     }
   }
 }
