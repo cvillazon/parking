@@ -71,7 +71,7 @@ export const cars:Car[] = [
 export const getRandomCar = ():Car => {
   const crypto = window.crypto;
   const array = new Uint8Array(1);
-  return cars[crypto.getRandomValues(array)[0]%cars.length];;
+  return cars[crypto.getRandomValues(array)[0]%cars.length];
 };
 
 
