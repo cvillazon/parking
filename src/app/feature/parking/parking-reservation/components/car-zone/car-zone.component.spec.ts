@@ -130,7 +130,7 @@ describe('CarZoneComponent', () => {
         onDemand:EXTRA_ONDEMAND,
       },
       panelClass: 'popUp-generic',
-    }
+    };
 
     component.car = CAR_SPOT;
     component.carsParked=[];
@@ -174,16 +174,16 @@ describe('CarZoneComponent', () => {
         onDemand:EXTRA_ONDEMAND,
       },
       panelClass: 'popUp-generic',
-    }
+    };
     fixture.detectChanges();
 
-    let spyDialog = spyOn(dialog, 'open').and.returnValue(
+    const spyDialog = spyOn(dialog, 'open').and.returnValue(
       dialogRefSpyObjCreated
     );
 
     component.openCreateReservation();
 
-    expect(spyDialog).toHaveBeenCalledWith(CreateParkingModalComponent,ARGUMENTS_TO_SEND)
+    expect(spyDialog).toHaveBeenCalledWith(CreateParkingModalComponent,ARGUMENTS_TO_SEND);
     expect(component.car).toBe(ParkingMock);
     expect(component.carsParked.length).toBe(1);
   });
@@ -275,5 +275,5 @@ describe('CarZoneComponent', () => {
 
   afterEach(function () {
     jasmine.clock().uninstall();
-});
+  });
 });

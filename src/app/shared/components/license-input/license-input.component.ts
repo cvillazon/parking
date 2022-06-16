@@ -8,7 +8,7 @@ const MAX_LEN = 3;
 export class LicenseInputComponent{
 
   @Output() licenseEvent = new EventEmitter<string>();
-  public letters: string="";
+  public letters='';
   public numbers: number;
   constructor() { }
 

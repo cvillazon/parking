@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { SecurityGuard } from './security.guard';
 
 describe('SecurityGuard', () => {
-  let router:Router
+  let router: Router;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports:[RouterTestingModule],
@@ -24,8 +24,8 @@ describe('SecurityGuard', () => {
   }));
 
   it('should not be able to activate when NOT exist token', inject([SecurityGuard,CookieService], async (guard: SecurityGuard, cookie: CookieService) => {
-    let cookieSpy = spyOn(cookie,'get').and.returnValue(undefined);
-    let routerSpy = spyOn(router, 'navigate').and.callThrough();
+    const cookieSpy = spyOn(cookie,'get').and.returnValue(undefined);
+    const routerSpy = spyOn(router, 'navigate').and.callThrough();
 
     const result = await guard.canActivate();
     
@@ -35,7 +35,7 @@ describe('SecurityGuard', () => {
   }));
   
   it('should be able to activate when exist token', inject([SecurityGuard,CookieService], async (guard: SecurityGuard, cookie: CookieService) => {
-    let cookieSpy = spyOn(cookie,'get').and.returnValue('akljlkjalja');
+    const cookieSpy = spyOn(cookie,'get').and.returnValue('akljlkjalja');
 
     const result = guard.canActivate();
     

@@ -405,6 +405,20 @@
       "timeEnd": 1655406956442,
       "totalPrice": 10000,
       "id": 29
+    },
+    {
+      "serviceOut": false,
+      "spot": 3,
+      "carType": "./assets/svg/truck-icon.svg",
+      "owner": "andres villazon",
+      "hour": 3,
+      "license": "quy765",
+      "date": "6/16/22, 1:31:15 PM",
+      "dateEnd": "6/16/22, 4:31:24 PM",
+      "timeStart": 1655404284812,
+      "timeEnd": 1655415084812,
+      "totalPrice": 30000,
+      "id": 30
     }
   ],
   "posts": [],

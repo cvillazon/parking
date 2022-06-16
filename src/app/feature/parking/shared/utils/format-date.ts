@@ -1,8 +1,8 @@
-export const formatDateGlobal:FormatDateInterface  = {
+export const formatDateGlobal: FormatDateInterface  = {
   timeStyle: 'medium',
   dateStyle: 'short',
 };
 
 interface FormatDateInterface extends Intl.DateTimeFormatOptions{
-  [timeStyle: string]:any
+  [timeStyle: string]: any;
 }

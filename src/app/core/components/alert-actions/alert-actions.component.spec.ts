@@ -1,17 +1,17 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   MatDialogModule,
   MatDialogRef,
   MAT_DIALOG_DATA,
-} from "@angular/material/dialog";
-import { RouterTestingModule } from "@angular/router/testing";
-import { AlertActionsComponent } from "./alert-actions.component";
+} from '@angular/material/dialog';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AlertActionsComponent } from './alert-actions.component';
 
 class dialogRefMock {
   close() {}
 }
 
-describe("AlertActionComponent", () => {
+describe('AlertActionComponent', () => {
   let component: AlertActionsComponent;
   let dialogRef: MatDialogRef<AlertActionsComponent>;
   let fixture: ComponentFixture<AlertActionsComponent>;
@@ -28,10 +28,10 @@ describe("AlertActionComponent", () => {
         {
           provide: MAT_DIALOG_DATA,
           useValue: {
-            subtitle: "message",
-            message: "SOS",
-            text_button1: "OK",
-            icon: "adn-error",
+            subtitle: 'message',
+            message: 'SOS',
+            text_button1: 'OK',
+            icon: 'adn-error',
           },
         },
       ],
@@ -45,7 +45,7 @@ describe("AlertActionComponent", () => {
     // fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
     expect(component.data.title).toBeFalsy();
@@ -56,9 +56,9 @@ describe("AlertActionComponent", () => {
     expect(component.data.align_left).toBeFalsy();
   });
 
-  it("should close the actionAlert", () => {
+  it('should close the actionAlert', () => {
     fixture.detectChanges();
-    const spyDialog = spyOn(dialogRef, "close").and.callThrough();
+    const spyDialog = spyOn(dialogRef, 'close').and.callThrough();
     component.action(0);
     expect(spyDialog).toHaveBeenCalledWith(0);
     expect(component).toBeTruthy();
@@ -70,12 +70,12 @@ describe("AlertActionComponent", () => {
     expect(component.data.align_left).toBeFalsy();
   });
 
-  it("all boolean variables should be falsy", () => {
-    component.data.title = "";
-    component.data.message = "";
-    component.data.text_button1 = "";
-    component.data.text_button2 = "";
-    component.data.subtitle = "";
+  it('all boolean variables should be falsy', () => {
+    component.data.title = '';
+    component.data.message = '';
+    component.data.text_button1 = '';
+    component.data.text_button2 = '';
+    component.data.subtitle = '';
     component.data.align_left = false;
 
     expect(component.data.title).toBeFalsy();
@@ -86,7 +86,7 @@ describe("AlertActionComponent", () => {
     expect(component.data.align_left).toBeFalsy();
   });
 
-  it("given a default configuration some variables (btnOpt1, titleSub,msg) should be truthy", () => {
+  it('given a default configuration some variables (btnOpt1, titleSub,msg) should be truthy', () => {
     fixture.detectChanges();
     expect(component.data.title).toBeFalsy();
     expect(component.data.message).toBeTruthy();

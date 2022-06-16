@@ -25,19 +25,19 @@ export class CreateParkingModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public car: CreateParking
   ) {}
 
-  get isTheFormInvalid():boolean {
+  get isTheFormInvalid(): boolean {
     return this.formReservation.invalid;
   }
 
-  get basePrice():number{
+  get basePrice(): number{
     return this.car.basePrice*this.formReservation.get('hour').value;
   }
 
-  get extraOnDemand():number{
+  get extraOnDemand(): number{
     return this.car.onDemand*this.formReservation.get('hour').value;
   }
 
-  get extraWeekend():number{
+  get extraWeekend(): number{
     return this.car.dominical*this.formReservation.get('hour').value;
   }
   
@@ -114,7 +114,7 @@ export class CreateParkingModalComponent implements OnInit {
       if (!this.islicensePlateDuplicated(carModel.license)) {
         this.parking.createReservation(carModel).subscribe((data: Parking) => this.close(data));
       }else{
-        alert("El vehiculo ya se encuentra parqueado")
+        alert('El vehiculo ya se encuentra parqueado');
       }
     }
   }

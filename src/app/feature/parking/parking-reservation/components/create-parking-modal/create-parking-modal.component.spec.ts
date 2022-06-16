@@ -161,7 +161,7 @@ describe('CreateParkingModalComponent', () => {
       onDemand: 500,
     };
     component.car = data;
-    let isLicenseDuplicated = component.islicensePlateDuplicated(createReservation.license);
+    const isLicenseDuplicated = component.islicensePlateDuplicated(createReservation.license);
 
 
     expect(isLicenseDuplicated).toBe(true);
@@ -177,7 +177,7 @@ describe('CreateParkingModalComponent', () => {
       onDemand: 500,
     };
     component.car = data;
-    let isLicenseDuplicated = component.islicensePlateDuplicated(createReservation.license);
+    const isLicenseDuplicated = component.islicensePlateDuplicated(createReservation.license);
 
 
     expect(isLicenseDuplicated).toBe(false);
@@ -196,7 +196,7 @@ describe('CreateParkingModalComponent', () => {
     };
     component.car = data;
     component.formReservation.get('hour').setValue(HOUR);
-    let extraDemand = component.extraOnDemand;
+    const extraDemand = component.extraOnDemand;
 
 
     expect(extraDemand).toBe(HOUR*data.onDemand);
@@ -215,7 +215,7 @@ describe('CreateParkingModalComponent', () => {
     };
     component.car = data;
     component.formReservation.get('hour').setValue(HOUR);
-    let extraDemand = component.extraOnDemand;
+    const extraDemand = component.extraOnDemand;
 
 
     expect(extraDemand).toBe(0);
@@ -234,7 +234,7 @@ describe('CreateParkingModalComponent', () => {
     };
     component.car = data;
     component.formReservation.get('hour').setValue(HOUR);
-    let extraWeekend = component.extraWeekend;
+    const extraWeekend = component.extraWeekend;
 
     expect(extraWeekend).toBe(HOUR*data.dominical);
   });
@@ -252,7 +252,7 @@ describe('CreateParkingModalComponent', () => {
     };
     component.car = data;
     component.formReservation.get('hour').setValue(HOUR);
-    let extraDemand = component.extraOnDemand;
+    const extraDemand = component.extraOnDemand;
 
 
     expect(extraDemand).toBe(0);
@@ -289,7 +289,7 @@ describe('CreateParkingModalComponent', () => {
       basePrice: 1000,
       dominical: 250,
       onDemand: 500,
-    }
+    };
 
     component.car = PARKING_CREATE;
     component.initForm();
@@ -309,8 +309,8 @@ describe('CreateParkingModalComponent', () => {
     expect(spyDialog).toHaveBeenCalledWith([]);
     expect(spyLicenseDuplicated).toHaveBeenCalled();
     expect(spyIsTheFormInvalid).toHaveBeenCalled();
-    expect(component.basePrice).toBe(PARKING_CREATE.basePrice*createReservation.hour)
-    expect(component.totalPrice).toBe(component.basePrice+component.extraOnDemand+component.extraWeekend)
+    expect(component.basePrice).toBe(PARKING_CREATE.basePrice*createReservation.hour);
+    expect(component.totalPrice).toBe(component.basePrice+component.extraOnDemand+component.extraWeekend);
     // expect(component.totalPrice).toBe(PARKING_CREATE.basePrice*createReservation.hour)
   });
 });

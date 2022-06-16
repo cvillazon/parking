@@ -4,7 +4,7 @@ describe('OnlyTypeDirective', () => {
   let spyReplace;
   beforeEach(() => {
     spyReplace = spyOn(String.prototype,'replace').and.callThrough();
-  })
+  });
 
   it('should create an instance', () => {
     const directive = new OnlyTypeDirective();
@@ -31,6 +31,6 @@ describe('OnlyTypeDirective', () => {
     directive.enterNumber(eventInput);
     expect(directive.val.length).toBe(3);
     expect(isNaN(directive.val)).toBe(false);
-    expect(spyReplace).toHaveBeenCalledWith(/\D/g,'')
+    expect(spyReplace).toHaveBeenCalledWith(/\D/g,'');
   });
 });

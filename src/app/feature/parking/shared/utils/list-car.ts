@@ -1,11 +1,11 @@
 
 interface Car{
-  id:number;
-  name:string;
-  src:string;
+  id: number;
+  name: string;
+  src: string;
 }
 
-export const cars:Car[] = [
+export const cars: Car[] = [
   {
     id: 1,
     name: 'bus',
@@ -68,7 +68,7 @@ export const cars:Car[] = [
   },
 ];
 
-export const getRandomCar = ():Car => {
+export const getRandomCar = (): Car => {
   const crypto = window.crypto;
   const array = new Uint8Array(1);
   return cars[crypto.getRandomValues(array)[0]%cars.length];
