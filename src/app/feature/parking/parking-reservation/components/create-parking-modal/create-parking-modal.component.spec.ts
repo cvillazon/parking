@@ -127,6 +127,113 @@ describe('CreateParkingModalComponent', () => {
     expect(component.formReservation.get('carType').value).toBeTruthy();
     expect(component.formReservation.get('carType').value).toContain('assets');
   });
+  
+  it('should return true if the license plate is already in the parking', () => {
+    const data = {
+      spot: 10,
+      total: 0,
+      cars: [createReservation],
+      basePrice: 0,
+      dominical: 0,
+      onDemand: 500,
+    };
+    component.car = data;
+    let isLicenseDuplicated = component.islicensePlateDuplicated(createReservation.license);
+
+
+    expect(isLicenseDuplicated).toBe(true);
+  });
+
+  it('should return false if the license plate is NOT already in the parking', () => {
+    const data = {
+      spot: 10,
+      total: 0,
+      cars: [],
+      basePrice: 0,
+      dominical: 0,
+      onDemand: 500,
+    };
+    component.car = data;
+    let isLicenseDuplicated = component.islicensePlateDuplicated(createReservation.license);
+
+
+    expect(isLicenseDuplicated).toBe(false);
+  });
+
+  it('should return an extraOnDemand', () => {
+    component.initForm();
+    const HOUR = 2;
+    const data = {
+      spot: 10,
+      total: 0,
+      cars: [],
+      basePrice: 0,
+      dominical: 0,
+      onDemand: 500,
+    };
+    component.car = data;
+    component.formReservation.get('hour').setValue(HOUR);
+    let extraDemand = component.extraOnDemand;
+
+
+    expect(extraDemand).toBe(HOUR*data.onDemand);
+  });
+  
+  it('should return 0 as extraOnDemand, if is no weekends', () => {
+    component.initForm();
+    const HOUR = 2;
+    const data = {
+      spot: 2,
+      total: 0,
+      cars: [],
+      basePrice: 0,
+      dominical: 0,
+      onDemand: 0,
+    };
+    component.car = data;
+    component.formReservation.get('hour').setValue(HOUR);
+    let extraDemand = component.extraOnDemand;
+
+
+    expect(extraDemand).toBe(0);
+  });
+
+  it('should return an extraWeekend', () => {
+    component.initForm();
+    const HOUR = 2;
+    const data = {
+      spot: 10,
+      total: 0,
+      cars: [],
+      basePrice: 0,
+      dominical: 500,
+      onDemand: 250,
+    };
+    component.car = data;
+    component.formReservation.get('hour').setValue(HOUR);
+    let extraWeekend = component.extraWeekend;
+
+    expect(extraWeekend).toBe(HOUR*data.dominical);
+  });
+
+  it('should return 0 as extraDemand, if the capacity of the parking is less than 60%', () => {
+    component.initForm();
+    const HOUR = 2;
+    const data = {
+      spot: 2,
+      total: 0,
+      cars: [],
+      basePrice: 0,
+      dominical: 0,
+      onDemand: 0,
+    };
+    component.car = data;
+    component.formReservation.get('hour').setValue(HOUR);
+    let extraDemand = component.extraOnDemand;
+
+
+    expect(extraDemand).toBe(0);
+  });
 
   it('should set the dates start and final for the reservation', () => {
     component.initForm();
@@ -174,7 +281,7 @@ describe('CreateParkingModalComponent', () => {
     expect(spyCreate).toHaveBeenCalled();
     expect(spyDialog).toHaveBeenCalledWith([]);
     expect(component.basePrice).toBe(PARKING_CREATE.basePrice*createReservation.hour)
-    expect(component.totalPrice).toBeGreaterThan(PARKING_CREATE.basePrice*createReservation.hour)
+    expect(component.totalPrice).toBe(component.basePrice+component.extraOnDemand+component.extraWeekend)
     // expect(component.totalPrice).toBe(PARKING_CREATE.basePrice*createReservation.hour)
   });
 });
