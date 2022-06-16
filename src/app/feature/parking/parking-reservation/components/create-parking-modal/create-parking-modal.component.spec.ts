@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { LicenseInputComponent } from '@shared/components/license-input/license-input.component';
 import { ParkingService } from '@parking/shared/services/parking.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 class dialogRefMock {
   close() {}
@@ -42,6 +43,7 @@ describe('CreateParkingModalComponent', () => {
         CommonModule,
         BrowserModule,
         MatDialogModule,
+        BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientTestingModule,
@@ -65,7 +67,13 @@ describe('CreateParkingModalComponent', () => {
   });
 
   it('should create', () => {
+    const spyInitForm = spyOn(component,'initForm').and.callThrough();
+    const spyISpot = spyOn(component,'setSpot').and.callThrough();
+    fixture.detectChanges();
+
     expect(component).toBeTruthy();
+    expect(spyISpot).toHaveBeenCalled();
+    expect(spyInitForm).toHaveBeenCalled();
   });
 
   it('should initialize the formGroup', () => {
@@ -81,6 +89,21 @@ describe('CreateParkingModalComponent', () => {
     component.setLicenseNumber(license);
 
     expect(component.formReservation.get('license').value).toEqual(license);
+  });
+
+  it('should initialize the field of form with empty strings', () => {
+    component.initForm();
+
+    expect(component.formReservation.get('serviceOut').value).toEqual(false);
+    expect(component.formReservation.get('spot').value).toEqual('');
+    expect(component.formReservation.get('carType').value).toEqual('');
+    expect(component.formReservation.get('owner').value).toEqual('');
+    expect(component.formReservation.get('hour').value).toEqual('');
+    expect(component.formReservation.get('license').value).toEqual('');
+    expect(component.formReservation.get('dateEnd').value).toEqual('');
+    expect(component.formReservation.get('timeStart').value).toEqual('');
+    expect(component.formReservation.get('timeEnd').value).toEqual('');
+    expect(component.formReservation.get('date').value.length).toBeGreaterThan(0);
   });
 
   it('should set the car in a specific zone (spot)', () => {
@@ -272,14 +295,20 @@ describe('CreateParkingModalComponent', () => {
     component.initForm();
     component.formReservation.reset(createReservation);
 
-    spyOnProperty(component,'extraOnDemand').and.returnValue(500*createReservation.hour);
-    spyOnProperty(component,'extraWeekend').and.returnValue(250*createReservation.hour);
     const spyDialog = spyOn(dialogRef,'close').and.callThrough();
     const spyCreate = spyOn(parking, 'createReservation').and.returnValue(of([]));
+    const spyLicenseDuplicated = spyOn(component,'islicensePlateDuplicated').and.callThrough();
+    const spyIsTheFormInvalid = spyOnProperty(component,'isTheFormInvalid').and.callThrough();
+    
+    spyOnProperty(component,'extraOnDemand').and.returnValue(500*createReservation.hour);
+    spyOnProperty(component,'extraWeekend').and.returnValue(250*createReservation.hour);
+    
     component.generateReservation();
 
     expect(spyCreate).toHaveBeenCalled();
     expect(spyDialog).toHaveBeenCalledWith([]);
+    expect(spyLicenseDuplicated).toHaveBeenCalled();
+    expect(spyIsTheFormInvalid).toHaveBeenCalled();
     expect(component.basePrice).toBe(PARKING_CREATE.basePrice*createReservation.hour)
     expect(component.totalPrice).toBe(component.basePrice+component.extraOnDemand+component.extraWeekend)
     // expect(component.totalPrice).toBe(PARKING_CREATE.basePrice*createReservation.hour)

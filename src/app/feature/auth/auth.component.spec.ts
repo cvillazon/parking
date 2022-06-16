@@ -74,7 +74,7 @@ describe('AuthComponent', () => {
     expect(resultValidation).toBeFalse();
   });
 
-  it('when validating the credentials and they are filled, it should return true', () => {
+  it('when validating the credentials and they match the requirements, it should return true', () => {
     component.loginCredentials = {
       email: 'andres.villazon@ceiba.com',
       password: 'ceibaSofwtare',
@@ -92,12 +92,14 @@ describe('AuthComponent', () => {
     };
     const resultLogin = loginSuccesfullyResult();
     const spyLogin = spyOn(authService, 'login').and.returnValue(of(resultLogin[0]));
+    const spyValidation = spyOn(component,'validateCredentials').and.callThrough();
     const spyRouting = spyOn(router, 'navigate').and.callThrough();
 
     component.login();
 
     expect(spyLogin).toHaveBeenCalled();
     expect(spyRouting).toHaveBeenCalledWith(['home']);
+    expect(spyValidation).toHaveBeenCalled();
   });
 
   // it('if the login is succesfully, it should redirect to private pages', () => {
@@ -121,9 +123,11 @@ describe('AuthComponent', () => {
     };
     spyOn(window,'alert').and.callFake(()=>console.log('ejecuto alert auth'));
     spyOn(authService, 'login').and.returnValue(throwError(() => ({status:404, message:'Usuario no econtrado'})));
+    const spyValidation = spyOn(component,'validateCredentials').and.callThrough();
 
     component.login();
 
     expect(window.alert).toHaveBeenCalledWith('Credenciales invalidas');
+    expect(spyValidation).toHaveBeenCalled();
   });
 });

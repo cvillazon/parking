@@ -10,7 +10,7 @@ import { CreateParkingModalComponent } from '../create-parking-modal/create-park
 
 import { CarZoneComponent } from './car-zone.component';
 
-const result = {
+const ParkingMock = {
   serviceOut: false,
   spot: 1,
   carType: './assets/svg/taxi-icon.svg',
@@ -79,7 +79,7 @@ describe('CarZoneComponent', () => {
     close: null,
   });
   const dialogRefSpyObjCreated = jasmine.createSpyObj({
-    afterClosed: of(result),
+    afterClosed: of(ParkingMock),
     close: null,
   });
   let parkingService: ParkingService;
@@ -184,13 +184,13 @@ describe('CarZoneComponent', () => {
     component.openCreateReservation();
 
     expect(spyDialog).toHaveBeenCalledWith(CreateParkingModalComponent,ARGUMENTS_TO_SEND)
-    expect(component.car).toBe(result);
+    expect(component.car).toBe(ParkingMock);
     expect(component.carsParked.length).toBe(1);
   });
 
   it('should cancel a reservation (failed)', () => {
     component.car = { id: 1 };
-    component.carsParked = [result];
+    component.carsParked = [ParkingMock];
     const spyDelete = spyOn(parkingService, 'deleteReservation').and.callFake(
       () => {
         return of();
@@ -206,8 +206,8 @@ describe('CarZoneComponent', () => {
 
   it('should cancel a reservation (successfully)', () => {
     component.car = { id: 1, spot: 6 };
-    component.carsParked = [result];
-    const patchResult = result;
+    component.carsParked = [ParkingMock];
+    const patchResult = ParkingMock;
     patchResult.serviceOut = true;
     const spyDelete = spyOn(parkingService, 'deleteReservation').and.callFake(
       () => {
@@ -252,6 +252,25 @@ describe('CarZoneComponent', () => {
     const extraPayment = component.extraOnDemand;
 
     expect(extraPayment).toBe(250);
+  });
+
+  it('should not increase the price on extraOnDemand', () => {
+    component.spots = 5;
+    component.carsParked=[];
+    component.basePrice = 1000;
+
+    const extraPayment = component.extraOnDemand;
+
+    expect(extraPayment).toBe(0);
+  });
+  
+  it('should return a empty string if the is not a endTimeParking', () => {
+    component.car=ParkingMock;
+
+    const FinalDateString = component.endTimeParking;
+
+    expect(typeof FinalDateString).toEqual('string');
+    expect(FinalDateString).toEqual(ParkingMock.dateEnd);
   });
 
   afterEach(function () {
