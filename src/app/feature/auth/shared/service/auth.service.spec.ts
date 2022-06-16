@@ -46,7 +46,7 @@ describe('AuthService', () => {
       password:'ceibaSoftware*123',
     };
 
-    const dummyResponseLogin = [
+    const dummyResponseLogin = 
       {
         'id': 1,
         'name': 'Andres Villazon',
@@ -54,19 +54,19 @@ describe('AuthService', () => {
         'password': 'ceibaSoftware*123',
         'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s'
       }
-    ];
+    ;
 
     const spyCookie = spyOn(cookie,'set').and.callThrough();
 
     service.login(cred).subscribe((responseLogin: any) => {
-      expect(responseLogin).toEqual(dummyResponseLogin[0]);
-      expect(spyCookie).toHaveBeenCalledWith('token',dummyResponseLogin[0].token);
+      expect(responseLogin).toEqual(dummyResponseLogin);
+      expect(spyCookie).toHaveBeenCalledWith('token',dummyResponseLogin.token);
     });
 
     const req = httpMock.expectOne(apiEndpointLogin);
     expect(req.request.method).toBe('POST');
   
-    req.flush(dummyResponseLogin[0]);
+    req.flush(dummyResponseLogin);
   });
 
   // it('should NOT allow the sign in with incorrect credentials', () => {
