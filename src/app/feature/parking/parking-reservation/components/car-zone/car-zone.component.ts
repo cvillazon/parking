@@ -41,10 +41,6 @@ export class CarZoneComponent {
       ? this.basePrice * EXTRA_PAYMENT_ONDEMAND
       : 0;
   }
-  
-  get totalPriceReservation(): number {
-    return this.basePrice+this.extraDominical+this.extraOnDemand;
-  }
 
   get endTimeParking() {
     if(!this.car.timeEnd){

@@ -34,7 +34,7 @@ describe('LicenseInputComponent', () => {
     const spyEventEmitter = spyOn(component.licenseEvent,'emit').and.returnValue(null);
     
     component.onChange();
-    expect(spyEventEmitter).toHaveBeenCalled();
+    expect(spyEventEmitter).toHaveBeenCalledWith(`${LETTERS}${NUMBERS}`);
   });
   
   it('should NOT emit the license plate, if the inputs are invalid', () => {

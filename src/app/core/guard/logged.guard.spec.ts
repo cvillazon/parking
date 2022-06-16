@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { LoggedService } from './logged.guard';
 const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMj';
 describe('LoggedService', () => {
+  let router:Router;
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
@@ -15,21 +16,28 @@ describe('LoggedService', () => {
         },
       ],
     });
+
+    router = TestBed.inject(Router);
   });
 
   it('should create', inject([LoggedService], (logged: LoggedService) => {
     expect(logged).toBeTruthy();
   }));
 
-  it('should not be able to activate when logged in', inject([LoggedService,CookieService], async (logged: LoggedService,cookie: CookieService) => {
-    spyOn(cookie,'get').and.returnValue(TOKEN);
+  it('should not be able to activate when exist token', inject([LoggedService,CookieService], async (logged: LoggedService,cookie: CookieService) => {
+    let spyCookie = spyOn(cookie,'get').and.returnValue(TOKEN);
+    let routerSpy = spyOn(router, 'navigate').and.callThrough();
+
     const result = await logged.canActivate();
-    expect(result).toBeFalsy();
+    expect(result).toBe(false);
+    expect(spyCookie).toHaveBeenCalledWith('token');
+    expect(routerSpy).toHaveBeenCalledWith(['/home']); 
   }));
   
-  it('should be able to activate when logged out', inject([LoggedService,CookieService], async (logged: LoggedService, cookie: CookieService) => {
-    spyOn(cookie,'get').and.returnValue(undefined);
+  it('should be able to activate when NOT exist token', inject([LoggedService,CookieService], async (logged: LoggedService, cookie: CookieService) => {
+    let spyCookie = spyOn(cookie,'get').and.returnValue(undefined);
     const result = logged.canActivate();
-    expect(result).toBeTruthy();
+    expect(result).toBe(true);
+    expect(spyCookie).toHaveBeenCalledWith('token');
   }));
 });

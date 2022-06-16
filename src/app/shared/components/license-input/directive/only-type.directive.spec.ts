@@ -13,6 +13,8 @@ describe('OnlyTypeDirective', () => {
 
     directive.enterNumber(eventInput);
     expect(directive.val.length).toBe(3);
+    expect(isNaN(directive.val)).toBe(true);
+
   });
   
   it('should accept only 3 numbers', () => {
@@ -22,5 +24,6 @@ describe('OnlyTypeDirective', () => {
 
     directive.enterNumber(eventInput);
     expect(directive.val.length).toBe(3);
+    expect(isNaN(directive.val)).toBe(false);
   });
 });

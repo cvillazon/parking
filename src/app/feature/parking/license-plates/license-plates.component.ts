@@ -39,7 +39,7 @@ export class LicensePlatesComponent implements OnInit {
         carGroupedArray[aux.position]=carStored;
       }else{
         carGrouped[car.license]={
-          position:carGroupedArray?.length
+          position:carGroupedArray.length
         };
         carGroupedArray.push({
           frecuency:1,

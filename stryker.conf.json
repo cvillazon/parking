@@ -6,7 +6,14 @@
     "!src/**/*.module.ts",
     "!src/**/*.spec.ts",
     "!src/test.ts",
-    "!src/environments/*.ts"
+    "!src/environments/*.ts",
+    "!src/app/shared/directivas/**/*.ts",
+    "!src/app/feature/parking/shared/utils/**/*.ts",
+    "!src/app/core/interceptor/auth-interceptor.ts",
+    "!src/app/core/interceptor/http-codigo-error.ts",
+    "!src/app/core/interceptor/manejador-error.ts",
+    "!src/app/core/interceptor/token-interceptor.ts",
+    "!src/app/core/services/**/*.ts"
   ],
   "testRunner": "karma",
   "karma": {

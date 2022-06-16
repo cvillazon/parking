@@ -1,4 +1,4 @@
-export const formatDateGlobal: any = {
+export const formatDateGlobal:any  = {
   timeStyle: 'medium',
   dateStyle: 'short',
 };

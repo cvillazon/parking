@@ -17,7 +17,6 @@ import { getRandomCar } from '@parking/shared/utils/list-car';
 export class CreateParkingModalComponent implements OnInit {
   formatDateTime = new Intl.DateTimeFormat('en', formatDateGlobal);
   formReservation: FormGroup;
-  extraPayment=true;
 
   constructor(
     private parking: ParkingService,
@@ -26,20 +25,20 @@ export class CreateParkingModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public car: CreateParking
   ) {}
 
-  get isTheFormInvalid() {
+  get isTheFormInvalid():boolean {
     return this.formReservation.invalid;
   }
 
-  get basePrice(){
-    return this.car.basePrice*this.formReservation.get('hour').value ?? 0;
+  get basePrice():number{
+    return this.car.basePrice*this.formReservation.get('hour').value;
   }
 
-  get extraOnDemand(){
-    return this.car.onDemand*this.formReservation.get('hour').value ?? 0;
+  get extraOnDemand():number{
+    return this.car.onDemand*this.formReservation.get('hour').value;
   }
 
-  get extraWeekend(){
-    return this.car.dominical*this.formReservation.get('hour').value ?? 0;
+  get extraWeekend():number{
+    return this.car.dominical*this.formReservation.get('hour').value;
   }
   
   get totalPrice(){
@@ -106,7 +105,7 @@ export class CreateParkingModalComponent implements OnInit {
   }
 
   generateReservation() {
-    if (!this.isTheFormInvalid) {
+    if (this.isTheFormInvalid===false) {
       this.setDateTimes();
       this.setCar();
       const carModel = this.formReservation.value;

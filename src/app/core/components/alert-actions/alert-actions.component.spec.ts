@@ -1,15 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AlertActionsComponent } from './alert-actions.component';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from "@angular/material/dialog";
+import { RouterTestingModule } from "@angular/router/testing";
+import { AlertActionsComponent } from "./alert-actions.component";
 
-class dialogRefMock{
-  close(){
-
-  }
+class dialogRefMock {
+  close() {}
 }
 
-describe('AlertActionComponent', () => {
+describe("AlertActionComponent", () => {
   let component: AlertActionsComponent;
   let dialogRef: MatDialogRef<AlertActionsComponent>;
   let fixture: ComponentFixture<AlertActionsComponent>;
@@ -17,20 +19,22 @@ describe('AlertActionComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AlertActionsComponent],
-      imports:[
-        MatDialogModule,
-        RouterTestingModule
-      ],
+      imports: [MatDialogModule, RouterTestingModule],
       providers: [
         {
           provide: MatDialogRef,
-          useClass: dialogRefMock
+          useClass: dialogRefMock,
         },
         {
           provide: MAT_DIALOG_DATA,
-          useValue: {}
+          useValue: {
+            subtitle: "message",
+            message: "SOS",
+            text_button1: "OK",
+            icon: "adn-error",
+          },
         },
-      ]
+      ],
     }).compileComponents();
   });
 
@@ -38,25 +42,57 @@ describe('AlertActionComponent', () => {
     fixture = TestBed.createComponent(AlertActionsComponent);
     component = fixture.componentInstance;
     dialogRef = TestBed.inject(MatDialogRef);
+    // fixture.detectChanges();
+  });
+
+  it("should create", () => {
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
     expect(component).toBeTruthy();
-  });
-  
-  it('should close the actionAlert', () => {
-    const spyDialog = spyOn(dialogRef,'close').and.callThrough();
-    component.action(0);
-    expect(spyDialog).toHaveBeenCalled();
+    expect(component.data.title).toBeFalsy();
+    expect(component.data.message).toBeTruthy();
+    expect(component.data.text_button1).toBeTruthy();
+    expect(component.data.text_button2).toBeFalsy();
+    expect(component.data.subtitle).toBeTruthy();
+    expect(component.data.align_left).toBeFalsy();
   });
 
-  it('all boolean variables should be falsy', () => {
-    expect(component.titleStart).toBeFalsy();
-    expect(component.msg).toBeFalsy();
-    expect(component.btnOpt1).toBeFalsy();
-    expect(component.btnOpt2).toBeFalsy();
-    expect(component.titleSub).toBeFalsy();
-    expect(component.alignLeft).toBeFalsy();
-  });  
+  it("should close the actionAlert", () => {
+    fixture.detectChanges();
+    const spyDialog = spyOn(dialogRef, "close").and.callThrough();
+    component.action(0);
+    expect(spyDialog).toHaveBeenCalledWith(0);
+    expect(component).toBeTruthy();
+    expect(component.data.title).toBeFalsy();
+    expect(component.data.message).toBeTruthy();
+    expect(component.data.text_button1).toBeTruthy();
+    expect(component.data.text_button2).toBeFalsy();
+    expect(component.data.subtitle).toBeTruthy();
+    expect(component.data.align_left).toBeFalsy();
+  });
+
+  it("all boolean variables should be falsy", () => {
+    component.data.title = "";
+    component.data.message = "";
+    component.data.text_button1 = "";
+    component.data.text_button2 = "";
+    component.data.subtitle = "";
+    component.data.align_left = false;
+
+    expect(component.data.title).toBeFalsy();
+    expect(component.data.message).toBeFalsy();
+    expect(component.data.text_button1).toBeFalsy();
+    expect(component.data.text_button2).toBeFalsy();
+    expect(component.data.subtitle).toBeFalsy();
+    expect(component.data.align_left).toBeFalsy();
+  });
+
+  it("given a default configuration some variables (btnOpt1, titleSub,msg) should be truthy", () => {
+    fixture.detectChanges();
+    expect(component.data.title).toBeFalsy();
+    expect(component.data.message).toBeTruthy();
+    expect(component.data.text_button1).toBeTruthy();
+    expect(component.data.text_button2).toBeFalsy();
+    expect(component.data.subtitle).toBeTruthy();
+    expect(component.data.align_left).toBeFalsy();
+  });
 });

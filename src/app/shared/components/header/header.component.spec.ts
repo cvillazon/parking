@@ -37,7 +37,7 @@ describe('HeaderComponent', () => {
     expect(spyLogout).toHaveBeenCalled();
   });
 
-  it('should return undefined when we called openSidenav and the drawer be undefined', () => {
+  it('should open the sidenav', () => {
     component.drawer = {toggle:()=>{}};
     const spyDrawer = spyOn(component.drawer,'toggle').and.callThrough();
     component.openSidenav();

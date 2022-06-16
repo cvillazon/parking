@@ -118,5 +118,7 @@ describe('LicensePlatesComponent', () => {
 
     expect(component.groupByLicense.length).toBeGreaterThan(0);
     expect(component.groupByLicense.length).toBeLessThanOrEqual(historicalParking.length);
+    expect(component.groupByLicense[0].frecuency).toBeGreaterThanOrEqual(1);
+    expect(component.groupByLicense[0].hour).toBeGreaterThanOrEqual(1);
   });
 });

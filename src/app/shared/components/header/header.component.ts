@@ -12,9 +12,7 @@ export class HeaderComponent{
   constructor(private auth: AuthService) { }
 
   openSidenav(){
-    if (typeof this.drawer === 'object'){
-      this.drawer.toggle();
-    }
+    this.drawer.toggle();
   }
   
   logout(){

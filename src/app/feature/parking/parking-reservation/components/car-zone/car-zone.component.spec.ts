@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpService } from '@core/services/http.service';
 import { ParkingService } from '@parking/shared/services/parking.service';
 import { of } from 'rxjs';
+import { CreateParkingModalComponent } from '../create-parking-modal/create-parking-modal.component';
 
 import { CarZoneComponent } from './car-zone.component';
 
@@ -109,25 +110,80 @@ describe('CarZoneComponent', () => {
   });
 
   it('should open modal to create a reservation', () => {
-    component.car = 10;
+    jasmine.clock().install();
+    component.basePrice = 1000;
+    const dateMock = new Date(1655222912188); //Tuesday
+    jasmine.clock().mockDate(dateMock);
+
+    const CAR_SPOT = 10;
+    const BASE_PRICE = 1000;
+    const TOTAL_SPOT = 10;
+    const EXTRA_DOMINICAL = 0;
+    const EXTRA_ONDEMAND = 0;
+    const ARGUMENTS_TO_SEND = {
+      width: '500px',
+      data: {
+        spot: CAR_SPOT,
+        cars: [],
+        basePrice:BASE_PRICE,
+        dominical:EXTRA_DOMINICAL,
+        onDemand:EXTRA_ONDEMAND,
+      },
+      panelClass: 'popUp-generic',
+    }
+
+    component.car = CAR_SPOT;
+    component.carsParked=[];
+    component.basePrice= BASE_PRICE;
+    component.spots= TOTAL_SPOT;
+    fixture.detectChanges();
+
     const spyDialog = spyOn(dialog, 'open').and.returnValue(dialogRefSpyObj);
 
     component.openCreateReservation();
 
-    expect(spyDialog).toHaveBeenCalled();
-    expect(component.car).toBe(10);
+    expect(spyDialog).toHaveBeenCalledWith(CreateParkingModalComponent,ARGUMENTS_TO_SEND);
+    expect(component.car).toBe(CAR_SPOT);
     expect(component.carsParked.length).toBe(0);
   });
 
   it('should open modal to create a reservation and successfully created', () => {
-    component.car = 10;
-    const spyDialog = spyOn(dialog, 'open').and.returnValue(
+    jasmine.clock().install();
+    component.basePrice = 1000;
+    const dateMock = new Date(1655222912188); //Tuesday
+    jasmine.clock().mockDate(dateMock);
+
+    const CAR_SPOT = 10;
+    const BASE_PRICE = 1000;
+    const TOTAL_SPOT = 10;
+    const EXTRA_DOMINICAL = 0;
+    const EXTRA_ONDEMAND = 0;
+    
+    component.car = CAR_SPOT;
+    component.carsParked=[];
+    component.basePrice= BASE_PRICE;
+    component.spots= TOTAL_SPOT;
+
+    const ARGUMENTS_TO_SEND = {
+      width: '500px',
+      data: {
+        spot: component.car,
+        cars: component.carsParked,
+        basePrice:component.basePrice,
+        dominical:EXTRA_DOMINICAL,
+        onDemand:EXTRA_ONDEMAND,
+      },
+      panelClass: 'popUp-generic',
+    }
+    fixture.detectChanges();
+
+    let spyDialog = spyOn(dialog, 'open').and.returnValue(
       dialogRefSpyObjCreated
     );
 
     component.openCreateReservation();
 
-    expect(spyDialog).toHaveBeenCalled();
+    expect(spyDialog).toHaveBeenCalledWith(CreateParkingModalComponent,ARGUMENTS_TO_SEND)
     expect(component.car).toBe(result);
     expect(component.carsParked.length).toBe(1);
   });
@@ -167,7 +223,7 @@ describe('CarZoneComponent', () => {
   });
 
   it('should increase the price on weekends', () => {
-
+    jasmine.clock().install();
     component.basePrice = 1000;
     const dateMock = new Date(1655043926363); //Sun
     jasmine.clock().mockDate(dateMock);
@@ -178,7 +234,7 @@ describe('CarZoneComponent', () => {
   });
   
   it('should not increase the price on weekends', () => {
-
+    jasmine.clock().install();
     component.basePrice = 1000;
     const dateMock = new Date(1655222912188); //Tuesday
     jasmine.clock().mockDate(dateMock);
@@ -197,4 +253,8 @@ describe('CarZoneComponent', () => {
 
     expect(extraPayment).toBe(250);
   });
+
+  afterEach(function () {
+    jasmine.clock().uninstall();
+});
 });

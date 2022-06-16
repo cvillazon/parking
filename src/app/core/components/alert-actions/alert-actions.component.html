@@ -5,10 +5,10 @@
     </div>
     <div *ngIf="data.iconTemplate" class="container-image" [innerHTML]="data.iconTemplate"></div>
     <div class="content-msg">
-        <h2 [ngClass]="{'left-align': alignLeft}" *ngIf="titleStart" class="title-alert">{{data.title}}</h2>
-        <p *ngIf="titleSub" class="title-sub-alert">{{data.subtitle}}</p>
-        <div [ngClass]="{'left-align': alignLeft}" class="body">
-            <p *ngIf="msg" class="message">{{data.message}}</p>
+        <h2 [ngClass]="{'left-align': data.align_left}" *ngIf="data.title" class="title-alert">{{data.title}}</h2>
+        <p *ngIf="data.subtitle" class="title-sub-alert">{{data.subtitle}}</p>
+        <div [ngClass]="{'left-align': data.align_left}" class="body">
+            <p *ngIf="data.message" class="message">{{data.message}}</p>
             <p id="btn-ok" *ngIf="data.button_template" (click)="action(data.index_action_button)" [innerHTML]="data.button_template"></p>
         </div>
     </div>
@@ -18,11 +18,11 @@
         fxLayoutAlign.xs="center"
         fxLayoutGap="20px">
 
-        <div *ngIf="btnOpt1"  (click)="action(1)" class="btns">
+        <div *ngIf="data.text_button1" (click)="action(1)" class="btns">
             <a id="btn-action1" fxFlex="calc(50% - 20px)" class="link-btn">{{data.text_button1}}</a>
         </div>
 
-        <div *ngIf="btnOpt2" (click)="action(2)" class="btns">
+        <div *ngIf="data.text_button2" (click)="action(2)" class="btns">
             <a id="btn-action2" fxFlex="calc(50% - 20px)" class="link-btn black">{{data.text_button2}}</a>
         </div>
     </div>

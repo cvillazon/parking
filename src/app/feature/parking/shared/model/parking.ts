@@ -9,7 +9,7 @@ export class Parking {
   timeStart: number;
   timeEnd: number;
   id?: number;
-  serviceOut = false;
+  serviceOut:boolean;
   frecuency?: number;
   totalPrice?: number;
 }

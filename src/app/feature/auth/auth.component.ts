@@ -11,31 +11,29 @@ import { AuthService } from './shared/service/auth.service';
 export class AuthComponent {
 
   public loginCredentials: Credentials={
-    email:'',
-    password:''
+    email:'', password:''
   };
 
   constructor(private auth: AuthService, private router: Router) { }
 
   validateCredentials(){
-    if(this.loginCredentials.email==='' || this.loginCredentials.password===''){
-      return false;
+    if(this.loginCredentials.email!=='' && this.loginCredentials.password!==''){
+      return true;
     }
-    return true;
+    return false;
   }
 
   login(){
-    if(!this.validateCredentials()){
-      return;
+    if(this.validateCredentials()){
+      this.auth.login(this.loginCredentials).subscribe({
+        next: () =>{
+          this.router.navigate(['home']);
+        },
+        error:() =>{
+          alert('Credenciales invalidas');
+        }
+      });
     }
-    this.auth.login(this.loginCredentials).subscribe({
-      next: () =>{
-        this.router.navigate(['home']);
-      },
-      error:() =>{
-        alert('Credenciales invalidas');
-      }
-    });
   }
 
 }

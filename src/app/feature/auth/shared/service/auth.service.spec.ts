@@ -56,13 +56,16 @@ describe('AuthService', () => {
       }
     ];
 
+    const spyCookie = spyOn(cookie,'set').and.callThrough();
+
     service.login(cred).subscribe((responseLogin: any) => {
-      expect(responseLogin.length).toBe(1);
       expect(responseLogin).toEqual(dummyResponseLogin);
+      expect(spyCookie).toHaveBeenCalledWith('token',dummyResponseLogin['token']);
     });
 
     const req = httpMock.expectOne(apiEndpointLogin);
     expect(req.request.method).toBe('POST');
+  
     req.flush(dummyResponseLogin);
   });
 
@@ -86,12 +89,13 @@ describe('AuthService', () => {
 
   it('should redirectTo', () => {
     
+
     const spyRouter = spyOn(router,'navigate').and.callFake(() =>{
       return null;
     });
     service.redirectTo();
 
-    expect(spyRouter).toHaveBeenCalled();
+    expect(spyRouter).toHaveBeenCalledOnceWith(['/login/']);
     
   });
   
@@ -101,6 +105,6 @@ describe('AuthService', () => {
     });
     service.logout();
 
-    expect(spyCookie).toHaveBeenCalled();
+    expect(spyCookie).toHaveBeenCalledWith('token','/');
   });
 });

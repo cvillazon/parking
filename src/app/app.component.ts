@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MenuItem } from '@core/model/menu-item';
 
 
 @Component({
@@ -8,12 +7,5 @@ import { MenuItem } from '@core/model/menu-item';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app-base';
-  public companies: MenuItem[] = [
-    { url: '/home', nombre: 'home' },
-    { url: '/producto', nombre: 'producto' }
-    
-  ];
-
-  
+  title = 'app-base';  
 }

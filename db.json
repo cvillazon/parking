@@ -265,6 +265,34 @@
       "timeEnd": 1655326192783,
       "totalPrice": 10000,
       "id": 19
+    },
+    {
+      "serviceOut": true,
+      "spot": 1,
+      "carType": "./assets/svg/taxi-icon.svg",
+      "owner": "andres villazon",
+      "hour": 12,
+      "license": "uyu576",
+      "date": "6/15/22, 11:35:36 PM",
+      "dateEnd": "6/16/22, 11:35:50 AM",
+      "timeStart": 1655354150075,
+      "timeEnd": 1655397350075,
+      "totalPrice": 120000,
+      "id": 20
+    },
+    {
+      "serviceOut": true,
+      "spot": 1,
+      "carType": "./assets/svg/car1-icon.svg",
+      "owner": "ANDRES VILLAZON",
+      "hour": 1,
+      "license": "ABC987",
+      "date": "6/15/22, 11:36:35 PM",
+      "dateEnd": "6/16/22, 12:36:35 AM",
+      "timeStart": 1655354195705,
+      "timeEnd": 1655357795705,
+      "totalPrice": 10000,
+      "id": 21
     }
   ],
   "posts": [],
@@ -369,6 +397,24 @@
       "password": "Ceiba1920876876",
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
       "id": 16
+    },
+    {
+      "email": "andres.villazon@ceiba.com",
+      "password": "klajlkjalkjlak",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 17
+    },
+    {
+      "email": "andres.villazon@ceiba.com.co",
+      "password": "Ceiba1920876876",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 18
+    },
+    {
+      "email": "andres.villazon@ceiba.com",
+      "password": "Ceiba1920876876",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 19
     }
   ]
 }

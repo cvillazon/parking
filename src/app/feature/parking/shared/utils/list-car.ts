@@ -1,5 +1,11 @@
 
-export const cars = [
+interface Car{
+  id:number;
+  name:string;
+  src:string;
+}
+
+export const cars:Car[] = [
   {
     id: 1,
     name: 'bus',
@@ -62,10 +68,10 @@ export const cars = [
   },
 ];
 
-export const getRandomCar = () => {
+export const getRandomCar = ():Car => {
   const crypto = window.crypto;
   const array = new Uint8Array(1);
-  return cars[crypto.getRandomValues(array)[0]%cars.length];
+  return cars[crypto.getRandomValues(array)[0]%cars.length];;
 };
 
 

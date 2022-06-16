@@ -33,6 +33,7 @@ describe('CreateParkingModalComponent', () => {
   let component: CreateParkingModalComponent;
   let fixture: ComponentFixture<CreateParkingModalComponent>;
   let parking: ParkingService;
+  let dialogRef: MatDialogRef<CreateParkingModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -59,6 +60,7 @@ describe('CreateParkingModalComponent', () => {
     fixture = TestBed.createComponent(CreateParkingModalComponent);
     component = fixture.componentInstance;
     parking = TestBed.inject(ParkingService);
+    dialogRef = TestBed.inject(MatDialogRef);
     // fixture.detectChanges();
   });
 
@@ -150,22 +152,29 @@ describe('CreateParkingModalComponent', () => {
     expect(final - start).toBe(expectResult);
   });
 
-  it('should create the reservation', () => {
+  it('should create the reservation', () => {    
+    const PARKING_CREATE = {
+      spot: 10,
+      cars: [],
+      basePrice: 1000,
+      dominical: 250,
+      onDemand: 500,
+    }
+
+    component.car = PARKING_CREATE;
     component.initForm();
     component.formReservation.reset(createReservation);
-    const data = {
-      spot: 10,
-      total: 0,
-      cars: [],
-      basePrice: 20000,
-      dominical: 0,
-      onDemand: 0,
-    };
-    component.car = data;
 
-    const spyCreate = spyOn(parking, 'createReservation').and.returnValue(of());
+    spyOnProperty(component,'extraOnDemand').and.returnValue(500*createReservation.hour);
+    spyOnProperty(component,'extraWeekend').and.returnValue(250*createReservation.hour);
+    const spyDialog = spyOn(dialogRef,'close').and.callThrough();
+    const spyCreate = spyOn(parking, 'createReservation').and.returnValue(of([]));
     component.generateReservation();
 
     expect(spyCreate).toHaveBeenCalled();
+    expect(spyDialog).toHaveBeenCalledWith([]);
+    expect(component.basePrice).toBe(PARKING_CREATE.basePrice*createReservation.hour)
+    expect(component.totalPrice).toBeGreaterThan(PARKING_CREATE.basePrice*createReservation.hour)
+    // expect(component.totalPrice).toBe(PARKING_CREATE.basePrice*createReservation.hour)
   });
 });

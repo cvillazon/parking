@@ -92,25 +92,27 @@ describe('AuthComponent', () => {
     };
     const resultLogin = loginSuccesfullyResult();
     const spyLogin = spyOn(authService, 'login').and.returnValue(of(resultLogin[0]));
+    const spyRouting = spyOn(router, 'navigate').and.callThrough();
 
     component.login();
 
     expect(spyLogin).toHaveBeenCalled();
+    expect(spyRouting).toHaveBeenCalledWith(['home']);
   });
 
-  it('if the login is succesfully, it should redirect to private pages', () => {
-    component.loginCredentials = {
-      email: 'andres.villazon@ceiba.com',
-      password: 'ceibaSofwtare',
-    };
-    const resultLogin = loginSuccesfullyResult();
-    spyOn(authService, 'login').and.returnValue(of(resultLogin[0]));
-    const spyRedirect = spyOn(router, 'navigate');
+  // it('if the login is succesfully, it should redirect to private pages', () => {
+  //   component.loginCredentials = {
+  //     email: 'andres.villazon@ceiba.com',
+  //     password: 'ceibaSofwtare',
+  //   };
+  //   const resultLogin = loginSuccesfullyResult();
+  //   spyOn(authService, 'login').and.returnValue(of(resultLogin[0]));
+  //   const spyRedirect = spyOn(router, 'navigate');
 
-    component.login();
+  //   component.login();
 
-    expect(spyRedirect).toHaveBeenCalled();
-  });
+  //   expect(spyRedirect).toHaveBeenCalled();
+  // });
 
   it('if the login failed, it should show an alert', () => {
     component.loginCredentials = {
@@ -122,6 +124,6 @@ describe('AuthComponent', () => {
 
     component.login();
 
-    expect(window.alert).toHaveBeenCalled();
+    expect(window.alert).toHaveBeenCalledWith('Credenciales invalidas');
   });
 });
