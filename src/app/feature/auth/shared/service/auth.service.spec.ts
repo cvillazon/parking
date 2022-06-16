@@ -59,14 +59,14 @@ describe('AuthService', () => {
     const spyCookie = spyOn(cookie,'set').and.callThrough();
 
     service.login(cred).subscribe((responseLogin: any) => {
-      expect(responseLogin).toEqual(dummyResponseLogin);
-      expect(spyCookie).toHaveBeenCalledWith('token',dummyResponseLogin['token']);
+      expect(responseLogin).toEqual(dummyResponseLogin[0]);
+      expect(spyCookie).toHaveBeenCalledWith('token',dummyResponseLogin[0].token);
     });
 
     const req = httpMock.expectOne(apiEndpointLogin);
     expect(req.request.method).toBe('POST');
   
-    req.flush(dummyResponseLogin);
+    req.flush(dummyResponseLogin[0]);
   });
 
   // it('should NOT allow the sign in with incorrect credentials', () => {
