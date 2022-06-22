@@ -14,7 +14,7 @@
       <th>Lugar Ocupado</th>
     </thead>
     <tbody>
-      <tr *ngFor="let carParked of parkingHistory">
+      <tr *ngFor="let carParked of parkingObservable | async">
         <td>{{ carParked.license | uppercase }}</td>
         <td>{{ carParked.date }}</td>
         <td>{{ carParked.dateEnd }}</td>
@@ -27,7 +27,7 @@
   <div class="mobile-view">
     <div
       class="mobile-historical-item"
-      *ngFor="let carParked of parkingHistory"
+      *ngFor="let carParked of parkingObservable | async"
     >
       <div class="row__item">
         <p class="title__item">Placa Vehicular</p>

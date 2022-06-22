@@ -15,7 +15,7 @@ export class CarZoneComponent {
   @Input() id: number;
   @Input() basePrice: number;
   @Input() spots = 0;
-  @Input() car: any | Parking;
+  @Input() car: Parking;
   @Input() carsParked: Parking[] = [];
   formatDateTime = new Intl.DateTimeFormat('en', formatDateGlobal);
   constructor(public dialog: MatDialog, private parking: ParkingService) {}
@@ -54,7 +54,7 @@ export class CarZoneComponent {
       const dialogRef = this.dialog.open(CreateParkingModalComponent, {
         width: '500px',
         data: {
-          spot: this.car,
+          spot: this.car?this.car:this.id,
           cars: this.carsParked,
           basePrice:this.basePrice,
           dominical:this.extraDominical,
@@ -77,7 +77,7 @@ export class CarZoneComponent {
       this.parking.deleteReservation(this.car.id).subscribe((car: Parking) => {
         if(typeof car === 'object'){
           this.removeFromParking(this.car.id);
-          this.car = this.car.spot;
+          this.car=null;
         }
       });
     }

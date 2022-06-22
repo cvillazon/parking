@@ -95,7 +95,7 @@ describe('ParkingReservationComponent', () => {
   it('should get the information of the parked car', () => {
     component.carsInParking=activeParking;
 
-    const res: any = component.getInfoParking(2);
+    const res: Parking = component.getInfoParking(2);
 
     expect(res.spot).toEqual(2);
     expect(res.id).toEqual(2);
@@ -104,7 +104,7 @@ describe('ParkingReservationComponent', () => {
   it('should get the id of the spot in the parking, if there is no cars in this parking zone', () => {
     component.carsInParking=activeParking;
 
-    const res: any = component.getInfoParking(1);
+    const res: Parking = component.getInfoParking(1);
 
     expect(res).toEqual(1);
   });

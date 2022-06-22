@@ -33,6 +33,7 @@ export class GenericAlertService {
     if(dinamicConfig){
       this.dialogRef=this.dialog.open(AlertActionsComponent,{
         data:dinamicConfig,
+        disableClose:false,
         panelClass:classContainer?classContainer:'class-container-generic-alert'
       });
 
@@ -44,6 +45,8 @@ export class GenericAlertService {
 
       this.dialogRef=this.dialog.open(AlertActionsComponent,{
         data:obj,
+        disableClose:false,
+        
         panelClass:classContainer?classContainer:'class-container-generic-alert'
       });
 

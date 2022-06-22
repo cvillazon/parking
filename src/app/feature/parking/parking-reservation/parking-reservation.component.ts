@@ -27,7 +27,7 @@ export class ParkingReservationComponent implements OnInit {
   }
 
   getInfoParking(idx: number){
-    return this.carsInParking?.find((cars: Parking)=>cars.spot===idx) ?? idx;
+    return this.carsInParking?.find((cars: Parking)=>cars.spot===idx);
   }
 
 }

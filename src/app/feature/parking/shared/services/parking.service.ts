@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core/services/http.service';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Parking } from '../model/parking';
 
@@ -22,7 +23,7 @@ export class ParkingService {
     return this.http.doGet(`${environment.endpoint}/parking/?timeEnd_gte=${time}&serviceOut_ne=true`);
   }
   
-  loadAllReservation(){
+  loadAllReservation():Observable<Parking[]>{
     return this.http.doGet(`${environment.endpoint}/parking`);
   }
 }

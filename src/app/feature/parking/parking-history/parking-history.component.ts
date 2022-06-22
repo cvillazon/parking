@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Parking } from '../shared/model/parking';
 import { ParkingService } from '../shared/services/parking.service';
 
@@ -9,12 +10,10 @@ import { ParkingService } from '../shared/services/parking.service';
 })
 export class ParkingHistoryComponent implements OnInit {
 
-  public parkingHistory: Parking[];
+  public parkingObservable: Observable<Parking[]>;
   constructor(private parking: ParkingService) { }
 
   ngOnInit(): void {
-    this.parking.loadAllReservation().subscribe((parking: Parking[])=>{
-      this.parkingHistory=parking;
-    });
+    this.parkingObservable = this.parking.loadAllReservation();
   }
 }

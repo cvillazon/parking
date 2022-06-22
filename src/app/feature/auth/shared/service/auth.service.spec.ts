@@ -7,6 +7,7 @@ import { HttpService } from '@core/services/http.service';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from 'src/environments/environment';
 import { Credentials } from '../model/CredentialAuth';
+import { Users } from '../model/Users';
 import { AuthService } from './auth.service';
 
 
@@ -58,7 +59,7 @@ describe('AuthService', () => {
 
     const spyCookie = spyOn(cookie,'set').and.callThrough();
 
-    service.login(cred).subscribe((responseLogin: any) => {
+    service.login(cred).subscribe((responseLogin: Users) => {
       expect(responseLogin).toEqual(dummyResponseLogin);
       expect(spyCookie).toHaveBeenCalledWith('token',dummyResponseLogin.token);
     });
@@ -68,24 +69,6 @@ describe('AuthService', () => {
   
     req.flush(dummyResponseLogin);
   });
-
-  // it('should NOT allow the sign in with incorrect credentials', () => {
-  //   const cred: Credentials={
-  //     email:'andres.villazon@ceiba.com',
-  //     password:'test',
-  //   };
-
-  //   const dummyResponseLogin = [];
-
-  //   service.login(cred).subscribe((responseLogin: any) => {
-  //     expect(responseLogin.length).toBe(0);
-  //     expect(responseLogin).toEqual(dummyResponseLogin);
-  //   });
-
-  //   const req = httpMock.expectOne(apiEndpointFail);
-  //   expect(req.request.method).toBe('GET');
-  //   req.flush(dummyResponseLogin);
-  // });
 
   it('should redirectTo', () => {
     
