@@ -12,6 +12,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ParkingService } from './shared/services/parking.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers:[ParkingService]
 })
 export class PrivateModule { }

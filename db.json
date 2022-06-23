@@ -657,6 +657,64 @@
       "timeEnd": 1656001257402,
       "totalPrice": 210000,
       "id": 47
+    },
+    {
+      "serviceOut": false,
+      "spot": 15,
+      "carType": "./assets/svg/excavator2-icon.svg",
+      "owner": "andres villazon",
+      "hour": 3,
+      "license": "ioi979",
+      "date": "6/22/22, 4:23:37 PM",
+      "dateEnd": "6/22/22, 7:23:45 PM",
+      "timeStart": 1655933025917,
+      "timeEnd": 1655943825917,
+      "totalPrice": 30000,
+      "id": 48
+    },
+    {
+      "serviceOut": false,
+      "spot": {
+        "formatDateTime": {}
+      },
+      "carType": "./assets/svg/police-icon.svg",
+      "owner": "hector villazon",
+      "hour": 2,
+      "license": "lkj816",
+      "date": "6/23/22, 10:43:14 AM",
+      "dateEnd": "6/23/22, 12:43:24 PM",
+      "timeStart": 1655999004776,
+      "timeEnd": 1656006204776,
+      "totalPrice": 20000,
+      "id": 49
+    },
+    {
+      "serviceOut": false,
+      "spot": 2,
+      "carType": "./assets/svg/car3-icon.svg",
+      "owner": "andres villazon",
+      "hour": 2,
+      "license": "uyt716",
+      "date": "6/23/22, 11:47:28 AM",
+      "dateEnd": "6/23/22, 1:47:42 PM",
+      "timeStart": 1656002862001,
+      "timeEnd": 1656010062001,
+      "totalPrice": null,
+      "id": 50
+    },
+    {
+      "serviceOut": false,
+      "spot": 4,
+      "carType": "./assets/svg/car2-icon.svg",
+      "owner": "hector villazon",
+      "hour": 2,
+      "license": "lkj687",
+      "date": "6/23/22, 11:56:30 AM",
+      "dateEnd": "6/23/22, 1:56:42 PM",
+      "timeStart": 1656003402263,
+      "timeEnd": 1656010602263,
+      "totalPrice": 20000,
+      "id": 51
     }
   ],
   "posts": [],
@@ -869,6 +927,24 @@
       "password": "oipoispoisio",
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
       "id": 34
+    },
+    {
+      "email": "andres.villazon@ceiba.com",
+      "password": "aiujauoiauoiua",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 35
+    },
+    {
+      "email": "andres.villazon@ceiba.com",
+      "password": "khkajhkhakha",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 36
+    },
+    {
+      "email": "andres.villazon@ceiba.com",
+      "password": "hkjhkjhkjhkj",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFuZHJlcy52aWxsYXpvbkBjZWliYS5jb20uY28iLCJpZCI6IjEiLCJpYXQiOjE1MTYyMzkwMjJ9.PU9kIdBC_9CGttcUGe5BpGHKD75Sxfdbr495ZevNQ4s",
+      "id": 37
     }
   ]
 }

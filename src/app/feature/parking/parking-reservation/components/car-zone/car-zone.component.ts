@@ -11,7 +11,7 @@ import { CreateParkingModalComponent } from '../create-parking-modal/create-park
   templateUrl: './car-zone.component.html',
   styleUrls: ['./car-zone.component.scss'],
 })
-export class CarZoneComponent {
+export class CarZoneComponent{
   @Input() id: number;
   @Input() basePrice: number;
   @Input() spots = 0;

@@ -1,5 +1,5 @@
 <div class="container__reservation">
-    <div class="parking-zone">
+    <div class="parking-zone" *ngIf="carsInParking">
         <div [attr.data-idx]="'spot-place-'+idx" class="parking-zone__spot-parking" *ngFor="let idx of parkingArray">
             <app-car-zone [id]="idx" class="car-zone-container" [basePrice]="10000" [spots]="parkingSpot" [carsParked]="carsInParking" [car]="getInfoParking(idx)" ></app-car-zone>
         </div>
