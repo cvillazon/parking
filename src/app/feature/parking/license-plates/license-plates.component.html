@@ -9,7 +9,7 @@
             <th>Total de Horas</th>
         </thead>
         <tbody>
-            <tr *ngFor="let license of groupByLicense">
+            <tr *ngFor="let license of groupByLicense | async">
                 <td>{{license.license | uppercase}}</td>
                 <td>{{license.date}}</td>
                 <td>{{license.frecuency}}</td>
@@ -21,7 +21,7 @@
     <div class="mobile-view">
         <div
           class="mobile-historical-item"
-          *ngFor="let license of groupByLicense"
+          *ngFor="let license of groupByLicense | async"
         >
           <div class="row__item">
             <p class="title__item">Placa Vehicular</p>
