@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpService } from '@core/services/http.service';
 import { Parking } from '../shared/model/parking';
 import { ParkingService } from '../shared/services/parking.service';
-import { of } from 'rxjs';
+import { lastValueFrom, of } from 'rxjs';
 
 import { ParkingHistoryComponent } from './parking-history.component';
 
@@ -76,13 +76,14 @@ describe('ParkingHistoryComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load all history parking', () => {
+  it('should load all history parking', async () => {
     spyOn(parkingService,'loadAllReservation').and.returnValue(
       of(activeParking)
     );
 
     fixture.detectChanges();
 
-    expect(component.parkingHistory).toEqual(activeParking);
+    const parkingHistory = await lastValueFrom(component.parkingObservable)
+    expect(parkingHistory).toEqual(activeParking);
   });
 });

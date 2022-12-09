@@ -8,7 +8,7 @@
             <div class="row-form__container-input">
                 <mat-form-field validar appearance="outline">
                     <mat-label>Nombre del propietario del vehiculo</mat-label>
-                    <input id="nameOwner" formControlName="owner" name="owner" type="text" matInput placeholder="Placeholder">
+                    <input id="nameOwner" data-cy="parking-owner" formControlName="owner" name="owner" type="text" matInput placeholder="Placeholder">
                 </mat-form-field>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <div class="row-form__container-input">
                 <mat-form-field validar appearance="outline">
                     <mat-label>Horas de reserva</mat-label>
-                    <input id="hour" formControlName="hour" name="hour2" type="number" value="1" matInput placeholder="1">
+                    <input id="hour" data-cy="parking-hour" formControlName="hour" name="hour2" type="number" value="1" matInput placeholder="1">
                 </mat-form-field>
             </div>
             <div class="row-form__container-input">
@@ -57,6 +57,7 @@
     </div>
     <hr>
     <div class="btn-container__form">
-        <button id="saveReservation" (click)="generateReservation()" [disabled]="isTheFormInvalid" class="btn-save" type="submit">Generar reserva</button>
+        <button id="saveReservation" data-cy="create-reservation-button" (click)="generateReservation()" [disabled]="isTheFormInvalid" class="btn-save" type="submit">Generar reserva</button>
     </div>
 </div>
+

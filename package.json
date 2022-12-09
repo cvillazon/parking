@@ -3,14 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json -o ",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build --configuration production",
     "build:stats": "ng build --configuration production --stats-json",
     "analyze": "webpack-bundle-analyzer dist/app-base/stats.json",
     "test": "ng test --code-coverage --watch",
     "test:mutation": "stryker run",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +29,7 @@
     "@angular/router": "~13.3.11",
     "generator-eslint": "^3.0.1",
     "ngx-cookie-service": "~13.2.1",
+    "node-fetch": "^3.2.6",
     "rxjs": "~7.5.5",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.5"
@@ -41,6 +44,7 @@
     "@angular/cli": "~13.3.7",
     "@angular/compiler-cli": "~13.3.11",
     "@angular/language-service": "~13.3.11",
+    "@cypress/schematic": "^2.4.0",
     "@stryker-mutator/core": "^6.0.2",
     "@stryker-mutator/karma-runner": "^6.0.2",
     "@stryker-mutator/typescript-checker": "^6.0.2",
@@ -64,6 +68,8 @@
     "stryker-cli": "^1.0.2",
     "ts-node": "~ 10.8.0",
     "typescript": "~4.6.4",
-    "webpack-bundle-analyzer": "^4.5.0"
-  }
+    "webpack-bundle-analyzer": "^4.5.0",
+    "cypress": "latest"
+  },
+  "type": "module"
 }

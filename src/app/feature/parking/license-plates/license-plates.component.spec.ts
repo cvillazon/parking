@@ -1,85 +1,63 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpService } from '@core/services/http.service';
-import { of } from 'rxjs';
-import { ParkingService } from '../shared/services/parking.service';
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { HttpService } from "@core/services/http.service";
+import { lastValueFrom, of } from "rxjs";
+import { ParkingService } from "../shared/services/parking.service";
 
-import { LicensePlatesComponent } from './license-plates.component';
+import { LicensePlatesComponent } from "./license-plates.component";
 
 const historicalParking = [
   {
-    serviceOut: false,
-    spot: 1,
-    carType: './assets/svg/taxi-icon.svg',
-    owner: 'andres villazon',
-    hour: 2,
-    license: 'oiy644',
-    date: '6/12/22, 8:04:48 PM',
-    dateEnd: '6/12/22, 10:04:59 PM',
+    frecuency: 1,
+    date: "6/12/22, 8:04:48 PM",
     timeStart: 1655082299569,
-    timeEnd: 1655089499569,
-    totalPrice: 75000,
-    id: 1,
-  },
-  {
-    serviceOut: false,
-    spot: 2,
-    carType: './assets/svg/car1-icon.svg',
-    owner: 'valerir  villazon',
+    owner: "andres villazon",
     hour: 2,
-    license: 'mkl918',
-    date: '6/12/22, 8:05:00 PM',
-    dateEnd: '6/12/22, 10:05:11 PM',
+    license: "oiy644",
+  },
+  {
+    frecuency: 1,
+    date: "6/12/22, 8:05:00 PM",
     timeStart: 1655082311265,
-    timeEnd: 1655089511265,
-    totalPrice: 75000,
-    id: 2,
+    owner: "valerir villazon",
+    hour: 2,
+    license: "mkl918",
   },
   {
-    serviceOut: false,
-    spot: 3,
-    carType: './assets/svg/car1-icon.svg',
-    owner: 'karen perez',
-    hour: 1,
-    license: 'gfy716',
-    date: '6/12/22, 8:05:12 PM',
-    dateEnd: '6/12/22, 9:05:28 PM',
+    frecuency: 2,
+    date: "6/12/22, 8:05:28 PM",
     timeStart: 1655082328948,
-    timeEnd: 1655085928948,
-    totalPrice: 37500,
-    id: 3,
+    owner: "karen perez",
+    hour: 2,
+    license: "gfy716",
   },
   {
-    serviceOut: false,
-    spot: 5,
-    carType: './assets/svg/cab-icon.svg',
-    owner: 'hector villazon',
-    hour: 5,
-    license: 'hgs764',
-    date: '6/12/22, 8:05:30 PM',
-    dateEnd: '6/13/22, 1:05:42 AM',
+    frecuency: 1,
+    date: "6/12/22, 8:05:30 PM",
     timeStart: 1655082342578,
-    timeEnd: 1655100342578,
-    totalPrice: 187500,
-    id: 4,
+    owner: "hector villazon",
+    hour: 5,
+    license: "hgs764",
   },
   {
-    serviceOut: true,
-    spot: 4,
-    carType: './assets/svg/car2-icon.svg',
-    owner: 'patricia villarreal',
-    hour: 1,
-    license: 'gfy716',
-    date: '6/12/22, 8:06:24 PM',
-    dateEnd: '6/12/22, 9:06:37 PM',
-    timeStart: 1655082397355,
-    timeEnd: 1655085997355,
-    totalPrice: 37500,
-    id: 5,
+    frecuency: 2,
+    date: "6/12/22, 8:09:04 PM",
+    timeStart: 1655082544468,
+    owner: "hector villazon",
+    hour: 2,
+    license: "MKL918",
   },
+  {
+    frecuency: 1,
+    date: "6/12/22, 8:11:37 PM",
+    timeStart: 1655082716551,
+    owner: "Rafael mana",
+    hour: 1,
+    license: "hju917",
+  }
 ];
 
-describe('LicensePlatesComponent', () => {
+describe("LicensePlatesComponent", () => {
   let component: LicensePlatesComponent;
   let fixture: ComponentFixture<LicensePlatesComponent>;
   let parkingService: ParkingService;
@@ -99,26 +77,18 @@ describe('LicensePlatesComponent', () => {
     // fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load all history of parkings', () => {
-    spyOn(parkingService, 'loadAllReservation').and.returnValue(of(historicalParking));
+  it("should load all history of parkings", async () => {
+    spyOn(parkingService, "loadAllLicensePlates").and.returnValue(
+      of(historicalParking)
+    );
 
     fixture.detectChanges();
-
-    expect(component.historyParked.length).toBeGreaterThan(0);
-    expect(component.historyParked).toEqual(historicalParking);
-  });
-  
-  it('should group history parking by license plates', () => {
-    component.historyParked=historicalParking;
-    component.groupByLicensePlates();
-
-    expect(component.groupByLicense.length).toBeGreaterThan(0);
-    expect(component.groupByLicense.length).toBeLessThanOrEqual(historicalParking.length);
-    expect(component.groupByLicense[0].frecuency).toBeGreaterThanOrEqual(1);
-    expect(component.groupByLicense[0].hour).toBeGreaterThanOrEqual(1);
+    
+    const licenseHistory = await lastValueFrom(component.groupByLicense);
+    expect(licenseHistory.length).toBeGreaterThan(0);
   });
 });

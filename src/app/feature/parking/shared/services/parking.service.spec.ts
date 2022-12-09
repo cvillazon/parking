@@ -2,9 +2,61 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { TestBed } from '@angular/core/testing';
 import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
+import { LicenseHistory } from '../model/license-history';
 import { Parking } from '../model/parking';
 
 import { ParkingService } from './parking.service';
+
+const historicalLiecenseParking = [
+  {
+    frecuency: 1,
+    date: "6/12/22, 8:04:48 PM",
+    timeStart: 1655082299569,
+    owner: "andres villazon",
+    hour: 2,
+    license: "oiy644",
+  },
+  {
+    frecuency: 1,
+    date: "6/12/22, 8:05:00 PM",
+    timeStart: 1655082311265,
+    owner: "valerir villazon",
+    hour: 2,
+    license: "mkl918",
+  },
+  {
+    frecuency: 2,
+    date: "6/12/22, 8:05:28 PM",
+    timeStart: 1655082328948,
+    owner: "karen perez",
+    hour: 2,
+    license: "gfy716",
+  },
+  {
+    frecuency: 1,
+    date: "6/12/22, 8:05:30 PM",
+    timeStart: 1655082342578,
+    owner: "hector villazon",
+    hour: 5,
+    license: "hgs764",
+  },
+  {
+    frecuency: 2,
+    date: "6/12/22, 8:09:04 PM",
+    timeStart: 1655082544468,
+    owner: "hector villazon",
+    hour: 2,
+    license: "MKL918",
+  },
+  {
+    frecuency: 1,
+    date: "6/12/22, 8:11:37 PM",
+    timeStart: 1655082716551,
+    owner: "Rafael mana",
+    hour: 1,
+    license: "hju917",
+  }
+];
 
 const historicalReservations = [
   {
@@ -290,12 +342,12 @@ describe('ParkingService', () => {
     expect(req.request.method).toBe('GET');
     req.flush(dummyReservations);
   });
+  
+  it('should list all license historical reservation', () => {
+    const dummyReservations = historicalLiecenseParking;
 
-  it('should list all historical reservation', () => {
-    const dummyReservations = historicalReservations;
-
-    service.loadAllReservation().subscribe((reservation: Parking[]) => {
-      expect(reservation.length).toBeGreaterThan(0);
+    service.loadAllLicensePlates().subscribe((license: LicenseHistory[]) => {
+      expect(license.length).toBeGreaterThan(0);
     });
 
     const req = httpMock.expectOne(apiEndpointLoadReservations);

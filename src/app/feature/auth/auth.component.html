@@ -5,17 +5,17 @@
         <div class="container__input">
             <mat-form-field appearance="outline">
                 <mat-label>Correo electronico</mat-label>
-                <input id="email_auth" [(ngModel)]="loginCredentials.email" matInput type="email" placeholder="Ingrese su Correo Electronico">
+                <input id="email_auth" data-cy="login-email" [(ngModel)]="loginCredentials.email" matInput type="email" placeholder="Ingrese su Correo Electronico">
             </mat-form-field>
     
             <mat-form-field appearance="outline">
                 <mat-label>Contraseña</mat-label>
-                <input id="password_auth" [(ngModel)]="loginCredentials.password" type="password" matInput placeholder="Digite su Contraseña">
+                <input id="password_auth" data-cy="login-password" [(ngModel)]="loginCredentials.password" type="password" matInput placeholder="Digite su Contraseña">
             </mat-form-field>
         </div>
 
         <div class="container__actions">
-            <a id="login" (click)="login()">Ingresar</a>
+            <a id="login" data-cy="login-submit" (click)="login()">Ingresar</a>
         </div>
 
     </div>

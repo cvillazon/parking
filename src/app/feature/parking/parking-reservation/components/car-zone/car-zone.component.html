@@ -11,11 +11,11 @@
         <div class="card-parked__header">
             <img alt="type of car" [src]="car?.carType">
             <div *ngIf="isReserved" class="car-parked__information">
-                <p class="info__text">Placa: <span>{{car?.license | uppercase}}</span></p>
-                <p class="info__text">Dueño: <span>{{car?.owner}}</span></p>
-                <p class="info__text">Hora de Salida: <span>{{endTimeParking}}</span></p>
+                <p data-cy="zone-license" class="info__text">Placa: <span>{{car?.license | uppercase}}</span></p>
+                <p data-cy="zone-owner" class="info__text">Dueño: <span>{{car?.owner}}</span></p>
+                <p data-cy="zone-end-time" class="info__text">Hora de Salida: <span>{{endTimeParking}}</span></p>
             </div>
         </div>
-        <button id="cancel-reservation" (click)="cancelReservation()" class="btn-leave-parking">Salir</button>
+        <button id="cancel-reservation" data-cy="cancel-reservation-button" (click)="cancelReservation()" class="btn-leave-parking">Salir</button>
     </div>
 </div>

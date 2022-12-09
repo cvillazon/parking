@@ -132,7 +132,7 @@ describe('CarZoneComponent', () => {
       panelClass: 'popUp-generic',
     };
 
-    component.car = CAR_SPOT;
+    component.id = CAR_SPOT;
     component.carsParked=[];
     component.basePrice= BASE_PRICE;
     component.spots= TOTAL_SPOT;
@@ -143,7 +143,6 @@ describe('CarZoneComponent', () => {
     component.openCreateReservation();
 
     expect(spyDialog).toHaveBeenCalledWith(CreateParkingModalComponent,ARGUMENTS_TO_SEND);
-    expect(component.car).toBe(CAR_SPOT);
     expect(component.carsParked.length).toBe(0);
   });
 
@@ -159,7 +158,7 @@ describe('CarZoneComponent', () => {
     const EXTRA_DOMINICAL = 0;
     const EXTRA_ONDEMAND = 0;
     
-    component.car = CAR_SPOT;
+    component.id = CAR_SPOT;
     component.carsParked=[];
     component.basePrice= BASE_PRICE;
     component.spots= TOTAL_SPOT;
@@ -167,7 +166,7 @@ describe('CarZoneComponent', () => {
     const ARGUMENTS_TO_SEND = {
       width: '500px',
       data: {
-        spot: component.car,
+        spot: component.id,
         cars: component.carsParked,
         basePrice:component.basePrice,
         dominical:EXTRA_DOMINICAL,
@@ -189,7 +188,7 @@ describe('CarZoneComponent', () => {
   });
 
   it('should cancel a reservation (failed)', () => {
-    component.car = { id: 1 };
+    component.car = ParkingMock;
     component.carsParked = [ParkingMock];
     const spyDelete = spyOn(parkingService, 'deleteReservation').and.callFake(
       () => {
@@ -205,7 +204,7 @@ describe('CarZoneComponent', () => {
   });
 
   it('should cancel a reservation (successfully)', () => {
-    component.car = { id: 1, spot: 6 };
+    component.car = ParkingMock;
     component.carsParked = [ParkingMock];
     const patchResult = ParkingMock;
     patchResult.serviceOut = true;
@@ -217,7 +216,6 @@ describe('CarZoneComponent', () => {
 
     component.cancelReservation();
 
-    expect(typeof component.car).toEqual('number');
     expect(spyDelete).toHaveBeenCalled();
     expect(component.carsParked.length).toBe(0);
   });

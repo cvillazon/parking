@@ -12,10 +12,10 @@
           <span (click)="drawer.toggle()" class=".side-bar-menu__close adn-close"></span>
         </div>
         <div class="side-bar-menu-body">
-          <p id="goHome" routerLinkActive="active" (click)="drawer.toggle()" class="side-menu-body-links" routerLink="home">Inicio</p>
-          <p id="goParking" routerLinkActive="active" (click)="drawer.toggle()" class="side-menu-body-links" routerLink="parking">Elegir estacionamiento</p>
-          <p id="goHistorical" routerLinkActive="active" (click)="drawer.toggle()" class="side-menu-body-links" routerLink="historical">Historial de parqueos</p>
-          <p id="goHistoricalLicense" routerLinkActive="active" (click)="drawer.toggle()" class="side-menu-body-links" routerLink="license-plates">Placas registradas</p>
+          <p data-cy="go-home" id="goHome" routerLinkActive="active" (click)="drawer.toggle()" class="side-menu-body-links" routerLink="home">Inicio</p>
+          <p data-cy="go-parking" id="goParking" routerLinkActive="active" (click)="drawer.toggle()" class="side-menu-body-links" routerLink="parking">Elegir estacionamiento</p>
+          <p data-cy="go-historical" id="goHistorical" routerLinkActive="active" (click)="drawer.toggle()" class="side-menu-body-links" routerLink="historical">Historial de parqueos</p>
+          <p data-cy="go-historical-license" id="goHistoricalLicense" routerLinkActive="active" (click)="drawer.toggle()" class="side-menu-body-links" routerLink="license-plates">Placas registradas</p>
         </div>
       </div>
     </mat-drawer>
