@@ -16,7 +16,7 @@ describe('Auth Component', () => {
         const PASSWORD = "Ceiba1920876876";
         cy.login(EMAIL, PASSWORD);
         
-        cy.wait(1000);
+        cy.wait(500);
 
         cy.get('[data-cy="logout-button"]').click();
 

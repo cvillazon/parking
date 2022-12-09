@@ -6,6 +6,25 @@ describe('Parking Component', () => {
     const NAME_OWNER = "ANDRES VILLAZON"
     const HOUR = "1"
 
+    before(() =>{
+        cy.login(EMAIL, PASSWORD);
+        
+        cy.get('[data-cy="open-sidebar-button"]').click();
+        
+        cy.get('[data-cy="go-parking"]').click();
+
+        cy.get('[data-cy="parking-zone-item"]').eq(0).then(($event:JQuery<HTMLElement>)=>{
+            if($event.find('.car-parked').length){
+                cy.get('[data-cy="cancel-reservation-button"]').click();
+            }
+        })
+        cy.wait(200);
+
+        cy.get('[data-cy="logout-button"]').click();
+
+        cy.visit("/")
+    })
+
     beforeEach(() => {
         cy.login(EMAIL, PASSWORD);
     });
@@ -20,7 +39,7 @@ describe('Parking Component', () => {
         cy.get('[data-cy="open-sidebar-button"]').click();
         cy.get('[data-cy="go-parking"]').click();
 
-        cy.create_reservation(NAME_OWNER, HOUR, LICENSE_LETTER+LICENSE_NUMBER)
+        cy.create_reservation(NAME_OWNER, HOUR, `${LICENSE_LETTER}${LICENSE_NUMBER}`)
 
         cy.wait(500)
 
@@ -70,7 +89,7 @@ describe('Parking Component', () => {
             .should("have.length.gt",0)
     })
 
-    it.only("should show the historical reservation registered", () => {
+    it("should show the historical reservation registered", () => {
         cy.visit("/")
 
         cy.get('[data-cy="open-sidebar-button"]').click();
